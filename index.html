@@ -1,429 +1,671 @@
-<!doctype html>
-<html lang="de">
+<!<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SARI Governance – Single‑File (GitHub Pages)</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SARI Governance Tool</title>
   <style>
-    :root{--bg:#0b1220;--panel:#131a24;--line:#263142;--ink:#e8eef6;--muted:#9ab0c6;--chip:#1a2332;--chip-warn:#3a2a10;--chip-ok:#0f2a22;--chip-info:#1a2438;--chip-ink:#9bb0c7;--chip-warn-ink:#f6d18b;--chip-ok-ink:#9fe6cb;--chip-info-ink:#a9c4ff;--accent1:#4ab1ff;--accent2:#62e3b2;--danger:#ff6b6b;--warn:#f6d18b;--ok:#83f3c7}
-    html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
-    .grid{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
-    aside{background:#0f1622;border-right:1px solid #223049;padding:16px;position:sticky;top:0;height:100vh;overflow:auto}
-    main{padding:18px}
-    .brand{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-    .brand .logo{width:26px;height:26px;border-radius:6px;background:linear-gradient(135deg,var(--accent2),var(--accent1))}
-    .nav a{color:var(--ink);text-decoration:none;padding:8px 12px;border-radius:10px;border:1px solid #2c3a4f;background:#1a2332;display:inline-block}
-    .row{display:grid;gap:12px;margin-bottom:12px}
-    .row.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .row.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .row.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .row.c5{grid-template-columns:repeat(5,minmax(0,1fr))}
-    .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
-    .kpi .l{color:#93a4b6;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
-    .kpi .v{font-size:22px;font-weight:800}
-    .kpi .s{font-size:12px;color:#93a4b6}
-    .lab{color:#91a2b2;font-size:12px;display:block;margin-bottom:4px}
-    .chip{font-size:12px;padding:3px 8px;border-radius:999px;background:var(--chip);color:var(--chip-ink);border:1px solid #2a3750;display:inline-block}
-    .chip.warn{background:var(--chip-warn);color:var(--chip-warn-ink)}
-    .chip.ok{background:var(--chip-ok);color:var(--chip-ok-ink)}
-    .chip.info{background:var(--chip-info);color:var(--chip-info-ink)}
-    .td{padding:8px;background:#131a24;border:1px solid #263142;border-radius:8px}
-    .tile{cursor:pointer}
-    .timeline{display:flex;gap:16px;overflow:auto;padding:6px 2px}
-    .timeline .n{min-width:100px;cursor:pointer}
-    .timeline .d{width:12px;height:12px;border-radius:999px;background:#9ab0c6;margin-bottom:6px}
-    .timeline .d.ms{background:#a9c4ff}
-    .timeline .d.over{background:#ffcc66}
-    .lane{display:flex;gap:12px;overflow:auto;padding-top:8px}
-    .p{min-width:340px}
-    input,select,textarea{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #2b3647;background:#0e1420;color:#e8eef6}
-    textarea{min-height:100px}
-    table{width:100%;border-collapse:separate;border-spacing:0 8px}
-    th{text-align:left;padding:8px;color:#93a4b6;font-size:12px}
-    .qg{font-size:12px;margin-bottom:6px}
-    .ok{color:#9fe6cb}
-    .open{color:#f6d18b}
-    .muted{color:var(--muted)}
-    .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-    .actions{display:flex;gap:8px;align-items:center}
-    .help{cursor:pointer;border:1px solid #2a3750;border-radius:999px;background:#1a2332;color:#a9c4ff;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:900}
-
-    /* Modal */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:50}
-    .modal.open{display:flex}
-    .modal .box{background:#0f1622;border:1px solid #223049;border-radius:12px;max-width:880px;width:92%;padding:16px;color:#e8eef6}
-    .box h3{margin:0 0 8px 0}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .lvl{border:1px solid #223049;border-radius:10px;padding:10px}
-    .lvl h4{margin:0 0 8px 0;color:#a9c4ff}
-    .lvl ul{margin:0;padding-left:18px}
-    .lvl li{margin:6px 0}
-    .tick{font-weight:800;margin-right:6px}
+    /* === dein CSS unverändert (gekürzt hier nicht) === */
+    :root{--airbus-blue:#005A9C;--light-blue:#e6f0f7;--gate-grey:#e5e7eb;--text-dark:#333;--text-light:#555;--border-color:#d1d5db;--status-green:#28a745;--status-orange:#fd7e14;--status-red:#dc3545;--shadow-sm:0 1px 2px 0 rgb(0 0 0 / 0.05);--shadow-md:0 4px 6px -1px rgb(0 0 0 / 0.1),0 2px 4px -2px rgb(0 0 0 / 0.1)}
+    html,body{height:100%;overflow:hidden}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background-color:#f4f7f6;margin:0;padding:0;color:var(--text-dark);display:flex;flex-direction:column}
+    #app-wrapper{max-width:1440px;margin:0 auto;width:100%;display:flex;flex-direction:column;height:100%}
+    .main-header{background:#fff;padding:10px 24px;border-bottom:1px solid var(--border-color);display:flex;align-items:center;box-shadow:var(--shadow-sm);flex-shrink:0}
+    .dashboard-btn{background:var(--airbus-blue);color:#fff;border:none;padding:8px 16px;border-radius:5px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px}
+    .dashboard-btn:hover{background:#004a80}.dashboard-btn svg{width:16px;height:16px;fill:#fff}
+    .main-container{padding:24px;flex-grow:1;display:flex;flex-direction:column;min-height:0}
+    #dashboard-view{overflow-y:auto}#dashboard-view h1{color:var(--text-dark);margin-top:0}
+    .sari-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:24px}
+    .sari-card{background:#fff;border-radius:8px;border:1px solid var(--border-color);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;overflow:hidden;transition:box-shadow .2s}
+    .sari-card:hover{box-shadow:var(--shadow-md)}
+    .sari-card-content{padding:16px;flex-grow:1;display:flex;flex-direction:column}
+    .sari-card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+    .sari-card-header .sari-id{font-weight:600;color:var(--airbus-blue)}.sari-card-header .sari-title{color:var(--text-dark);margin-top:4px;font-size:1.1rem}
+    .sari-level-badge{padding:4px 8px;border-radius:12px;font-size:.8rem;font-weight:600;color:#fff}
+    .sari-level-badge.l1{background:var(--status-red)}.sari-level-badge.l2{background:var(--status-orange)}.sari-level-badge.l3{background:#6c757d}
+    .sari-card-kpis{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+    .kpi-card{text-align:left}.kpi-title{font-size:.8rem;color:var(--text-light)}.kpi-value{font-size:1.1rem;font-weight:500}
+    .mini-timeline-container{margin-bottom:16px}.mini-timeline-label{font-size:.8rem;color:var(--text-light);margin-bottom:6px}
+    .mini-timeline{display:flex;width:100%;height:10px;border-radius:5px;overflow:hidden;background:var(--gate-grey)}
+    .mini-timeline-segment{flex-basis:11.11%;transition:background-color .3s}
+    .mini-timeline-segment.completed{background:var(--status-green)}.mini-timeline-segment.current{background:var(--airbus-blue)}.mini-timeline-segment.overdue{background:var(--status-red)}
+    .sari-card-footer{margin-top:auto}.details-btn{display:block;width:100%;padding:10px;background:var(--light-blue);color:var(--airbus-blue);border:1px solid var(--airbus-blue);border-radius:4px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none}
+    .details-btn:hover{background:var(--airbus-blue);color:#fff}
+    #sari-detail-view{display:none;flex-direction:column;flex-grow:1;min-height:0}
+    .header{text-align:center;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--airbus-blue);flex-shrink:0}
+    .header h1{margin:0;font-size:1.75rem}.header h2{margin:4px 0 0 0;color:var(--text-light);font-weight:400;font-size:1.1rem}
+    .project-health{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:16px;padding:12px;background:#fff;border-radius:8px;box-shadow:var(--shadow-md);flex-shrink:0}
+    .kpi-card .kpi-value.red{color:var(--status-red)}.kpi-card .kpi-value.orange{color:var(--status-orange)}.kpi-card .kpi-value.green{color:var(--status-green)}
+    .steps-timeline{display:flex;justify-content:space-between;padding:8px 0;margin-bottom:16px;border:1px solid var(--border-color);background:#fff;border-radius:8px;box-shadow:var(--shadow-sm);flex-shrink:0}
+    .step-milestone{flex-basis:9%;text-align:center;padding:8px 5px;border-right:1px solid #eee;position:relative;transition:background-color .3s}.step-milestone:last-child{border-right:none}
+    .step-milestone .step-title{font-weight:600;font-size:.9rem;color:var(--airbus-blue)}.step-milestone .step-date{font-size:.8rem;color:#777;margin-top:4px}
+    .step-milestone.gate{background:var(--gate-grey)}.step-milestone.gate .step-title{color:var(--text-dark)}.step-milestone.current-step{background:var(--light-blue);border-bottom:3px solid var(--airbus-blue)}
+    .steps-details-container{display:flex;overflow-x:auto;padding:10px 0;border:2px solid var(--airbus-blue);border-radius:10px;background:#fff;box-shadow:var(--shadow-md);flex-grow:1;min-height:0;padding-bottom:2%}
+    .s-step{flex:0 0 420px;margin:20px;border:1px solid var(--border-color);border-radius:8px;box-shadow:var(--shadow-sm);transition:all .2s;display:flex;flex-direction:column;height:calc(100% - 40px)}
+    .s-step[open]{box-shadow:var(--shadow-md)}.s-step.late{border-color:var(--status-red);border-width:2px}
+    .s-step summary{display:flex;justify-content:space-between;align-items:center;font-size:1.25rem;font-weight:600;padding:15px;cursor:pointer;background:#f9f9f9;border-radius:8px 8px 0 0;border-bottom:1px solid var(--border-color);outline:none;flex-shrink:0}
+    .s-step[open] summary{background:var(--airbus-blue);color:#fff}.s-step.late summary{background:var(--status-red);color:#fff}
+    .s-step summary .info-btn{color:var(--airbus-blue);background:var(--light-blue)}.s-step[open] summary .info-btn{color:#fff;background:rgba(255,255,255,.2);border-color:#fff}
+    .summary-controls{display:flex;align-items:center;gap:10px}
+    .deliverables-list{padding:16px;overflow-y:auto;flex-grow:1}
+    .deliverable-item{margin-bottom:20px;padding:12px;background:#fdfdfd;border:1px solid #e0e0e0;border-radius:5px}
+    .deliverable-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    .deliverable-title{font-weight:500}.header-controls{display:flex;align-items:center;gap:10px}
+    .info-btn{width:24px;height:24px;border-radius:50%;border:1px solid var(--airbus-blue);background:var(--light-blue);color:var(--airbus-blue);font-weight:700;font-size:1rem;cursor:pointer;padding:0;line-height:22px;flex-shrink:0}
+    .info-btn:hover{background:var(--airbus-blue);color:#fff}.reminder-btn{border:none;background:none;cursor:pointer;padding:0}.reminder-btn svg{width:20px;height:20px;fill:var(--text-light)}.reminder-btn:hover svg{fill:var(--airbus-blue)}
+    .s-step[open] .reminder-btn svg{fill:#fff;opacity:.7}.s-step[open] .reminder-btn:hover svg{opacity:1}
+    .status-light{width:24px;height:24px;border-radius:50%;border:2px solid #555;box-shadow:inset 0 0 4px rgba(0,0,0,.2);flex-shrink:0}
+    .status-light.green{background:var(--status-green);border-color:#1f7d36}.status-light.orange{background:var(--status-orange);border-color:#c46210}.status-light.red{background:var(--status-red);border-color:#a72833}
+    .deliverable-input{width:100%;box-sizing:border-box;padding:8px;border:1px solid var(--border-color);border-radius:4px;margin-top:4px}
+    .deliverable-input:focus{border-color:var(--airbus-blue);box-shadow:0 0 5px rgba(0,90,156,.3);outline:none}.deliverable-input[readonly]{background:#f8f9fa;color:#6c757d}
+    .supply-chain-breakdown{display:flex;align-items:center;justify-content:space-between;margin-top:10px}.sc-node{flex:1;text-align:center;padding:8px;border:1px solid var(--border-color);border-radius:4px;background:#fafafa}.sc-arrow{margin:0 8px;font-size:1.5rem;color:var(--text-light)}
+    .suggestion-box{margin-top:10px;padding:10px;background:var(--light-blue);border:1px solid var(--airbus-blue);border-radius:4px;font-style:italic;color:var(--text-dark)}
+    .rca-pca-link{margin-top:15px;border-top:1px dashed var(--border-color);padding-top:15px}.rca-pca-link .rc-title{font-weight:600}
+    .analyze-btn{display:block;width:100%;padding:10px;margin-top:10px;background:var(--airbus-blue);color:#fff;border:none;border-radius:4px;font-weight:600;cursor:pointer;text-align:center}
+    .analyze-btn:hover{background:#004a80}
+    .justification-box{margin-top:20px;padding:12px;background:#fffbe6;border:1px solid var(--status-orange);border-radius:5px}.justification-box label{font-weight:600;color:var(--text-dark)}
+    .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,.6);animation:fadeIn .3s}
+    .modal-content{background:#fefefe;margin:10% auto;padding:24px;border:1px solid #888;border-radius:8px;width:90%;max-width:600px;box-shadow:var(--shadow-md);animation:slideIn .3s}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes slideIn{from{transform:translateY(-50px)}to{transform:translateY(0)}}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding-bottom:12px;margin-bottom:16px}.modal-header h3{margin:0;color:var(--airbus-blue)}.modal-close-btn{color:#aaa;font-size:28px;font-weight:bold;cursor:pointer}.modal-close-btn:hover{color:#000}.modal-body{line-height:1.6}.modal-body ul{margin-top:10px;padding-left:20px}
+    #five-why-modal .modal-content{max-width:800px}.why-level-container{margin-top:15px}.why-level{display:flex;align-items:flex-start;margin-left:20px;padding-left:20px;border-left:2px solid var(--airbus-blue);margin-top:10px}.why-level-content{flex-grow:1}.why-level label{font-weight:600;font-size:1rem;color:var(--airbus-blue)}.why-level textarea{width:100%;box-sizing:border-box;padding:8px;margin-top:5px;border:1px solid var(--border-color);border-radius:4px;font-family:inherit;font-size:1rem}.add-why-btn{margin-left:10px;padding:5px 10px;background:var(--light-blue);border:1px solid var(--airbus-blue);color:var(--airbus-blue);border-radius:4px;cursor:pointer;font-weight:600;height:38px;align-self:center}.add-why-btn:hover{background:var(--airbus-blue);color:#fff}#five-why-modal .modal-footer{margin-top:20px;text-align:right}#save-why-btn{padding:10px 20px;background:var(--airbus-blue);color:#fff;border:none;border-radius:4px;font-weight:600;cursor:pointer}
+    #checklist-modal .modal-content{max-width:800px}.maturity-level{margin-bottom:1.5em}.maturity-level h4{margin:0 0 .5em 0;padding-bottom:.3em;border-bottom:2px solid}.maturity-level ul{list-style-type:none;padding-left:0;margin:0}.maturity-level li{margin-bottom:.5em}
+    .level-1 h4{border-color:#6c757d}.level-2 h4{border-color:var(--status-red)}.level-3 h4{border-color:var(--status-orange)}.level-4 h4{border-color:var(--status-green)}.level-5 h4{border-color:var(--airbus-blue)}
+    .checklist-toggle{margin-top:1em}
+    .ishikawa-diagram{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-right:4px solid var(--airbus-blue);padding:10px;background:#fdfdfd}.ishikawa-bone h4{margin:0 0 10px 0;padding-bottom:5px;border-bottom:1px solid var(--airbus-blue);color:var(--airbus-blue)}.ishikawa-bone textarea{width:100%;height:60px;box-sizing:border-box;border:1px solid #ddd;font-family:monospace;font-size:.85rem}
   </style>
 </head>
 <body>
-  <div class="grid">
-    <aside>
-      <div class="brand"><div class="logo"></div><div><div style="font-weight:700">SARI Governance</div><div style="font-size:12px;color:#9aacc0">Pitch Prototype</div></div></div>
-      <div class="nav"><a href="#/">🏠 Dashboard</a></div>
-    </aside>
-    <main id="app"></main>
+  <div id="app-wrapper">
+    <header class="main-header">
+      <button id="nav-dashboard-btn" class="dashboard-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+        Dashboard
+      </button>
+    </header>
+
+    <main class="main-container">
+      <div id="dashboard-view">
+        <h1>My SARI Cases</h1>
+        <div class="sari-grid"></div>
+      </div>
+
+      <div id="sari-detail-view"></div>
+    </main>
   </div>
 
-  <!-- Global modal -->
-  <div id="modal" class="modal"><div class="box"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><h3 id="modalTitle">Checklist</h3><span id="modalClose" class="help" title="Schließen">×</span></div><div id="modalBody"></div></div></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // --- Milestones & Mock Data (unverändert) ---
+      const milestones = [
+        { id: 's0', name: 'S0', due: 1 }, { id: 's1', name: 'S1', due: 2 }, { id: 's2', name: 'S2', due: 7 },
+        { id: 's3', name: 'S3', due: 14 }, { id: 's4', name: 'S4', due: 45 }, { id: 'dryrun', name: 'Dry Run', due: 60, isGate: true },
+        { id: 's5', name: 'S5', due: 80 }, { id: 'pp', name: 'PP', due: 100, isGate: true }, { id: 's6', name: 'S6', due: 150 },
+        { id: 's7', name: 'S7', due: 170 }, { id: 's8', name: 'S8', due: 180 }
+      ];
 
-<script>
-// ===== Pure JS (kein React/kein Build) =====
-const addDays=(iso,d)=>{if(!iso)return null;const t=new Date(iso);const x=new Date(t.getTime());x.setDate(t.getDate()+d);return x.toISOString().slice(0,10)};
-const todayISO=()=>new Date(Date.now()).toISOString().slice(0,10);
-const daysBetween=(a,b)=>{if(!a||!b)return null;const A=new Date(a),B=new Date(b);return Math.round((B-A)/(24*3600*1000))};
-const deltaFromToday=t=>t?daysBetween(todayISO(),t):null;
-const el=(tag,attrs={},...kids)=>{const n=document.createElement(tag);for(const[k,v]of Object.entries(attrs)){if(k==='class')n.className=v;else if(k==='style')Object.assign(n.style,v);else if(k.startsWith('on'))n.addEventListener(k.slice(2),v);else n.setAttribute(k,v)};kids.forEach(c=>{if(c==null)return;if(typeof c==='string')n.appendChild(document.createTextNode(c));else n.appendChild(c)});return n};
-const computeRPN=sod=>(+sod.s||0)*(+sod.o||0)*(+sod.d||0);
+      const sariData = [
+        { id: 'SARI SE-25.XXXX', title: 'FOD in APU compartment', level: 'l2', sim: 'M. Mustermann', creationDate: '2025-10-16', complexity: 'Medium', currentStepIndex: 2, overallStatus: 'orange' },
+        { id: 'SARI SE-25.YYYY', title: 'Incorrect torque on wing root', level: 'l3', sim: 'E. Mustermann', creationDate: '2025-10-17', complexity: 'Low', currentStepIndex: 0, overallStatus: 'green' },
+        { id: 'SARI SE-25.ZZZZ', title: 'Corrosion on pylon fitting', level: 'l1', sim: 'J. Doe', creationDate: '2025-08-22', complexity: 'High', currentStepIndex: 4, overallStatus: 'red' }
+      ];
 
-// ===== Canon QG (Requirements in place) =====
-function QG(step,sari){
-  const S0=()=> step.s0 && step.s0.customer_informed_on && step.s0.first_event_date && daysBetween(step.s0.first_event_date,step.s0.customer_informed_on)<=3 && !!step.s0.containment_action_plan && !!step.s0.line_stop===true && within(step.s0.first_event_date,step.s0.wip_check_on,3) && within(step.s0.first_event_date,step.s0.quarantine_on,3);
-  const S1=()=> step.s1 && step.s1.leader && step.s1.sponsor && step.s1.problem_owner && step.s1.operations_rep && within(sari.day1,step.s1.kickoff_on,5) && !!step.s1.skills_matrix;
-  const S2=()=> step.s2 && step.s2.issue_description && step.s2.fiveWtwoH && (!step.s2.complex_case || (step.s2.complex_case && step.s2.is_is_not)) && step.s2.problem_statement && !/\b(fix|lösen|solution|workaround)\b/i.test(step.s2.issue_description);
-  const S3=()=> step.s3 && step.s3.containment_validation_report && (step.s3.traceability_report_toac || step.s3.traceability_alt) && step.s3.curative_actions_done===true;
-  const rpn=computeRPN(sari.sod);
-  const S4=()=> step.s4 && step.s4.rc1_occurrence && step.s4.rc2_non_detection && ((sari.level==='L1'||rpn>=300)?!!step.s4.rc3_systemic:true) && (step.s4.rc_evidence && step.s4.rc_evidence.length>0) && step.s4.ishikawa_used===true && step.s4.pfmea_checked===true;
-  const S5=()=>{const a=step.s5?.pca||[];if(a.length===0)return false;const has={RC1:false,RC2:false,RC3:false};const need={RC1:!!sari.steps.s4.rc1_occurrence,RC2:!!sari.steps.s4.rc2_non_detection,RC3:!!sari.steps.s4.rc3_systemic};for(const p of a){if(!(p.action&&p.owner&&p.due_date&&p.effectiveness_metric&&p.rc_link))return false;if(has[p.rc_link]!==undefined)has[p.rc_link]=true;}return (!need.RC1||has.RC1)&&(!need.RC2||has.RC2)&&(!need.RC3||has.RC3)&& (!!step.s5.nd_actions_multilevel||true) };
-  const Dry=()=> step.dry && step.dry.id_card_ready && step.dry.pca_plan_consistent && step.dry.demo_artifacts && step.dry.open_risks_listed;
-  const S6=()=>{const L=step.s6?.pca_effectiveness||[];if(L.length===0)return false;return L.every(e=>e.implemented===true&&e.effective===true&&!!e.effectiveness_evidence)};
-  const PP =()=> step.pp && step.pp.ppm_review_green && step.pp.risks_documented && step.pp.pp_pack_ready;
-  const S7=()=> step.s7 && step.s7.sop_updated && ((sari.level==='L1'||rpn>=300)? step.s7.fmea_updated : true) && step.s7.look_across;
-  const S8=()=> step.s8 && step.s8.checks && step.s8.checks.each_action_effective && step.s8.checks.docs_complete && step.s8.checks.lessons_integrated && step.s8.checks.five_why_valid;
-  return {S0:S0(),S1:S1(),S2:S2(),S3:S3(),S4:S4(),S5:S5(),Dry:Dry(),S6:S6(),PP:PP(),S7:S7(),S8:S8()}
-}
-function progress(s){const qg=QG(s.steps,s);const arr=Object.values(qg);return Math.round(arr.filter(Boolean).length/arr.length*100)}
-function within(ref,ts,days){if(!ref||!ts)return false;const d=daysBetween(ref,ts);return d!=null&&d<=days}
+      // --- Maturity Inhalte (deine Texte belassen) ---
+      const maturityData = {
+        s0: [
+          { level: 1, title: 'Not mature at all', items: ['No or significantly delayed (>1 week) actions.', 'Customer is not informed.'] },
+          { level: 2, title: 'Early beginning', items: ['Actions are only partially effective or incomplete.', 'Customer informed after >5 days.'] },
+          { level: 3, title: 'Basics in place', items: ['All internal stocks (WIP, warehouse) are checked within 3 days.', 'Non-conforming parts are quarantined within 3 days.', 'Customer is informed within 7 days.'] },
+          { level: 4, title: 'Requirements in place', items: ['Production line is stopped **immediately**.', 'A **formal containment action plan** (incl. owner, due date) is created within 3 days.', 'Customer is informed within **1-3 days** to minimize impact.'] },
+          { level: 5, title: 'Benchmark', items: ['Production is restarted with effective containment **within 24 hours**.', 'An **initial problem description from the customer\'s perspective** is created.'] }
+        ],
+        s1: [
+          { level: 1, title: 'Not mature at all', items: ['No evidence of a team.'] },
+          { level: 2, title: 'Early beginning', items: ['MFT members are nominated.', 'A 9S Leader is identified.', '❌ Key functions like "Operations" or a management "Sponsor" are missing.'] },
+          { level: 3, title: 'Basics in place', items: ['A representative from **"Operations"** is part of the team.'] },
+          { level: 4, title: 'Requirements in place', items: ['A **"Sponsor"** from top management is nominated and actively supports the team.', 'The MFT includes employees who **perform the actual work** (e.g., operator, inspector).', 'The **supplier is actively integrated** if it\'s a supplier issue.'] },
+          { level: 5, title: 'Benchmark', items: ['The **"Problem Owner"** (manager of the responsible department) leads the investigation.', '**Lessons Learned** from previous investigations are used as formal input.'] }
+        ],
+        s2: [
+          { level: 1, title: 'Not mature at all', items: ['Description only focuses on customer symptoms without internal analysis.'] },
+          { level: 2, title: 'Early beginning', items: ['Description is a mix of facts and subjective perception.', 'Fails to adhere to the "1 object, 1 defect" principle.'] },
+          { level: 3, title: 'Basics in place', items: ['Problem description is based exclusively on facts and figures.', 'Problem is clearly formulated according to the **"1 object, 1 defect"** principle.'] },
+          { level: 4, title: 'Requirements in place', items: ['A completed **5W2H analysis** (based on facts) is available.', 'A **final "Problem Statement"** summarizing the 5W2H is documented.'] },
+          { level: 5, title: 'Benchmark', items: ['For complex cases, an **IS / IS NOT analysis** is created to precisely define the scope.', 'A **process workflow** is visualized, showing the defect\'s path from origin to delivery.'] }
+        ],
+        s3: [
+          { level: 1, title: 'Not mature at all', items: ['Containment actions are not effective or not implemented.'] },
+          { level: 2, title: 'Early beginning', items: ['Actions are implemented, but their effectiveness is not demonstrated. Traceability is incomplete.'] },
+          { level: 3, title: 'Basics in place', items: ['Effectiveness is demonstrated internally but not formally communicated.', 'Partial control of WIP/All stocks.'] },
+          { level: 4, title: 'Requirements in place', items: ['A **formal proof of 100% effectiveness** is documented (e.g., test with bad parts).', '**Full traceability** of all affected parts (WIP, in-service) is secured and documented.'] },
+          { level: 5, title: 'Benchmark', items: ['Effectiveness is **continuously reviewed**.', 'Containment is extended to **similar products/processes** (look across).'] }
+        ],
+        s4: [
+          { level: 1, title: 'Not mature at all', items: ['No logical link between the proposed cause and the problem.'] },
+          { level: 2, title: 'Early beginning', items: ['No clear separation between **Occurrence** and **Non-Detection** root causes.', '5-Why analysis stops at "human error".'] },
+          { level: 3, title: 'Basics in place', items: ['The RCA is clearly split into **Occurrence** and **Non-Detection** paths.', 'A 5-Why analysis is applied to both paths.'] },
+          { level: 4, title: 'Requirements in place', items: ['An **Ishikawa diagram** is used to brainstorm all potential causes.', 'The **root cause is proven** (e.g., by reproducing the failure).', 'A **Systemic / Management root cause** is identified.'] },
+          { level: 5, title: 'Benchmark', items: ['The **most appropriate RCA method** is chosen based on complexity (e.g., Shainin, DoE for complex issues).'] }
+        ],
+        s5: [
+          { level: 1, title: 'Not mature at all', items: ['No clear link between action and root cause.', 'Proposed actions are not sustainable (e.g., "be more careful").'] },
+          { level: 2, title: 'Early beginning', items: ['Actions are linked to a cause, but ownership and schedule are unclear.'] },
+          { level: 3, title: 'Basics in place', items: ['Each action has a clear owner and a due date.', 'For low-detectability issues, actions focus on **prevention** (Poka Yoke).'] },
+          { level: 4, title: 'Requirements in place', items: ['The action plan contains separate, specific actions for **Occurrence**, **Non-Detection**, and **Systemic** root causes.'] },
+          { level: 5, title: 'Benchmark', items: ['**Success criteria (KPIs)** are defined for each action before selection.', 'A **risk analysis** of the proposed actions is performed.'] }
+        ]
+      };
 
-// ===== Maturity per Level (1..5) for Checklist & Guidance =====
-function maturityFor(stepKey,s){
-  const st=s.steps;
-  const L=(lvl,items)=>({lvl,items});
-  const I=(label,ok)=>({label,ok});
-  switch(stepKey){
-    case 's0':{
-      const S0=st.s0||{};const d=daysBetween(S0.first_event_date,S0.customer_informed_on);
-      return [
-        L(2,[
-          I('WIP/Stocks geprüft ≤3 Tage', within(S0.first_event_date,S0.wip_check_on,3)),
-          I('Non‑conforming Teile quarantiniert ≤3 Tage', within(S0.first_event_date,S0.quarantine_on,3)),
-          I('Kunde ≤7 Tage informiert', d!=null && d<=7)
-        ]),
-        L(3,[
-          I('Formaler Containment‑Plan vorhanden', !!S0.containment_action_plan)
-        ]),
-        L(4,[
-          I('Linie sofort gestoppt', !!S0.line_stop),
-          I('Kunde ≤3 Tage informiert', d!=null && d<=3)
-        ]),
-        L(5,[
-          I('Produktion mit wirksamer Eindämmung ≤24h wieder gestartet', within(S0.first_event_date,S0.restart_on,1))
-        ])
-      ]}
-    case 's1':{
-      const S1=st.s1||{};
-      return [
-        L(2,[ I('MFT benannt (Leader, Sponsor, Problem Owner, Ops)', !!(S1.leader&&S1.sponsor&&S1.problem_owner&&S1.operations_rep)) ]),
-        L(3,[ I('Operations im Team vertreten', !!S1.operations_rep) ]),
-        L(4,[ I('Kick‑off ≤5 Tage ab Day‑1', within(s.day1,S1.kickoff_on,5)), I('Skills‑Matrix vorhanden', !!S1.skills_matrix) ]),
-        L(5,[ I('Lieferant integriert (falls relevant)', !!S1.supplier_integrated) ])
-      ]}
-    case 's2':{
-      const S2=st.s2||{};const okIs=!S2.complex_case||!!S2.is_is_not;
-      return [
-        L(2,[ I('1 Objekt / 1 Defekt', !!S2.issue_description) ]),
-        L(3,[ I('5W2H abgeschlossen', !!S2.fiveWtwoH) ]),
-        L(4,[ I('Problem Statement (Synthese) vorhanden', !!S2.problem_statement), I('IS/IS NOT bei komplexen Fällen', okIs) ]),
-        L(5,[ I('Prozess‑Workflow bis Lieferung dokumentiert', !!S2.process_workflow) ])
-      ]}
-    case 's3':{
-      const S3=st.s3||{};
-      return [
-        L(2,[ I('Eindämmung implementiert', !!S3.containment_validation_report) ]),
-        L(3,[ I('Wirksamkeit nachgewiesen (intern)', !!S3.containment_validation_report) ]),
-        L(4,[ I('Vollständige Traceability (TOAC/alt.)', !!(S3.traceability_report_toac||S3.traceability_alt)), I('Curatives umgesetzt', S3.curative_actions_done===true) ]),
-        L(5,[ I('Wirksamkeit fortlaufend überwacht', !!S3.continuous_review) ])
-      ]}
-    case 's4':{
-      const S4=st.s4||{};const needSys=(s.level==='L1'||computeRPN(s.sod)>=300);
-      return [
-        L(2,[ I('Trennung RC1/RC2', !!(S4.rc1_occurrence&&S4.rc2_non_detection)) ]),
-        L(3,[ I('5‑Whys/Why‑Tree vorhanden', !!S4.why_tree) ]),
-        L(4,[ I('Ishikawa genutzt', S4.ishikawa_used===true), I('RC(s) per Evidenz belegt', (S4.rc_evidence||[]).length>0), I('Systemische RC identifiziert (Top Irritant)', !needSys || !!S4.rc3_systemic), I('PFMEA geprüft', S4.pfmea_checked===true) ]),
-        L(5,[ I('Methodik passend gewählt (DoE/Shainin/KTs)', !!S4.advanced_method) ])
-      ]}
-    case 's5':{
-      const S5=st.s5||{};const a=S5.pca||[];const hasRC=(rc)=>a.some(p=>p.rc_link===rc);
-      return [
-        L(2,[ I('Owner & Termin je Maßnahme gesetzt', a.every(p=>p.owner&&p.due_date)) ]),
-        L(3,[ I('RC‑Abdeckung: RC1/RC2 (RC3 wenn vorhanden)', hasRC('RC1') && hasRC('RC2') && (!st.s4?.rc3_systemic || hasRC('RC3'))) ]),
-        L(4,[ I('Nicht‑Erkennung an allen Stufen adressiert', !!S5.nd_actions_multilevel) ]),
-        L(5,[ I('Erfolgskriterien je Maßnahme definiert', a.every(p=>!!p.effectiveness_metric)), I('Risikoanalyse der Maßnahmen vorhanden', !!S5.risk_analysis_done) ])
-      ]}
-    case 's6':{
-      const S6=st.s6||{};const Lst=S6.pca_effectiveness||[];
-      return [
-        L(3,[ I('100% der geplanten Maßnahmen implementiert', Lst.every(e=>e.implemented===true)) ]),
-        L(4,[ I('Wirksamkeit statistisch belegt', Lst.every(e=>e.effective===true && !!e.effectiveness_evidence)) ]),
-        L(5,[ I('Containment erst nach Wirksamkeit geschlossen', !!S6.containment_closed_post_effectiveness) ])
-      ]}
-    case 's7':{
-      const S7=st.s7||{};return [ L(3,[ I('SOP/CP aktualisiert', !!S7.sop_updated) ]), L(4,[ I('FMEA aktualisiert (Top Irritants Pflicht)', (s.level!=='L1'&&computeRPN(s.sod)<300) || !!S7.fmea_updated) ]), L(5,[ I('Look‑Across / Lessons Learned & Supplier Prävention', !!S7.look_across) ]) ]}
-    case 's8':{
-      const C=st.s8?.checks||{};return [ L(4,[ I('Alle Maßnahmen wirksam', !!C.each_action_effective), I('Dokumente vollständig', !!C.docs_complete), I('Lessons Learned integriert', !!C.lessons_integrated), I('5‑Whys valide', !!C.five_why_valid) ]), L(5,[ I('Methodik‑Selbstbewertung durchgeführt', !!st.s8?.method_eval_done) ]) ]}
-  }
-  return []
-}
-function maturityLevel(stepKey,s){
-  const lvls=maturityFor(stepKey,s);let lvl=0;for(const L of lvls){if(L.items.every(it=>it.ok)) lvl=L.lvl; else break}return {lvl,lvls}
-}
+      // --- Views ---
+      const dashboardView = document.getElementById('dashboard-view');
+      const sariDetailView = document.getElementById('sari-detail-view');
+      document.getElementById('nav-dashboard-btn').onclick = showDashboard;
 
-// ===== Data =====
-function mkSari(id,level,day1,sod,meta={}){
-  return {id,level,day1,sod,meta,
-    milestones:{dryRun:{target:addDays(day1,60)},pp:{target:addDays(day1,100)}},status:'Open',
-    steps:{
-      s0:{first_event_date:day1,customer_informed_on:day1,line_stop:false,containment_action_plan:{name:'plan.pdf'},wip_check_on:null,quarantine_on:null,restart_on:null},
-      s1:{leader:'',sponsor:'',problem_owner:'',operations_rep:'',mft_members:[],kickoff_on:null,skills_matrix:null,supplier_integrated:false},
-      s2:{issue_description:'',fiveWtwoH:'',complex_case:false,is_is_not:'',supply_chain_breakdown:'',problem_statement:'',process_workflow:''},
-      s3:{containment_validation_report:null,traceability_report_toac:null,traceability_alt:null,curative_actions_done:false,continuous_review:false},
-      s4:{rc1_occurrence:'',rc2_non_detection:'',rc3_systemic:'',rc_evidence:[],ishikawa_used:false,pfmea_checked:false,why_tree:false,advanced_method:false},
-      s5:{pca:[],nd_actions_multilevel:false,risk_analysis_done:false},
-      dry:{id_card_ready:false,pca_plan_consistent:false,demo_artifacts:false,open_risks_listed:false},
-      s6:{pca_effectiveness:[],containment_closed_post_effectiveness:false},
-      pp:{ppm_review_green:false,risks_documented:false,pp_pack_ready:false},
-      s7:{sop_updated:null,fmea_updated:null,look_across:null},
-      s8:{checks:{each_action_effective:false,docs_complete:false,lessons_integrated:false,five_why_valid:false},customer_closure_comm:null,closure_comment:'',method_eval_done:false}
-    }
-  }
-}
-const DB=[
-  mkSari('SE-25.0123','L1','2025-09-01',{s:8,o:5,d:9},{title:'GEN-004 Incorrect Assembly – hinge bracket'}),
-  mkSari('SE-25.0456','L2','2025-08-30',{s:6,o:6,d:6},{title:'GEN-010 Torque issue – fasteners'}),
-  mkSari('SE-25.0789','L3','2025-10-01',{s:4,o:5,d:7},{title:'GEN-001 FOD – wiring bay'}),
-  mkSari('SE-25.0999','L2','2025-07-20',{s:7,o:7,d:7},{title:'GEN-012 Corrosion – panel'})
-];
-DB[0].steps.s2.issue_description='1 object / 1 defect: hinge mis-assembly on LH door';
-DB[0].steps.s5.pca=[
-  {action:'Introduce Poka-Yoke',owner:'Ops',due_date:'2025-10-12',rc_link:'RC2',effectiveness_metric:'Cpk >=1.33',status:'In Arbeit'},
-  {action:'Revise SOP 27-14',owner:'QE',due_date:'2025-10-20',rc_link:'RC3',effectiveness_metric:'Audit=0 NC',status:'Offen'}
-];
+      function showDashboard() {
+        renderDashboard();
+        dashboardView.style.display = 'block';
+        sariDetailView.style.display = 'none';
+      }
+      function showSariDetail(sariId) {
+        const sari = sariData.find(s => s.id === sariId);
+        renderSariDetail(sari);
+        dashboardView.style.display = 'none';
+        sariDetailView.style.display = 'flex';
+      }
 
-// ===== Urgency / Tiles =====
-function urgencyTuple(s){const lvl=s.level==='L1'?3:s.level==='L2'?2:1;const dDry=deltaFromToday(s.milestones.dryRun?.target)??9999;const dPP=deltaFromToday(s.milestones.pp?.target)??9999;const rpn=computeRPN(s.sod);const overdue=(s.steps.s5.pca||[]).filter(p=>p.due_date&&p.status!=='Erledigt'&&p.due_date<todayISO()).length;return[-lvl,(dDry>=0?dDry:dDry*2),(dPP>=0?dPP:dPP*1.5),-rpn,-overdue]}
-function cmp(a,b){for(let i=0;i<Math.max(a.length,b.length);i++){const d=(a[i]||0)-(b[i]||0);if(d!==0)return d}return 0}
+      // --- Dashboard render (unverändert außer Daten füllen) ---
+      function renderDashboard() {
+        const grid = document.querySelector('#dashboard-view .sari-grid');
+        grid.innerHTML = '';
+        const today = new Date();
+        sariData.forEach(sari => {
+          const card = document.createElement('div');
+          card.className = 'sari-card';
+          card.dataset.sariId = sari.id;
+          if (sari.overallStatus === 'red') card.style.borderColor = 'var(--status-red)';
+          const creationDate = new Date(sari.creationDate);
+          const daysOpen = Math.ceil((today - creationDate) / (1000 * 60 * 60 * 24));
+          const nextStep = milestones[sari.currentStepIndex];
+          const nextDueDate = new Date(creationDate);
+          if (nextStep) nextDueDate.setDate(creationDate.getDate() + nextStep.due);
+          let miniTimelineHTML = '';
+          milestones.filter(m => !m.isGate).forEach((m, index) => {
+            let statusClass = 'future';
+            if (index < sari.currentStepIndex) statusClass = 'completed';
+            else if (index === sari.currentStepIndex) statusClass = sari.overallStatus === 'red' ? 'overdue' : 'current';
+            miniTimelineHTML += `<div class="mini-timeline-segment ${statusClass}" title="${m.name}"></div>`;
+          });
+          card.innerHTML = `
+            <div class="sari-card-content">
+              <div class="sari-card-header">
+                <div>
+                  <div class="sari-id">${sari.id}</div>
+                  <h3 class="sari-title">${sari.title}</h3>
+                </div>
+                <span class="sari-level-badge ${sari.level}">${sari.level.toUpperCase()}</span>
+              </div>
+              <div class="sari-card-kpis">
+                <div class="kpi-card"><div class="kpi-title">Current Step</div><div class="kpi-value">${milestones.find((m,i)=>i===sari.currentStepIndex && !m.isGate)?.name || 'N/A'}</div></div>
+                <div class="kpi-card"><div class="kpi-title">Days Open</div><div class="kpi-value">${daysOpen}</div></div>
+                <div class="kpi-card"><div class="kpi-title">Creation Date</div><div class="kpi-value">${creationDate.toLocaleDateString('en-GB')}</div></div>
+                <div class="kpi-card"><div class="kpi-title">Complexity</div><div class="kpi-value">${sari.complexity}</div></div>
+                <div class="kpi-card"><div class="kpi-title">Next Due</div><div class="kpi-value">${nextStep ? nextDueDate.toLocaleDateString('en-GB') : 'N/A'}</div></div>
+                <div class="kpi-card"><div class="kpi-title">SIM</div><div class="kpi-value">${sari.sim}</div></div>
+              </div>
+              <div class="mini-timeline-container">
+                <div class="mini-timeline-label">Progress</div>
+                <div class="mini-timeline">${miniTimelineHTML}</div>
+              </div>
+              <div class="sari-card-footer">
+                <a href="#" class="details-btn view-details-btn">View Details</a>
+              </div>
+            </div>`;
+          grid.appendChild(card);
+        });
+        document.querySelectorAll('.view-details-btn').forEach(btn => btn.onclick = (e) => {
+          e.preventDefault();
+          const sariId = e.target.closest('.sari-card').dataset.sariId;
+          showSariDetail(sariId);
+        });
+      }
 
-// ===== Render =====
-function kpi(l,v,s){const r=el('div',{class:'card kpi'});r.append(el('div',{class:'l'},l),el('div',{class:'v'},String(v)));if(s)r.append(el('div',{class:'s'},s));return r}
-function chip(txt,tone){return el('span',{class:'chip '+(tone||'')},txt)}
+      // --- SARI Detail ---
+      function renderSariDetail(sari) {
+        const SARI_ID = sari.id;
+        const SUPPLIER_EMAIL = "supplier@example.com";
+        const AT_RISK_DAYS = 5;
+        const creationDate = new Date(sari.creationDate);
+        const daysOpen = Math.ceil((new Date() - creationDate) / (1000 * 60 * 60 * 24));
+        const currentStepIndex = sari.currentStepIndex;
+        const currentStepId = milestones[currentStepIndex].id;
 
-function renderDashboard(){
-  const wrap=el('div');
-  const open=DB.filter(s=>s.status!=='Closed').length;
-  const overdueMs=DB.filter(s=>(deltaFromToday(s.milestones.dryRun?.target)??1)<0||(deltaFromToday(s.milestones.pp?.target)??1)<0).length;
-  const avgDry=Math.round(DB.reduce((a,s)=>a+(deltaFromToday(s.milestones.dryRun?.target)??0),0)/Math.max(1,DB.length));
-  const avgPP=Math.round(DB.reduce((a,s)=>a+(deltaFromToday(s.milestones.pp?.target)??0),0)/Math.max(1,DB.length));
-  const topIrr=DB.filter(s=>s.level==='L1'||computeRPN(s.sod)>=300).length;
-  const row=el('div',{class:'row c5'});
-  row.append(kpi('Open SARIs',open),kpi('Overdue Milestones',overdueMs),kpi('Ø Days to Dry Run',avgDry),kpi('Ø Days to PP',avgPP),kpi('Top Irritants',topIrr));
-  wrap.append(row);
+        sariDetailView.innerHTML = `
+          <div id="info-modal" class="modal"><div class="modal-content"><div class="modal-header"><h3 id="modal-title"></h3><span class="modal-close-btn">&times;</span></div><div id="modal-body" class="modal-body"></div></div></div>
+          <div id="five-why-modal" class="modal"><div class="modal-content"><div class="modal-header"><h3 id="five-why-title">5-Why Analysis</h3><span class="modal-close-btn">&times;</span></div><div class="modal-body"><label for="why-problem-statement">Problem Statement</label><textarea id="why-problem-statement" class="deliverable-input" rows="2"></textarea><div id="why-container"></div></div><div class="modal-footer"><button id="save-why-btn">Save & Close</button></div></div></div>
+          <div id="checklist-modal" class="modal"><div class="modal-content"><div class="modal-header"><h3 id="checklist-title"></h3><span class="modal-close-btn">&times;</span></div><div id="checklist-body" class="modal-body"></div></div></div>
+          <div class="header"><h1>SARI Governance Tool</h1><h2 id="sari-detail-title">${SARI_ID}</h2></div>
+          <div class="project-health">
+            <div class="kpi-card"><div class="kpi-title">Overall Status</div><div class="kpi-value" id="kpi-status"></div></div>
+            <div class="kpi-card"><div class="kpi-title">Days Open</div><div class="kpi-value">${daysOpen}</div></div>
+            <div class="kpi-card"><div class="kpi-title">Current Step</div><div class="kpi-value">${milestones[currentStepIndex]?.name || 'N/A'}</div></div>
+            <div class="kpi-card"><div class="kpi-title">Next Milestone</div><div class="kpi-value" id="kpi-next-milestone"></div></div>
+          </div>
+          <div class="steps-timeline"></div>
+          <div class="steps-details-container"></div>
+        `;
 
-  const sorted=[...DB].sort((a,b)=>cmp(urgencyTuple(a),urgencyTuple(b)));
-  const grid=el('div',{class:'row c3',style:{gap:'16px'}});
-  sorted.forEach(s=>grid.append(tile(s)));
-  wrap.append(grid);
-  return wrap
-}
+        // Timeline
+        const timelineContainer = sariDetailView.querySelector('.steps-timeline');
+        milestones.forEach(m => {
+          const el = document.createElement('div');
+          el.className = `step-milestone ${m.isGate ? 'gate' : ''}`;
+          el.id = `timeline-${m.id}`;
+          const dueDate = new Date(creationDate);
+          dueDate.setDate(creationDate.getDate() + m.due);
+          el.innerHTML = `<div class="step-title">${m.name}</div><div class="step-date">${dueDate.toLocaleDateString('en-GB',{day:'2-digit',month:'2-digit'})}</div>`;
+          timelineContainer.appendChild(el);
+        });
+        sariDetailView.querySelector(`#timeline-${currentStepId}`).classList.add('current-step');
 
-function tile(s){
-  const rpn=computeRPN(s.sod);const prog=progress(s);
-  const dDry=deltaFromToday(s.milestones.dryRun?.target);const dPP=deltaFromToday(s.milestones.pp?.target);
-  const dryTxt=dDry==null?'—':dDry<0?`DRY RUN ${Math.abs(dDry)}d overdue`:`DRY RUN in ${dDry}d`;
-  const ppTxt=dPP==null?'—':dPP<0?`PP ${Math.abs(dPP)}d overdue`:`PP in ${dPP}d`;
-  const overdue=(s.steps.s5.pca||[]).filter(p=>p.due_date&&p.status!=='Erledigt'&&p.due_date<todayISO()).length;
-  const card=el('div',{class:'card tile'});
-  card.addEventListener('click',()=>location.hash=`#/sari/${s.id}`);
-  const head=el('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'8px'}});
-  head.append(el('div',{style:{fontWeight:'800'}},s.id));
-  const badges=el('div',{style:{display:'flex',gap:'8px',alignItems:'center'}});
-  badges.append(chip(s.level,'info')); if(s.level==='L1'||rpn>=300)badges.append(chip('Top Irritant','warn'));
-  head.append(badges); card.append(head);
-  card.append(el('div',{class:'muted'}, s.meta?.title || s.steps?.s2?.issue_description || '—'));
-  const row=el('div',{class:'row c3',style:{marginTop:'8px'}});
-  const b1=el('div'); b1.append(el('label',{class:'lab'},'RPN'), el('div',{style:{fontWeight:'700'}},String(rpn)), el('div',{class:'muted',style:{fontSize:'12px'}},`S/O/D ${s.sod.s}/${s.sod.o}/${s.sod.d}`));
-  const b2=el('div'); b2.append(el('label',{class:'lab'},'Fortschritt'), el('div',{style:{fontWeight:'700'}},`${prog}%`));
-  const b3=el('div'); b3.append(el('label',{class:'lab'},'Overdue Aktionen'), el('div',{style:{fontWeight:'700'}},String(overdue)));
-  row.append(b1,b2,b3); card.append(row);
-  const chips=el('div',{class:'row c2'});
-  chips.append(el('div',{},chip(dryTxt,dDry<0?'warn':'info'))); chips.append(el('div',{},chip(ppTxt,dPP<0?'warn':'info')));
-  card.append(chips);
-  return card
-}
+        // Steps (nur Inhalte erweitert)
+        const stepsContainer = sariDetailView.querySelector('.steps-details-container');
+        stepsContainer.innerHTML = `
+          <!-- S0 -->
+          <details class="s-step" open data-step-id="s0">
+            <summary data-step-id="s0"><span>S0: Containment</span>
+              <div class="summary-controls">
+                <a href="mailto:${SUPPLIER_EMAIL}?subject=Reminder: SARI ${SARI_ID} - Step S0" class="reminder-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+                <button class="info-btn">?</button>
+              </div>
+            </summary>
+            <div class="deliverables-list">
+              <div class="deliverable-item" data-due-days="1" data-id="s0-d1">
+                <div class="deliverable-header"><span class="deliverable-title">Customer Notification (≤1 day)</span><div class="header-controls"><div class="status-light" id="s0-d1-status"></div></div></div>
+                <input type="date" class="deliverable-input">
+              </div>
 
-function timeline(s){
-  const nodes=[{id:'s0',label:'S0'},{id:'s1',label:'S1'},{id:'s2',label:'S2'},{id:'s3',label:'S3'},{id:'s4',label:'S4'},{id:'s5',label:'S5'},{id:'dry',label:'Dry Run',ms:true,target:s.milestones.dryRun?.target},{id:'s6',label:'S6'},{id:'pp',label:'PP',ms:true,target:s.milestones.pp?.target},{id:'s7',label:'S7'},{id:'s8',label:'S8'}];
-  const bar=el('div',{class:'timeline'});
-  nodes.forEach(n=>{const d=n.ms?deltaFromToday(n.target):null;const node=el('div',{class:'n'});const dot=el('div',{class:'d '+(n.ms?'ms':'')+' '+(d!=null&&d<0?'over':'')});node.append(dot,el('div',{style:{fontWeight:n.ms?800:600}},n.label));if(n.ms)node.append(el('div',{class:'muted',style:{fontSize:'12px'}},n.target||'—'));node.addEventListener('click',()=>document.querySelector(`[data-panel="${n.id}"]`)?.scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'}));bar.append(node)});
-  return bar
-}
+              <div class="deliverable-item" data-due-days="0" data-id="s0-d2">
+                <div class="deliverable-header"><span class="deliverable-title">Line Stop initiated (immediate)</span><div class="header-controls"><div class="status-light" id="s0-d2-status"></div></div></div>
+                <label><input type="checkbox"> Line stopped immediately</label>
+              </div>
 
-function panel(title,id,key,s){
-  const p=el('div',{class:'card p','data-panel':id});
-  const hdr=el('div',{class:'head'});
-  hdr.append(el('div',{style:{fontWeight:'700'}},title));
-  const act=el('div',{class:'actions'});
-  if(key){const hb=el('span',{class:'help',title:'Maturity‑Check (Levels 1–5)',onclick:()=>openChecklist(key,s)},'?');act.append(hb)}
-  hdr.append(act); p.append(hdr);
-  return p
-}
-function qg(ok){return el('div',{class:'qg '+(ok?'ok':'open')}, ok?'Requirements OK':'Requirements offen')}
-function f(label,input){const w=el('div');w.append(el('label',{class:'lab'},label),input);return w}
-function iText(val,on){const i=el('input',{value:val||''});i.addEventListener('input',e=>on(e.target.value));return i}
-function iDate(val,on){const i=el('input',{type:'date',value:val||''});i.addEventListener('input',e=>on(e.target.value));return i}
-function iArea(val,on){const i=el('textarea',{});i.value=val||'';i.addEventListener('input',e=>on(e.target.value));return i}
-function iCheck(val,on,label){const l=el('label',{style:{display:'flex',gap:'8px',alignItems:'center',marginTop:'6px'}});const i=el('input',{type:'checkbox'});i.checked=!!val;i.addEventListener('change',e=>on(!!e.target.checked));l.append(i,document.createTextNode(label));return l}
+              <div class="deliverable-item" data-due-days="3" data-id="s0-d3">
+                <div class="deliverable-header"><span class="deliverable-title">WIP / Internal Stocks checked (≤3 days)</span><div class="header-controls"><div class="status-light" id="s0-d3-status"></div></div></div>
+                <input type="date" class="deliverable-input">
+              </div>
 
-function maturityBadge(stepKey,s){const {lvl,lvls}=maturityLevel(stepKey,s);const b=el('div',{class:'muted',style:{fontSize:'12px',margin:'6px 0'}});b.append(chip(`Maturity: L${lvl}/${lvls.length||5}`,'info')); const needTo4=(lvls.find(L=>L.lvl===4)||{items:[]}).items.filter(it=>!it.ok).map(it=>it.label); if(needTo4.length){b.append(el('div',{class:'muted',style:{marginTop:'4px'}},'→ Fehlt zu L4: '+needTo4.join('; ')))} return b}
+              <div class="deliverable-item" data-due-days="3" data-id="s0-d4">
+                <div class="deliverable-header"><span class="deliverable-title">Non-conforming parts quarantined (≤3 days)</span><div class="header-controls"><div class="status-light" id="s0-d4-status"></div></div></div>
+                <input type="date" class="deliverable-input">
+              </div>
 
-function openChecklist(stepKey,s){
-  const m=document.getElementById('modal');const body=document.getElementById('modalBody');const title=document.getElementById('modalTitle');
-  const {lvls,lvl}=maturityLevel(stepKey,s);
-  title.textContent=`Maturity‑Checklist ${stepKey.toUpperCase()} (aktuell L${lvl})`;
-  body.innerHTML='';
-  const grid=el('div',{class:'grid-2'});
-  lvls.forEach(L=>{
-    const box=el('div',{class:'lvl'});
-    box.append(el('h4',{},`Level ${L.lvl}`));
-    const ul=el('ul');
-    L.items.forEach(it=>ul.append(el('li',{}, el('span',{class:'tick',style:{color:it.ok?varOk():varWarn()}}, it.ok?'✓':'•'), it.label)));
-    box.append(ul); grid.append(box);
-  });
-  body.append(grid);
-  m.classList.add('open');
-}
-function varOk(){return '#9fe6cb'}; function varWarn(){return '#a9c4ff'}
-const modalClose=()=>document.getElementById('modal').classList.remove('open');
-window.addEventListener('click',e=>{if(e.target.id==='modal') modalClose()});
-document.getElementById('modalClose').addEventListener('click',modalClose);
+              <div class="deliverable-item" data-due-days="3" data-id="s0-d5">
+                <div class="deliverable-header"><span class="deliverable-title">Formal Containment Action Plan (≤3 days, owner/due/status)</span><div class="header-controls"><div class="status-light" id="s0-d5-status"></div></div></div>
+                <input type="file" class="deliverable-input">
+              </div>
+            </div>
+          </details>
 
-function renderDetail(s){
-  const wrap=el('div');
-  const head=el('div',{class:'card'});
-  const top=el('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center'}});
-  const left=el('div');left.append(el('div',{style:{fontSize:'18px',fontWeight:'800'}},s.id),el('div',{class:'muted',style:{fontSize:'12px'}},`ATA ${s.meta?.ata||'—'} • SIM ${s.meta?.sim||'—'}`));
-  const right=el('div',{style:{display:'flex',gap:'8px',alignItems:'center'}});right.append(chip(s.level,'info'),chip('RPN '+computeRPN(s.sod)),chip('Status '+s.status));
-  top.append(left,right); head.append(top); wrap.append(head);
-  wrap.append(el('div',{style:{height:'10px'}})); wrap.append(el('div',{class:'card'}, timeline(s))); wrap.append(el('div',{style:{height:'10px'}}));
+          <!-- S1 -->
+          <details class="s-step">
+            <summary data-step-id="s1"><span>S1: Team</span>
+              <div class="summary-controls">
+                <a href="mailto:${SUPPLIER_EMAIL}?subject=Reminder: SARI ${SARI_ID} - Step S1" class="reminder-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+                <button class="info-btn">?</button>
+              </div>
+            </summary>
+            <div class="deliverables-list">
+              <div class="deliverable-item" data-due-days="2" data-id="s1-d1">
+                <div class="deliverable-header"><span class="deliverable-title">Team Charter (Leader, Sponsor, Ops, Members)</span><div class="header-controls"><div class="status-light" id="s1-d1-status"></div></div></div>
+                <textarea class="deliverable-input" style="height:120px" placeholder="Leader:&#10;Sponsor:&#10;Ops rep:&#10;Members:"></textarea>
+              </div>
 
-  const lane=el('div',{class:'lane'});
-  // S0
-  const p0=panel('S0 • Containment','s0','s0',s);const S0=s.steps.s0; p0.append(qg(QG({s0:S0},s).S0)); p0.append(maturityBadge('s0',s)); p0.append(
-    f('First Event', iDate(S0.first_event_date,v=>{S0.first_event_date=v; render()})),
-    f('Kundeninfo', iDate(S0.customer_informed_on,v=>{S0.customer_informed_on=v; render()})),
-    iCheck(!!S0.line_stop,v=>{S0.line_stop=v; render()},'Linie gestoppt'),
-    f('WIP/Stocks geprüft am', iDate(S0.wip_check_on,v=>{S0.wip_check_on=v; render()})),
-    f('Quarantäne umgesetzt am', iDate(S0.quarantine_on,v=>{S0.quarantine_on=v; render()})),
-    f('Containment‑Plan (Ref)', iText(S0.containment_action_plan?.name||'',v=>{S0.containment_action_plan=v?{name:v}:null; render()})),
-    f('Restart (optional, ≤24h)', iDate(S0.restart_on,v=>{S0.restart_on=v; render()}))
-  ); lane.append(p0);
-  // S1
-  const p1=panel('S1 • Team Charter','s1','s1',s);const S1=s.steps.s1; p1.append(qg(QG({s1:S1},s).S1)); p1.append(maturityBadge('s1',s)); p1.append(
-    f('Leader',iText(S1.leader,v=>{S1.leader=v})), f('Sponsor',iText(S1.sponsor,v=>{S1.sponsor=v})), f('Problem Owner',iText(S1.problem_owner,v=>{S1.problem_owner=v})), f('Operations',iText(S1.operations_rep,v=>{S1.operations_rep=v})),
-    f('Kick‑off Datum', iDate(S1.kickoff_on,v=>{S1.kickoff_on=v; render()})),
-    f('Skills‑Matrix (Ref)', iText(S1.skills_matrix?.name||'',v=>{S1.skills_matrix=v?{name:v}:null; render()})),
-    iCheck(!!S1.supplier_integrated,v=>{S1.supplier_integrated=v; render()},'Lieferant integriert (falls relevant)')
-  ); lane.append(p1);
-  // S2
-  const p2=panel('S2 • Evidence Hub','s2','s2',s);const S2=s.steps.s2; p2.append(qg(QG({s2:S2},s).S2)); p2.append(maturityBadge('s2',s)); p2.append(
-    f('Issue (1 Objekt/1 Defekt)', iArea(S2.issue_description,v=>{S2.issue_description=v})),
-    f('5W2H', iArea(S2.fiveWtwoH,v=>{S2.fiveWtwoH=v})),
-    iCheck(!!S2.complex_case,v=>{S2.complex_case=v; render()},'Komplexer Fall (IS/IS NOT Pflicht)'),
-    ...(S2.complex_case?[ f('IS / IS NOT', iArea(S2.is_is_not,v=>{S2.is_is_not=v})) ]:[]),
-    f('Problem Statement (Synthese)', iArea(S2.problem_statement,v=>{S2.problem_statement=v})),
-    f('Prozess‑Workflow (optional)', iArea(S2.process_workflow,v=>{S2.process_workflow=v}))
-  ); lane.append(p2);
-  // S3
-  const p3=panel('S3 • Validate Containment','s3','s3',s);const S3=s.steps.s3; p3.append(qg(QG({s3:S3},s).S3)); p3.append(maturityBadge('s3',s)); p3.append(
-    f('Validierungsbericht (Ref)', iText(S3.containment_validation_report?.name||'',v=>{S3.containment_validation_report=v?{name:v}:null; render()})),
-    f('Traceability (TOAC/Alt)', iText(S3.traceability_report_toac?.name||S3.traceability_alt?.name||'',v=>{S3.traceability_report_toac=v?{name:v}:null; S3.traceability_alt=null; render()})),
-    iCheck(!!S3.curative_actions_done,v=>{S3.curative_actions_done=v; render()},'Curatives umgesetzt'),
-    iCheck(!!S3.continuous_review,v=>{S3.continuous_review=v; render()},'Wirksamkeit fortlaufend überprüft')
-  ); lane.append(p3);
-  // S4
-  const p4=panel('S4 • RCA','s4','s4',s);const S4=s.steps.s4; p4.append(qg(QG({s4:S4},s).S4)); p4.append(maturityBadge('s4',s)); p4.append(
-    iCheck(!!S4.ishikawa_used,v=>{S4.ishikawa_used=v; render()},'Ishikawa verwendet'),
-    iCheck(!!S4.pfmea_checked,v=>{S4.pfmea_checked=v; render()},'PFMEA geprüft'),
-    iCheck(!!S4.why_tree,v=>{S4.why_tree=v; render()},'5‑Whys/Why‑Tree dokumentiert'),
-    f('RC1 (Occurrence)', iText(S4.rc1_occurrence,v=>{S4.rc1_occurrence=v})),
-    f('RC2 (Non‑Detection)', iText(S4.rc2_non_detection,v=>{S4.rc2_non_detection=v})),
-    f('RC3 (Systemic – falls erforderlich)', iText(S4.rc3_systemic,v=>{S4.rc3_systemic=v})),
-    (()=>{const ev=el('div'); ev.append(el('label',{class:'lab'},'Evidenzen'), (()=>{const b=el('button',{class:'chip'},'➕ Evidenz'); b.addEventListener('click',()=>{ (S4.rc_evidence=S4.rc_evidence||[]).push({name:`evidence-${(S4.rc_evidence.length||0)+1}.pdf`}); render(); }); return b; })() ); if(S4.rc_evidence?.length){const ul=el('ul'); S4.rc_evidence.forEach(e=>ul.append(el('li',{},e.name))); ev.append(ul);} return ev;})()
-  ); lane.append(p4);
-  // S5
-  const p5=panel('S5 • Corrective Actions','s5','s5',s);const S5=s.steps.s5; p5.append(qg(QG({s5:S5},s).S5)); p5.append(maturityBadge('s5',s)); const addP=el('button',{class:'chip'},'➕ Maßnahme'); addP.addEventListener('click',()=>{(S5.pca=S5.pca||[]).push({action:'',owner:'',due_date:'',rc_link:'RC1',effectiveness_metric:'',status:'Offen'}); render()}); p5.append(addP); if((S5.pca||[]).length===0){p5.append(el('div',{class:'muted'},'Keine Maßnahmen erfasst.'))} else { const tbl=el('table'); const th=el('thead'); const trh=el('tr'); ['Maßnahme','Owner','Fällig','RC','Metrik','Status'].forEach(h=>trh.append(el('th',{},h))); th.append(trh); tbl.append(th); const tb=el('tbody'); S5.pca.forEach((p,i)=>{ const tr=el('tr'); const rcSel=el('select',{}); ['RC1','RC2','RC3'].forEach(x=>rcSel.append(el('option',{value:x,selected:(p.rc_link||'RC1')===x},x))); rcSel.addEventListener('change',e=>{p.rc_link=e.target.value}); const stSel=el('select',{}); ['Offen','In Arbeit','Erledigt'].forEach(x=>stSel.append(el('option',{value:x,selected:(p.status||'Offen')===x},x))); stSel.addEventListener('change',e=>{p.status=e.target.value}); tr.append(el('td',{class:'td'}, iText(p.action,v=>{p.action=v})), el('td',{class:'td'}, iText(p.owner,v=>{p.owner=v})), el('td',{class:'td'}, iDate(p.due_date,v=>{p.due_date=v})), el('td',{class:'td'}, rcSel), el('td',{class:'td'}, iText(p.effectiveness_metric,v=>{p.effectiveness_metric=v})), el('td',{class:'td'}, stSel)); tb.append(tr); }); tbl.append(tb); p5.append(tbl); }
-  p5.append(iCheck(!!S5.nd_actions_multilevel,v=>{S5.nd_actions_multilevel=v; render()},'Non‑Detection über gesamte Supply Chain adressiert'), iCheck(!!S5.risk_analysis_done,v=>{S5.risk_analysis_done=v; render()},'Risikoanalyse der Maßnahmen durchgeführt')); lane.append(p5);
-  // Dry Run
-  const pDry=panel('Milestone • Dry Run (≤60d)','dry','dry',s);const DR=s.steps.dry; pDry.append(qg(QG({dry:DR},s).Dry)); pDry.append(
-    f('Zieltermin', el('div',{class:'td'}, s.milestones.dryRun?.target||'—')),
-    iCheck(!!DR.id_card_ready,v=>{DR.id_card_ready=v},'ID‑Card vorhanden'),
-    iCheck(!!DR.pca_plan_consistent,v=>{DR.pca_plan_consistent=v},'PCA‑Plan konsistent'),
-    iCheck(!!DR.demo_artifacts,v=>{DR.demo_artifacts=v},'Demo‑Artefakte vorhanden'),
-    iCheck(!!DR.open_risks_listed,v=>{DR.open_risks_listed=v},'Offene Risiken gelistet')
-  ); lane.append(pDry);
-  // S6
-  const p6=panel('S6 • Implement & Effectiveness','s6','s6',s);const S6=s.steps.s6; p6.append(qg(QG({s6:S6},s).S6)); p6.append(maturityBadge('s6',s)); const addE=el('button',{class:'chip'},'➕ Wirksamkeitsnachweis'); addE.addEventListener('click',()=>{(S6.pca_effectiveness=S6.pca_effectiveness||[]).push({pca_index:0,implemented:false,effective:false,effectiveness_evidence:{name:'evidence.pdf'}}); render()}); p6.append(addE); if((S6.pca_effectiveness||[]).length===0){p6.append(el('div',{class:'muted'},'Noch keine Wirksamkeitsnachweise.'))} else {const ul=el('ul'); S6.pca_effectiveness.forEach(e=>{ const li=el('li'); li.append(iCheck(!!e.implemented,v=>{e.implemented=v},'Implementiert'),' ', iCheck(!!e.effective,v=>{e.effective=v},'Wirksam'),' ', f('Evidenz', iText(e.effectiveness_evidence?.name||'',v=>{e.effectiveness_evidence=v?{name:v}:null}))); ul.append(li)}); p6.append(ul);} p6.append(iCheck(!!S6.containment_closed_post_effectiveness,v=>{S6.containment_closed_post_effectiveness=v},'Containment erst nach Wirksamkeit geschlossen')); lane.append(p6);
-  // PP
-  const ppp=panel('Milestone • PP (≤100d)','pp','pp',s);const PP=s.steps.pp; ppp.append(qg(QG({pp:PP},s).PP)); ppp.append(
-    f('Zieltermin', el('div',{class:'td'}, s.milestones.pp?.target||'—')),
-    iCheck(!!PP.ppm_review_green,v=>{PP.ppm_review_green=v},'PPM‑Review abgeschlossen'),
-    iCheck(!!PP.risks_documented,v=>{PP.risks_documented=v},'Residualrisiken dokumentiert'),
-    iCheck(!!PP.pp_pack_ready,v=>{PP.pp_pack_ready=v},'PP‑Pack bereit')
-  ); lane.append(ppp);
-  // S7
-  const p7=panel('S7 • Standardize & Prevent','s7','s7',s);const S7=s.steps.s7; p7.append(qg(QG({s7:S7},s).S7)); p7.append(maturityBadge('s7',s)); p7.append(
-    f('SOP aktualisiert (Ref)', iText(S7.sop_updated?.name||'',v=>{S7.sop_updated=v?{name:v}:null; render()})),
-    f('FMEA aktualisiert (Ref)', iText(S7.fmea_updated?.name||'',v=>{S7.fmea_updated=v?{name:v}:null; render()})),
-    f('Look‑Across / Lessons Learned', iArea(S7.look_across,v=>{S7.look_across=v}))
-  ); lane.append(p7);
-  // S8
-  const p8=panel('S8 • Close & Recognize','s8','s8',s);const S8=s.steps.s8; p8.append(qg(QG({s8:S8},s).S8)); p8.append(maturityBadge('s8',s)); const c=S8.checks; p8.append(
-    iCheck(!!c.each_action_effective,v=>{c.each_action_effective=v},'Wirksamkeit je Maßnahme belegt'),
-    iCheck(!!c.docs_complete,v=>{c.docs_complete=v},'Dokumente vollständig'),
-    iCheck(!!c.lessons_integrated,v=>{c.lessons_integrated=v},'Lessons Learned integriert'),
-    iCheck(!!c.five_why_valid,v=>{c.five_why_valid=v},'5‑Whys zeigen tatsächliche RC'),
-    f('Kundenkommunikation (Ref)', iText(S8.customer_closure_comm?.name||'',v=>{S8.customer_closure_comm=v?{name:v}:null})),
-    f('Abschluss‑Kommentar', iArea(S8.closure_comment,v=>{S8.closure_comment=v})),
-    iCheck(!!s.steps.s8.method_eval_done,v=>{s.steps.s8.method_eval_done=v},'Selbst‑Bewertung der 9S‑Methodik durchgeführt')
-  ); lane.append(p8);
+              <div class="deliverable-item" data-due-days="5" data-id="s1-d2">
+                <div class="deliverable-header"><span class="deliverable-title">Kick-off meeting held (≤5 days) & minutes</span><div class="header-controls"><div class="status-light" id="s1-d2-status"></div></div></div>
+                <input type="date" class="deliverable-input" />
+                <input type="file" class="deliverable-input" />
+              </div>
 
-  wrap.append(lane);
-  const kp=el('div',{class:'row c4'});
-  kp.append(kpi('RPN', computeRPN(s.sod), `S/O/D ${s.sod.s}/${s.sod.o}/${s.sod.d}`));
-  kp.append(kpi('Fortschritt 9S', progress(s)+'%'));
-  const dDry=deltaFromToday(s.milestones.dryRun?.target); const dPP=deltaFromToday(s.milestones.pp?.target);
-  kp.append(kpi('Dry Run', (s.milestones.dryRun?.target||'—'), dDry==null?'—':(dDry<0?`overdue ${Math.abs(dDry)}d`:`in ${dDry}d`)));
-  kp.append(kpi('PP', (s.milestones.pp?.target||'—'), dPP==null?'—':(dPP<0?`overdue ${Math.abs(dPP)}d`:`in ${dPP}d`)));
-  wrap.append(kp);
-  return wrap;
-  function render(){ renderApp(); }
-}
+              <div class="deliverable-item" data-due-days="2" data-id="s1-d3">
+                <div class="deliverable-header"><span class="deliverable-title">Sponsor nominated & active support</span><div class="header-controls"><div class="status-light" id="s1-d3-status"></div></div></div>
+                <label><input type="checkbox"> Sponsor confirmed</label>
+              </div>
 
-function renderApp(){
-  const app=document.getElementById('app'); app.innerHTML='';
-  const hash=location.hash.replace(/^#\/?/,''); const seg=hash.split('/');
-  if(!hash||seg[0]===''||seg[0]==='dashboard'){ app.append(renderDashboard()); return; }
-  if(seg[0]==='sari'&&seg[1]){ const s=DB.find(x=>x.id===seg[1]); app.append(s?renderDetail(s):el('div',{class:'card'},'Unbekanntes SARI.')); return; }
-  app.append(renderDashboard());
-}
-window.addEventListener('hashchange',renderApp);
-renderApp();
-</script>
+              <div class="deliverable-item" data-due-days="2" data-id="s1-d4">
+                <div class="deliverable-header"><span class="deliverable-title">Operations + doers (operator/inspector) included</span><div class="header-controls"><div class="status-light" id="s1-d4-status"></div></div></div>
+                <label><input type="checkbox"> Ops representative included</label><br/>
+                <label><input type="checkbox"> Doers included</label>
+              </div>
+
+              <div class="deliverable-item" data-due-days="5" data-id="s1-d5">
+                <div class="deliverable-header"><span class="deliverable-title">Supplier integrated (if supplier issue)</span><div class="header-controls"><div class="status-light" id="s1-d5-status"></div></div></div>
+                <label><input type="checkbox"> Supplier part of MFT</label>
+              </div>
+
+              <div class="deliverable-item" data-due-days="5" data-id="s1-d6">
+                <div class="deliverable-header"><span class="deliverable-title">Skills matrix / 9S experience</span><div class="header-controls"><div class="status-light" id="s1-d6-status"></div></div></div>
+                <input type="file" class="deliverable-input">
+              </div>
+            </div>
+          </details>
+
+          <!-- S2 -->
+          <details class="s-step" open>
+            <summary data-step-id="s2"><span>S2: Evidence Hub</span>
+              <div class="summary-controls">
+                <a href="mailto:${SUPPLIER_EMAIL}?subject=Reminder: SARI ${SARI_ID} - Step S2" class="reminder-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+                <button class="info-btn">?</button>
+              </div>
+            </summary>
+            <div class="deliverables-list">
+              <div class="deliverable-item" data-due-days="7" data-id="s2-d1">
+                <div class="deliverable-header"><span class="deliverable-title">Issue Description (facts; 1 object / 1 defect)</span><div class="header-controls"><div class="status-light" id="s2-d1-status"></div></div></div>
+                <textarea id="issue-description-input" class="deliverable-input" style="height:100px" placeholder="Describe facts only..."></textarea>
+                <div class="suggestion-box" id="suggestion-output">M1750 Suggestion: —</div>
+              </div>
+
+              <div class="deliverable-item" data-due-days="7" data-id="s2-d2">
+                <div class="deliverable-header"><span class="deliverable-title">5W2H (facts & figures)</span><div class="header-controls"><div class="status-light" id="s2-d2-status"></div></div></div>
+                <textarea class="deliverable-input" style="height:100px" placeholder="What/Where/When/Who/Which/How/How many..."></textarea>
+              </div>
+
+              <div class="deliverable-item" data-due-days="7" data-id="s2-d3">
+                <div class="deliverable-header"><span class="deliverable-title">Problem Statement (summary of 5W2H)</span><div class="header-controls"><div class="status-light" id="s2-d3-status"></div></div></div>
+                <input class="deliverable-input" placeholder="Final Problem Statement">
+              </div>
+
+              <div class="deliverable-item" data-due-days="7" data-id="s2-d4">
+                <div class="deliverable-header"><span class="deliverable-title">IS / IS NOT (for complex scope)</span><div class="header-controls"><div class="status-light" id="s2-d4-status"></div></div></div>
+                <textarea class="deliverable-input" style="height:80px" placeholder="IS: ...&#10;IS NOT: ..."></textarea>
+              </div>
+
+              <div class="deliverable-item" data-due-days="7" data-id="s2-d5">
+                <div class="deliverable-header"><span class="deliverable-title">Process workflow (from creation to delivery)</span><div class="header-controls"><div class="status-light" id="s2-d5-status"></div></div></div>
+                <input type="file" class="deliverable-input">
+              </div>
+            </div>
+          </details>
+
+          <!-- S3 -->
+          <details class="s-step">
+            <summary data-step-id="s3"><span>S3: Validate Containment</span>
+              <div class="summary-controls">
+                <a href="mailto:${SUPPLIER_EMAIL}?subject=Reminder: SARI ${SARI_ID} - Step S3" class="reminder-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+                <button class="info-btn">?</button>
+              </div>
+            </summary>
+            <div class="deliverables-list">
+              <div class="deliverable-item" data-due-days="14" data-id="s3-d1">
+                <div class="deliverable-header"><span class="deliverable-title">Effectiveness proof (100%)</span><div class="header-controls"><div class="status-light" id="s3-d1-status"></div></div></div>
+                <input type="file" class="deliverable-input">
+              </div>
+
+              <div class="deliverable-item" data-due-days="14" data-id="s3-d2">
+                <div class="deliverable-header"><span class="deliverable-title">Full traceability (TOAC / horizon)</span><div class="header-controls"><div class="status-light" id="s3-d2-status"></div></div></div>
+                <input type="file" class="deliverable-input">
+              </div>
+
+              <div class="deliverable-item" data-due-days="14" data-id="s3-d3">
+                <div class="deliverable-header"><span class="deliverable-title">Trigger point identified</span><div class="header-controls"><div class="status-light" id="s3-d3-status"></div></div></div>
+                <label><input type="checkbox"> Trigger point defined</label>
+              </div>
+
+              <div class="deliverable-item" data-due-days="14" data-id="s3-d4">
+                <div class="deliverable-header"><span class="deliverable-title">Curative actions implemented (as needed)</span><div class="header-controls"><div class="status-light" id="s3-d4-status"></div></div></div>
+                <label><input type="checkbox"> Curatives implemented</label>
+              </div>
+            </div>
+          </details>
+
+          <!-- S4 -->
+          <details class="s-step" open>
+            <summary data-step-id="s4"><span>S4: RCA Cockpit</span>
+              <div class="summary-controls">
+                <a href="mailto:${SUPPLIER_EMAIL}?subject=Reminder: SARI ${SARI_ID} - Step S4" class="reminder-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+                <button class="info-btn">?</button>
+              </div>
+            </summary>
+            <div class="deliverables-list">
+
+              <div class="deliverable-item" data-due-days="45" data-id="s4-d0">
+                <div class="deliverable-header"><span class="deliverable-title">Ishikawa diagram</span><div class="header-controls"><div class="status-light" id="s4-d0-status"></div></div></div>
+                <div class="ishikawa-diagram">
+                  <div class="ishikawa-bone"><h4>Man</h4><textarea></textarea></div>
+                  <div class="ishikawa-bone"><h4>Machine</h4><textarea></textarea></div>
+                  <div class="ishikawa-bone"><h4>Material</h4><textarea></textarea></div>
+                  <div class="ishikawa-bone"><h4>Method</h4><textarea></textarea></div>
+                  <div class="ishikawa-bone"><h4>Management</h4><textarea></textarea></div>
+                  <div class="ishikawa-bone"><h4>Milieu</h4><textarea></textarea></div>
+                </div>
+              </div>
+
+              <div class="deliverable-item" data-due-days="45" data-id="s4-d1">
+                <div class="deliverable-header"><span class="deliverable-title">RC 1: Occurrence</span><div class="header-controls"><div class="status-light" id="s4-d1-status"></div></div></div>
+                <input id="rc1-input" class="deliverable-input" readonly>
+                <button class="analyze-btn" data-rc-target="rc1-input" data-rc-title="5-Why: RC 1">5-Why</button>
+              </div>
+
+              <div class="deliverable-item" data-due-days="45" data-id="s4-d2">
+                <div class="deliverable-header"><span class="deliverable-title">RC 2: Non-Detection</span><div class="header-controls"><div class="status-light" id="s4-d2-status"></div></div></div>
+                <input id="rc2-input" class="deliverable-input" readonly>
+                <button class="analyze-btn" data-rc-target="rc2-input" data-rc-title="5-Why: RC 2">5-Why</button>
+              </div>
+
+              <div class="deliverable-item" data-due-days="45" data-id="s4-d3">
+                <div class="deliverable-header"><span class="deliverable-title">RC 3: Systemic / Management</span><div class="header-controls"><div class="status-light" id="s4-d3-status"></div></div></div>
+                <input id="rc3-input" class="deliverable-input" placeholder="Systemic RC">
+                <button class="analyze-btn" data-rc-target="rc3-input" data-rc-title="5-Why: RC 3">5-Why</button>
+              </div>
+
+              <div class="deliverable-item" data-due-days="45" data-id="s4-d4">
+                <div class="deliverable-header"><span class="deliverable-title">Proof of root cause (reproduce / kill others)</span><div class="header-controls"><div class="status-light" id="s4-d4-status"></div></div></div>
+                <input type="file" class="deliverable-input">
+              </div>
+
+              <div class="deliverable-item" data-due-days="45" data-id="s4-d5">
+                <div class="deliverable-header"><span class="deliverable-title">PFMEA checked for potential RCs</span><div class="header-controls"><div class="status-light" id="s4-d5-status"></div></div></div>
+                <label><input type="checkbox"> PFMEA cross-checked</label>
+              </div>
+
+              <div class="deliverable-item" data-due-days="45" data-id="s4-d6">
+                <div class="deliverable-header"><span class="deliverable-title">RCA method used</span><div class="header-controls"><div class="status-light" id="s4-d6-status"></div></div></div>
+                <select class="deliverable-input">
+                  <option value="">Select method…</option>
+                  <option>5 Whys</option>
+                  <option>Ishikawa</option>
+                  <option>Kepner-Tregoe</option>
+                  <option>Shainin</option>
+                  <option>DoE</option>
+                </select>
+              </div>
+            </div>
+          </details>
+
+          <!-- S5 -->
+          <details class="s-step">
+            <summary data-step-id="s5"><span>S5: Define Actions</span>
+              <div class="summary-controls">
+                <a href="mailto:${SUPPLIER_EMAIL}?subject=Reminder: SARI ${SARI_ID} - Step S5" class="reminder-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+                <button class="info-btn">?</button>
+              </div>
+            </summary>
+            <div class="deliverables-list">
+              <div class="deliverable-item" data-due-days="80" data-id="s5-d1">
+                <div class="deliverable-header"><span class="deliverable-title">PCA Action Plan (link actions to RCs)</span><div class="header-controls"><div class="status-light" id="s5-d1-status"></div></div></div>
+
+                <div class="rca-pca-link">
+                  <div class="rc-title">Actions for RC 1 (Occurrence):</div>
+                  <textarea class="deliverable-input" placeholder="PCA 1.1 (owner / due / metric)…"></textarea>
+                </div>
+
+                <div class="rca-pca-link">
+                  <div class="rc-title">Actions for RC 2 (Non-Detection):</div>
+                  <textarea class="deliverable-input" placeholder="PCA 2.1 (owner / due / metric)…"></textarea>
+                </div>
+
+                <div class="rca-pca-link">
+                  <div class="rc-title">Actions for RC 3 (Systemic):</div>
+                  <textarea class="deliverable-input" placeholder="PCA 3.1 (owner / due / metric)…"></textarea>
+                </div>
+              </div>
+
+              <div class="deliverable-item" data-due-days="80" data-id="s5-d2">
+                <div class="deliverable-header"><span class="deliverable-title">Success criteria (KPIs) defined</span><div class="header-controls"><div class="status-light" id="s5-d2-status"></div></div></div>
+                <input class="deliverable-input" placeholder="e.g. Cpk ≥ 1.33; Audit = 0 NC; …">
+              </div>
+
+              <div class="deliverable-item" data-due-days="80" data-id="s5-d3">
+                <div class="deliverable-header"><span class="deliverable-title">Risk analysis of actions</span><div class="header-controls"><div class="status-light" id="s5-d3-status"></div></div></div>
+                <input type="file" class="deliverable-input">
+              </div>
+            </div>
+          </details>
+        `;
+
+        // Statuslights & overdue / at-risk logic (wie gehabt)
+        let today = new Date();
+        let overallStatus = 'green';
+        let nextMilestone = { name: 'N/A', days: Infinity };
+
+        sariDetailView.querySelectorAll('.deliverable-item').forEach(item => {
+          const dueDays = parseInt(item.dataset.dueDays, 10);
+          if (isNaN(dueDays)) return;
+          const dueDate = new Date(creationDate);
+          dueDate.setDate(creationDate.getDate() + dueDays);
+          const diffDays = Math.ceil((dueDate - today) / (1000 * 3600 * 24));
+          let currentStatus = 'green';
+          if (diffDays < 0) currentStatus = 'red';
+          else if (diffDays <= AT_RISK_DAYS) currentStatus = 'orange';
+          const statusLight = sariDetailView.querySelector(`#${item.dataset.id}-status`);
+          if (statusLight) statusLight.classList.add(currentStatus);
+          if (currentStatus === 'red') {
+            const parentStep = item.closest('.s-step');
+            parentStep.classList.add('late');
+            if (!parentStep.querySelector('.justification-box')) {
+              const justificationBox = document.createElement('div');
+              justificationBox.className = 'justification-box';
+              justificationBox.innerHTML = `<label>Justification for Delay</label><textarea class="deliverable-input" rows="3" placeholder="Please provide a reason for the delay..."></textarea>`;
+              parentStep.querySelector('.deliverables-list').appendChild(justificationBox);
+            }
+          }
+          if (diffDays >= 0 && diffDays < nextMilestone.days) {
+            nextMilestone = { name: item.querySelector('.deliverable-title').textContent, days: diffDays };
+          }
+          if (currentStatus === 'red') overallStatus = 'red';
+          else if (currentStatus === 'orange' && overallStatus !== 'red') overallStatus = 'orange';
+        });
+
+        const kpiStatus = sariDetailView.querySelector('#kpi-status');
+        kpiStatus.textContent = { green: 'On Time', orange: 'At Risk', red: 'Late' }[overallStatus];
+        kpiStatus.className = `kpi-value ${overallStatus}`;
+        sariDetailView.querySelector('#kpi-next-milestone').textContent = nextMilestone.name;
+
+        // Maturity modal, 5-Why etc.
+        bindModalEvents(sariDetailView);
+
+        // --- S2: einfache M1750 Keyword-Vorschläge ---
+        const suggestionOutput = sariDetailView.querySelector('#suggestion-output');
+        const issueInput = sariDetailView.querySelector('#issue-description-input');
+        if (issueInput && suggestionOutput) {
+          issueInput.addEventListener('input', () => {
+            const t = issueInput.value.toLowerCase();
+            const hits = [];
+            if (/fod|foreign object/.test(t)) hits.push('GEN-001 FOD');
+            if (/torque|fastener|tighten|bolt/.test(t)) hits.push('GEN-010 Incorrect Torque');
+            if (/corrosion|rust/.test(t)) hits.push('GEN-012 Corrosion');
+            if (/incorrect assembly|mis[-\s]?assembly|reversed|wrong orientation/.test(t)) hits.push('GEN-004 Incorrect Assembly');
+            suggestionOutput.textContent = 'M1750 Suggestion: ' + (hits.length ? hits.join(', ') : '—');
+          });
+        }
+      }
+
+      function bindModalEvents(container) {
+        const checklistModal = container.querySelector('#checklist-modal');
+        const whyModal = container.querySelector('#five-why-modal');
+        if (!checklistModal || !whyModal) return;
+
+        // Info / Maturity
+        container.querySelectorAll('summary .info-btn').forEach(button => {
+          button.onclick = (e) => {
+            e.preventDefault();
+            const stepId = e.target.closest('summary').dataset.stepId;
+            const data = maturityData[stepId];
+            if (!data) return;
+            let content = `<p>This checklist is based on the 8D/9S Maturity Assessment Grid. The goal is to meet "Requirements in place" (Level 4) as a standard.</p>
+                           <label class="checklist-toggle"><input type="checkbox" onchange="this.closest('.modal-body').querySelectorAll('.level-5').forEach(el => el.style.display = this.checked ? 'block' : 'none')"> Show Benchmark (Level 5) criteria</label><hr>`;
+            data.forEach(levelData => {
+              const itemsHTML = levelData.items.map(item => `<li>- ${item}</li>`).join('');
+              content += `<div class="maturity-level level-${levelData.level}" ${levelData.level === 5 ? 'style="display:none"' : ''}>
+                            <h4>Level ${levelData.level}: ${levelData.title}</h4>
+                            <ul>${itemsHTML}</ul>
+                          </div>`;
+            });
+            checklistModal.querySelector('#checklist-title').textContent = `Maturity Checklist for Step ${stepId.toUpperCase()}`;
+            checklistModal.querySelector('#checklist-body').innerHTML = content;
+            checklistModal.style.display = "block";
+          };
+        });
+
+        // 5-Why
+        let activeWhyTarget = null;
+        container.querySelectorAll('.analyze-btn').forEach(button => {
+          button.onclick = (e) => {
+            activeWhyTarget = container.querySelector(`#${e.target.dataset.rcTarget}`);
+            whyModal.querySelector('#five-why-title').textContent = e.target.dataset.rcTitle;
+            whyModal.querySelector('#why-container').innerHTML = '';
+            addWhyLevel(1, whyModal);
+            whyModal.style.display = "block";
+          };
+        });
+
+        function addWhyLevel(level, modal) {
+          const c = modal.querySelector('#why-container');
+          const wrap = document.createElement('div');
+          wrap.className = 'why-level-container';
+          wrap.innerHTML = `<div class="why-level">
+                              <div class="why-level-content">
+                                <label>${level}. Why?</label>
+                                <textarea rows="2"></textarea>
+                              </div>
+                              ${level < 5 ? `<button class="add-why-btn" data-level="${level + 1}">+ Why</button>` : ''}
+                            </div>`;
+          c.appendChild(wrap);
+          const nextBtn = c.querySelector(`button[data-level="${level + 1}"]`);
+          if (nextBtn) {
+            nextBtn.onclick = (e) => { e.target.style.display = 'none'; addWhyLevel(parseInt(e.target.dataset.level, 10), modal); };
+          }
+        }
+
+        whyModal.querySelector('#save-why-btn').onclick = () => {
+          const whyTextareas = whyModal.querySelectorAll('#why-container textarea');
+          if (whyTextareas.length > 0 && activeWhyTarget) {
+            activeWhyTarget.value = whyTextareas[whyTextareas.length - 1].value;
+          }
+          whyModal.style.display = "none";
+        };
+
+        [checklistModal, whyModal].forEach(modal => {
+          modal.querySelector('.modal-close-btn').onclick = () => modal.style.display = "none";
+        });
+        window.onclick = (event) => {
+          if (event.target === checklistModal || event.target === whyModal) event.target.style.display = "none";
+        };
+      }
+
+      // Initial
+      showDashboard();
+    });
+  </script>
 </body>
 </html>
