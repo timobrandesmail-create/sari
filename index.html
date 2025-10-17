@@ -3,16 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SARI Governance – Pitch SPA (Single‑File)</title>
+  <title>SARI Governance – Single‑File (GitHub Pages)</title>
   <style>
-    :root{
-      --bg:#0b1220;--panel:#131a24;--line:#263142;--ink:#e8eef6;--muted:#9ab0c6;
-      --chip:#1a2332;--chip-warn:#3a2a10;--chip-ok:#0f2a22;--chip-info:#1a2438;
-      --chip-ink:#9bb0c7;--chip-warn-ink:#f6d18b;--chip-ok-ink:#9fe6cb;--chip-info-ink:#a9c4ff;
-      --accent1:#4ab1ff;--accent2:#62e3b2;
-    }
+    :root{--bg:#0b1220;--panel:#131a24;--line:#263142;--ink:#e8eef6;--muted:#9ab0c6;--chip:#1a2332;--chip-warn:#3a2a10;--chip-ok:#0f2a22;--chip-info:#1a2438;--chip-ink:#9bb0c7;--chip-warn-ink:#f6d18b;--chip-ok-ink:#9fe6cb;--chip-info-ink:#a9c4ff;--accent1:#4ab1ff;--accent2:#62e3b2}
     html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;}
+    body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu}
     .grid{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
     aside{background:#0f1622;border-right:1px solid #223049;padding:16px;position:sticky;top:0;height:100vh;overflow:auto}
     main{padding:18px}
@@ -20,38 +15,35 @@
     .brand .logo{width:26px;height:26px;border-radius:6px;background:linear-gradient(135deg,var(--accent2),var(--accent1))}
     .nav a{color:var(--ink);text-decoration:none;padding:8px 12px;border-radius:10px;border:1px solid #2c3a4f;background:#1a2332;display:inline-block}
     .row{display:grid;gap:12px;margin-bottom:12px}
-    .row.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .row.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .row.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .row.cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+    .row.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .row.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .row.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .row.c5{grid-template-columns:repeat(5,minmax(0,1fr))}
     .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
-    .kpi .label{color:#93a4b6;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
-    .kpi .value{font-size:22px;font-weight:800}
-    .kpi .sub{font-size:12px;color:#93a4b6}
-    .label{color:#91a2b2;font-size:12px;display:block;margin-bottom:4px}
+    .kpi .l{color:#93a4b6;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+    .kpi .v{font-size:22px;font-weight:800}
+    .kpi .s{font-size:12px;color:#93a4b6}
+    .lab{color:#91a2b2;font-size:12px;display:block;margin-bottom:4px}
     .chip{font-size:12px;padding:3px 8px;border-radius:999px;background:var(--chip);color:var(--chip-ink);border:1px solid #2a3750;display:inline-block}
     .chip.warn{background:var(--chip-warn);color:var(--chip-warn-ink)}
     .chip.ok{background:var(--chip-ok);color:var(--chip-ok-ink)}
     .chip.info{background:var(--chip-info);color:var(--chip-info-ink)}
-    .btn{padding:8px 12px;border-radius:10px;border:1px solid #324055;background:#1a2230;color:var(--ink);cursor:pointer}
-    .btn.primary{border:none;background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#07130c;font-weight:700}
     .td{padding:8px;background:#131a24;border:1px solid #263142;border-radius:8px}
     .tile{cursor:pointer}
     .timeline{display:flex;gap:16px;overflow:auto;padding:6px 2px}
-    .timeline .node{min-width:100px;cursor:pointer}
-    .timeline .dot{width:12px;height:12px;border-radius:999px;background:#9ab0c6;margin-bottom:6px}
-    .timeline .dot.milestone{background:#a9c4ff}
-    .timeline .dot.overdue{background:#ffcc66}
+    .timeline .n{min-width:100px;cursor:pointer}
+    .timeline .d{width:12px;height:12px;border-radius:999px;background:#9ab0c6;margin-bottom:6px}
+    .timeline .d.ms{background:#a9c4ff}
+    .timeline .d.over{background:#ffcc66}
     .lane{display:flex;gap:12px;overflow:auto;padding-top:8px}
-    .panel{min-width:320px}
+    .p{min-width:320px}
     input,select,textarea{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #2b3647;background:#0e1420;color:#e8eef6}
     textarea{min-height:100px}
     table{width:100%;border-collapse:separate;border-spacing:0 8px}
     th{text-align:left;padding:8px;color:#93a4b6;font-size:12px}
-    td{vertical-align:top}
     .qg{font-size:12px}
-    .qg.ok{color:#9fe6cb}
-    .qg.open{color:#f6d18b}
+    .ok{color:#9fe6cb}
+    .open{color:#f6d18b}
     .muted{color:var(--muted)}
   </style>
 </head>
@@ -60,399 +52,188 @@
     <aside>
       <div class="brand"><div class="logo"></div><div><div style="font-weight:700">SARI Governance</div><div style="font-size:12px;color:#9aacc0">Pitch Prototype</div></div></div>
       <div class="nav"><a href="#/">🏠 Dashboard</a></div>
-      <div style="margin-top:14px;display:flex;gap:8;flex-wrap:wrap"></div>
     </aside>
     <main id="app"></main>
   </div>
 
 <script>
-// ===== Utilities =====
-const addDays = (iso, d) => { if(!iso) return null; const t=new Date(iso); const x=new Date(t.getTime()); x.setDate(t.getDate()+d); return x.toISOString().slice(0,10); };
-const todayISO = () => new Date(Date.now()).toISOString().slice(0,10);
-const daysBetween = (a,b) => { if(!a||!b) return null; const A=new Date(a), B=new Date(b); return Math.round((B-A)/(24*3600*1000)); };
-const deltaFromToday = (target) => (target ? daysBetween(todayISO(), target) : null);
-const el = (tag, attrs={}, ...children) => { const n=document.createElement(tag); Object.entries(attrs).forEach(([k,v])=>{ if(k==="class") n.className=v; else if(k==="style") Object.assign(n.style,v); else if(k.startsWith("on")) n.addEventListener(k.slice(2),v); else n.setAttribute(k,v); }); children.forEach(c=>{ if(c==null) return; if(typeof c==="string") n.appendChild(document.createTextNode(c)); else n.appendChild(c);}); return n; };
-const clamp = (n,a,b)=> Math.max(a, Math.min(b,n));
+// ===== Pure JS (kein React/kein Build) =====
+const addDays=(iso,d)=>{if(!iso)return null;const t=new Date(iso);const x=new Date(t.getTime());x.setDate(t.getDate()+d);return x.toISOString().slice(0,10)};
+const todayISO=()=>new Date(Date.now()).toISOString().slice(0,10);
+const daysBetween=(a,b)=>{if(!a||!b)return null;const A=new Date(a),B=new Date(b);return Math.round((B-A)/(24*3600*1000))};
+const deltaFromToday=t=>t?daysBetween(todayISO(),t):null;
+const el=(tag,attrs={},...kids)=>{const n=document.createElement(tag);for(const[k,v]of Object.entries(attrs)){if(k==='class')n.className=v;else if(k==='style')Object.assign(n.style,v);else if(k.startsWith('on'))n.addEventListener(k.slice(2),v);else n.setAttribute(k,v)};kids.forEach(c=>{if(c==null)return;if(typeof c==='string')n.appendChild(document.createTextNode(c));else n.appendChild(c)});return n};
+const computeRPN=sod=>(+sod.s||0)*(+sod.o||0)*(+sod.d||0);
 
-// ===== Canon — QG rules from Maturity Grid =====
-function computeRPN(sod){ return (Number(sod.s)||0)*(Number(sod.o)||0)*(Number(sod.d)||0); }
-function canon_QG(s, sari){
-  const S0 = () => (s.customer_informed_on && s.first_event_date && daysBetween(s.first_event_date, s.customer_informed_on) <= 1 && !!s.containment_action_plan);
-  const S1 = () => !!(s.leader && s.sponsor && s.problem_owner && s.operations_rep);
-  const S2 = () => !!(s.issue_description && s.fiveWtwoH && (!s.complex_case || (s.complex_case && s.is_is_not)) && !/\b(fix|lösen|solution|workaround)\b/i.test(s.issue_description));
-  const S3 = () => !!(s.containment_validation_report && (s.traceability_report_toac || s.traceability_alt) && s.curative_actions_done===true);
-  const rpn = computeRPN(sari.sod);
-  const S4 = () => !!(s.rc1_occurrence && s.rc2_non_detection && (sari.level==="L1" || rpn>=300 ? !!s.rc3_systemic : true) && (s.rc_evidence && s.rc_evidence.length>0));
-  const S5 = () => {
-    if(!s.pca || s.pca.length===0) return false;
-    const hasRC1 = !!sari.steps.s4?.rc1_occurrence; const hasRC2 = !!sari.steps.s4?.rc2_non_detection; const hasRC3 = !!sari.steps.s4?.rc3_systemic;
-    const byRC = {RC1:false,RC2:false,RC3:false};
-    for(const a of s.pca){ if(!(a.action&&a.owner&&a.due_date&&a.effectiveness_metric&&a.rc_link)) return false; if(byRC[a.rc_link]!==undefined) byRC[a.rc_link]=true; }
-    const cover = (has,flag)=> has? flag:true; // cover required RCs
-    return cover(hasRC1,byRC.RC1) && cover(hasRC2,byRC.RC2) && cover(hasRC3,byRC.RC3);
-  };
-  const Dry = () => !!(s.id_card_ready && s.pca_plan_consistent && s.demo_artifacts && s.open_risks_listed);
-  const S6 = () => {
-    if(!s.pca_effectiveness || s.pca_effectiveness.length===0) return false;
-    for(const e of s.pca_effectiveness){ if(!(e.implemented===true && e.effective===true && e.effectiveness_evidence)) return false; }
-    return true;
-  };
-  const PP = () => !!(s.ppm_review_green && s.risks_documented && s.pp_pack_ready);
-  const S7 = () => !!(s.sop_updated && ( (sari.level==="L1" || computeRPN(sari.sod)>=300) ? s.fmea_updated : true));
-  const S8 = () => !!(s.checks && s.checks.each_action_effective && s.checks.docs_complete && s.checks.lessons_integrated && s.checks.five_why_valid);
-  return {S0:S0(),S1:S1(),S2:S2(),S3:S3(),S4:S4(),S5:S5(),Dry:Dry(),S6:S6(),PP:PP(),S7:S7(),S8:S8()};
+// ===== Canon QG (Maturity Grid) =====
+function QG(step,sari){
+  const S0=()=> step.s0 && step.s0.customer_informed_on && step.s0.first_event_date && daysBetween(step.s0.first_event_date,step.s0.customer_informed_on)<=1 && !!step.s0.containment_action_plan;
+  const S1=()=> step.s1 && step.s1.leader && step.s1.sponsor && step.s1.problem_owner && step.s1.operations_rep;
+  const S2=()=> step.s2 && step.s2.issue_description && step.s2.fiveWtwoH && (!step.s2.complex_case || (step.s2.complex_case && step.s2.is_is_not)) && !/\b(fix|lösen|solution|workaround)\b/i.test(step.s2.issue_description);
+  const S3=()=> step.s3 && step.s3.containment_validation_report && (step.s3.traceability_report_toac || step.s3.traceability_alt) && step.s3.curative_actions_done===true;
+  const rpn=computeRPN(sari.sod);
+  const S4=()=> step.s4 && step.s4.rc1_occurrence && step.s4.rc2_non_detection && ((sari.level==='L1'||rpn>=300)?!!step.s4.rc3_systemic:true) && (step.s4.rc_evidence && step.s4.rc_evidence.length>0);
+  const S5=()=>{const a=step.s5?.pca||[];if(a.length===0)return false;const has={RC1:false,RC2:false,RC3:false};const need={RC1:!!sari.steps.s4.rc1_occurrence,RC2:!!sari.steps.s4.rc2_non_detection,RC3:!!sari.steps.s4.rc3_systemic};for(const p of a){if(!(p.action&&p.owner&&p.due_date&&p.effectiveness_metric&&p.rc_link))return false;if(has[p.rc_link]!==undefined)has[p.rc_link]=true;}return (!need.RC1||has.RC1)&&(!need.RC2||has.RC2)&&(!need.RC3||has.RC3)};
+  const Dry=()=> step.dry && step.dry.id_card_ready && step.dry.pca_plan_consistent && step.dry.demo_artifacts && step.dry.open_risks_listed;
+  const S6=()=>{const L=step.s6?.pca_effectiveness||[];if(L.length===0)return false;return L.every(e=>e.implemented===true&&e.effective===true&&!!e.effectiveness_evidence)};
+  const PP =()=> step.pp && step.pp.ppm_review_green && step.pp.risks_documented && step.pp.pp_pack_ready;
+  const S7=()=> step.s7 && step.s7.sop_updated && ((sari.level==='L1'||rpn>=300)? step.s7.fmea_updated : true);
+  const S8=()=> step.s8 && step.s8.checks && step.s8.checks.each_action_effective && step.s8.checks.docs_complete && step.s8.checks.lessons_integrated && step.s8.checks.five_why_valid;
+  return {S0:S0(),S1:S1(),S2:S2(),S3:S3(),S4:S4(),S5:S5(),Dry:Dry(),S6:S6(),PP:PP(),S7:S7(),S8:S8()}
 }
-function computeProgressSari(sari){
-  const qg = {
-    S0: canon_QG(sari.steps.s0_qg, sari).S0,
-    S1: canon_QG(sari.steps.s1_qg, sari).S1,
-    S2: canon_QG(sari.steps.s2_qg, sari).S2,
-    S3: canon_QG(sari.steps.s3_qg, sari).S3,
-    S4: canon_QG(sari.steps.s4_qg, sari).S4,
-    S5: canon_QG(sari.steps.s5_qg, sari).S5,
-    S6: canon_QG(sari.steps.s6_qg, sari).S6,
-    S7: canon_QG(sari.steps.s7_qg, sari).S7,
-    S8: canon_QG(sari.steps.s8_qg, sari).S8,
-    Dry: canon_QG(sari.steps.dry_run, sari).Dry,
-    PP: canon_QG(sari.steps.pp, sari).PP,
-  };
-  const arr = Object.values(qg);
-  return Math.round(arr.filter(Boolean).length / arr.length * 100);
-}
+function progress(s){const qg=QG(s.steps,s);const arr=Object.values(qg);return Math.round(arr.filter(Boolean).length/arr.length*100)}
 
-// ===== Demo data (with QG sections) =====
-function mkSari(id, level, day1, sod, meta={}){
-  return {
-    id, level, day1, sod, meta,
-    milestones:{ dryRun:{ target: addDays(day1,60) }, pp:{ target: addDays(day1,100) } },
-    status: "Open",
+// ===== Data =====
+function mkSari(id,level,day1,sod,meta={}){
+  return {id,level,day1,sod,meta,
+    milestones:{dryRun:{target:addDays(day1,60)},pp:{target:addDays(day1,100)}},status:'Open',
     steps:{
-      s0_qg:{ first_event_date: day1, customer_informed_on: day1, line_stop: "Nein", containment_action_plan: {name:"plan.pdf"} },
-      s1_qg:{ leader:"", sponsor:"", problem_owner:"", operations_rep:"", mft_members:[] },
-      s2_qg:{ issue_description:"", fiveWtwoH:"", complex_case:false, is_is_not:"", supply_chain_breakdown:"" },
-      s3_qg:{ containment_validation_report:null, traceability_report_toac:null, traceability_alt:null, curative_actions_done:false },
-      s4_qg:{ rc1_occurrence:"", rc2_non_detection:"", rc3_systemic:"", rc_evidence:[] },
-      s5_qg:{ pca:[] },
-      dry_run:{ id_card_ready:false, pca_plan_consistent:false, demo_artifacts:false, open_risks_listed:false },
-      s6_qg:{ pca_effectiveness:[] },
-      pp:{ ppm_review_green:false, risks_documented:false, pp_pack_ready:false },
-      s7_qg:{ sop_updated:null, fmea_updated:null },
-      s8_qg:{ checks:{ each_action_effective:false, docs_complete:false, lessons_integrated:false, five_why_valid:false }, customer_closure_comm:null, closure_comment:"" }
+      s0:{first_event_date:day1,customer_informed_on:day1,line_stop:'Nein',containment_action_plan:{name:'plan.pdf'}},
+      s1:{leader:'',sponsor:'',problem_owner:'',operations_rep:'',mft_members:[]},
+      s2:{issue_description:'',fiveWtwoH:'',complex_case:false,is_is_not:'',supply_chain_breakdown:''},
+      s3:{containment_validation_report:null,traceability_report_toac:null,traceability_alt:null,curative_actions_done:false},
+      s4:{rc1_occurrence:'',rc2_non_detection:'',rc3_systemic:'',rc_evidence:[]},
+      s5:{pca:[]},
+      dry:{id_card_ready:false,pca_plan_consistent:false,demo_artifacts:false,open_risks_listed:false},
+      s6:{pca_effectiveness:[]},
+      pp:{ppm_review_green:false,risks_documented:false,pp_pack_ready:false},
+      s7:{sop_updated:null,fmea_updated:null},
+      s8:{checks:{each_action_effective:false,docs_complete:false,lessons_integrated:false,five_why_valid:false},customer_closure_comm:null,closure_comment:''}
     }
-  };
+  }
 }
-const SARIs = [
-  mkSari("SE-25.0123","L1","2025-09-01",{s:8,o:5,d:9},{title:"GEN-004 Incorrect Assembly – hinge bracket"}),
-  mkSari("SE-25.0456","L2","2025-08-30",{s:6,o:6,d:6},{title:"GEN-010 Torque issue – fasteners"}),
-  mkSari("SE-25.0789","L3","2025-10-01",{s:4,o:5,d:7},{title:"GEN-001 FOD – wiring bay"}),
-  mkSari("SE-25.0999","L2","2025-07-20",{s:7,o:7,d:7},{title:"GEN-012 Corrosion – panel"}),
+const DB=[
+  mkSari('SE-25.0123','L1','2025-09-01',{s:8,o:5,d:9},{title:'GEN-004 Incorrect Assembly – hinge bracket'}),
+  mkSari('SE-25.0456','L2','2025-08-30',{s:6,o:6,d:6},{title:'GEN-010 Torque issue – fasteners'}),
+  mkSari('SE-25.0789','L3','2025-10-01',{s:4,o:5,d:7},{title:'GEN-001 FOD – wiring bay'}),
+  mkSari('SE-25.0999','L2','2025-07-20',{s:7,o:7,d:7},{title:'GEN-012 Corrosion – panel'})
 ];
-// seed some realistic fields
-SARIs[0].steps.s2_qg.issue_description = "1 object / 1 defect: hinge mis-assembly on LH door";
-SARIs[0].steps.s5_qg.pca = [
-  { action:"Introduce Poka-Yoke", owner:"Ops", due_date:"2025-10-12", rc_link:"RC2", effectiveness_metric:"Cpk >=1.33", status:"In Arbeit" },
-  { action:"Revise SOP 27-14", owner:"QE", due_date:"2025-10-20", rc_link:"RC3", effectiveness_metric:"Audit=0 NC", status:"Offen" }
+DB[0].steps.s2.issue_description='1 object / 1 defect: hinge mis-assembly on LH door';
+DB[0].steps.s5.pca=[
+  {action:'Introduce Poka-Yoke',owner:'Ops',due_date:'2025-10-12',rc_link:'RC2',effectiveness_metric:'Cpk >=1.33',status:'In Arbeit'},
+  {action:'Revise SOP 27-14',owner:'QE',due_date:'2025-10-20',rc_link:'RC3',effectiveness_metric:'Audit=0 NC',status:'Offen'}
 ];
 
-// ===== Urgency sorting & KPIs =====
-function urgencyScore(s){
-  const lvl = s.level === "L1" ? 3 : s.level === "L2" ? 2 : 1;
-  const dDry = deltaFromToday(s.milestones.dryRun?.target) ?? 9999; // negative => overdue
-  const dPP = deltaFromToday(s.milestones.pp?.target) ?? 9999;
-  const rpn = computeRPN(s.sod);
-  const overdue = (s.steps.s5_qg.pca||[]).filter(p=> p.due_date && p.status!=="Erledigt" && p.due_date < todayISO()).length;
-  return [ -lvl, (dDry>=0? dDry: dDry*2), (dPP>=0? dPP: dPP*1.5), -rpn, -overdue ]; // lower is more urgent
-}
-function compareTuple(a,b){ for(let i=0;i<Math.max(a.length,b.length);i++){ const d=(a[i]||0)-(b[i]||0); if(d!==0) return d; } return 0; }
+// ===== Urgency / Tiles =====
+function urgencyTuple(s){const lvl=s.level==='L1'?3:s.level==='L2'?2:1;const dDry=deltaFromToday(s.milestones.dryRun?.target)??9999;const dPP=deltaFromToday(s.milestones.pp?.target)??9999;const rpn=computeRPN(s.sod);const overdue=(s.steps.s5.pca||[]).filter(p=>p.due_date&&p.status!=='Erledigt'&&p.due_date<todayISO()).length;return[-lvl,(dDry>=0?dDry:dDry*2),(dPP>=0?dPP:dPP*1.5),-rpn,-overdue]}
+function cmp(a,b){for(let i=0;i<Math.max(a.length,b.length);i++){const d=(a[i]||0)-(b[i]||0);if(d!==0)return d}return 0}
 
-// ===== Rendering =====
-function renderApp(){
-  const app = document.getElementById('app');
-  const hash = location.hash.replace(/^#\/?/, '');
-  const seg = hash.split('/');
-  app.innerHTML = '';
-  if(!hash || seg[0]==='' || seg[0]==='dashboard'){ app.appendChild(renderDashboard()); return; }
-  if(seg[0]==='sari' && seg[1]){ const s = SARIs.find(x=> x.id===seg[1]); app.appendChild(s? renderSariDetail(s): el('div',{class:'card'},'Unbekanntes SARI.')); return; }
-  app.appendChild(renderDashboard());
-}
-window.addEventListener('hashchange', renderApp);
-
-function kpi(label, value, sub){
-  const r = el('div',{class:'card kpi'});
-  r.appendChild(el('div',{class:'label'},label));
-  r.appendChild(el('div',{class:'value'}, String(value)));
-  if(sub) r.appendChild(el('div',{class:'sub'}, sub));
-  return r;
-}
-function chip(txt, tone){ return el('span',{class:'chip '+(tone||'')}, txt); }
+// ===== Render =====
+function kpi(l,v,s){const r=el('div',{class:'card kpi'});r.append(el('div',{class:'l'},l),el('div',{class:'v'},String(v)));if(s)r.append(el('div',{class:'s'},s));return r}
+function chip(txt,tone){return el('span',{class:'chip '+(tone||'')},txt)}
 
 function renderDashboard(){
-  const wrap = el('div');
-  const open = SARIs.filter(s=> s.status!=="Closed").length;
-  const overdueMs = SARIs.filter(s=> (deltaFromToday(s.milestones.dryRun?.target)??1)<0 || (deltaFromToday(s.milestones.pp?.target)??1)<0).length;
-  const avgDry = Math.round(SARIs.reduce((a,s)=> a+(deltaFromToday(s.milestones.dryRun?.target)??0),0)/Math.max(1,SARIs.length));
-  const avgPP = Math.round(SARIs.reduce((a,s)=> a+(deltaFromToday(s.milestones.pp?.target)??0),0)/Math.max(1,SARIs.length));
-  const topIrr = SARIs.filter(s=> s.level==="L1" || computeRPN(s.sod)>=300).length;
-  const row = el('div',{class:'row cols-5'});
-  row.append(kpi('Open SARIs', open), kpi('Overdue Milestones', overdueMs), kpi('Ø Days to Dry Run', avgDry), kpi('Ø Days to PP', avgPP), kpi('Top Irritants', topIrr));
-  wrap.appendChild(row);
+  const wrap=el('div');
+  const open=DB.filter(s=>s.status!=='Closed').length;
+  const overdueMs=DB.filter(s=>(deltaFromToday(s.milestones.dryRun?.target)??1)<0||(deltaFromToday(s.milestones.pp?.target)??1)<0).length;
+  const avgDry=Math.round(DB.reduce((a,s)=>a+(deltaFromToday(s.milestones.dryRun?.target)??0),0)/Math.max(1,DB.length));
+  const avgPP=Math.round(DB.reduce((a,s)=>a+(deltaFromToday(s.milestones.pp?.target)??0),0)/Math.max(1,DB.length));
+  const topIrr=DB.filter(s=>s.level==='L1'||computeRPN(s.sod)>=300).length;
+  const row=el('div',{class:'row c5'});
+  row.append(kpi('Open SARIs',open),kpi('Overdue Milestones',overdueMs),kpi('Ø Days to Dry Run',avgDry),kpi('Ø Days to PP',avgPP),kpi('Top Irritants',topIrr));
+  wrap.append(row);
 
-  const sorted = [...SARIs].sort((a,b)=> compareTuple(urgencyScore(a), urgencyScore(b)));
-  const grid = el('div',{class:'row cols-3', style:{gap:'16px'}});
-  sorted.forEach(s=> grid.appendChild(renderTile(s)));
-  wrap.appendChild(grid);
-  return wrap;
+  const sorted=[...DB].sort((a,b)=>cmp(urgencyTuple(a),urgencyTuple(b)));
+  const grid=el('div',{class:'row c3',style:{gap:'16px'}});
+  sorted.forEach(s=>grid.append(tile(s)));
+  wrap.append(grid);
+  return wrap
 }
 
-function renderTile(s){
-  const rpn = computeRPN(s.sod);
-  const prog = computeProgressSari(s);
-  const dDry = deltaFromToday(s.milestones.dryRun?.target);
-  const dPP = deltaFromToday(s.milestones.pp?.target);
-  const dryTxt = dDry==null? '—' : dDry<0? `DRY RUN ${Math.abs(dDry)}d overdue` : `DRY RUN in ${dDry}d`;
-  const ppTxt = dPP==null? '—' : dPP<0? `PP ${Math.abs(dPP)}d overdue` : `PP in ${dPP}d`;
-  const overdue = (s.steps.s5_qg.pca||[]).filter(p=> p.due_date && p.status!=='Erledigt' && p.due_date < todayISO()).length;
-  const card = el('div',{class:'card tile'});
-  card.addEventListener('click', ()=> location.hash = `#/sari/${s.id}`);
-  const head = el('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'8px'}});
-  head.appendChild(el('div',{style:{fontWeight:'800'}}, s.id));
-  const badges = el('div',{style:{display:'flex',gap:'8px',alignItems:'center'}});
-  badges.appendChild(chip(s.level,'info'));
-  if(s.level==='L1' || rpn>=300) badges.appendChild(chip('Top Irritant','warn'));
-  head.appendChild(badges);
-  card.appendChild(head);
-  card.appendChild(el('div',{class:'muted'}, s.meta?.title || s.steps?.s2_qg?.issue_description || '—'));
-  const row = el('div',{class:'row cols-3', style:{marginTop:'8px'}});
-  const rpnBox = el('div'); rpnBox.appendChild(el('label',{class:'label'},'RPN')); rpnBox.appendChild(el('div',{style:{fontWeight:'700'}}, String(rpn))); rpnBox.appendChild(el('div',{class:'muted',style:{fontSize:'12px'}}, `S/O/D ${s.sod.s}/${s.sod.o}/${s.sod.d}`));
-  const prgBox = el('div'); prgBox.appendChild(el('label',{class:'label'},'Fortschritt')); prgBox.appendChild(el('div',{style:{fontWeight:'700'}}, `${prog}%`));
-  const ovdBox = el('div'); ovdBox.appendChild(el('label',{class:'label'},'Overdue Aktionen')); ovdBox.appendChild(el('div',{style:{fontWeight:'700'}}, String(overdue)));
-  row.append(rpnBox, prgBox, ovdBox);
-  card.appendChild(row);
-  const chips = el('div',{class:'row cols-2'});
-  chips.appendChild(el('div',{}, chip(dryTxt, dDry<0?'warn':'info')));
-  chips.appendChild(el('div',{}, chip(ppTxt, dPP<0?'warn':'info')));
-  card.appendChild(chips);
-  return card;
+function tile(s){
+  const rpn=computeRPN(s.sod);const prog=progress(s);
+  const dDry=deltaFromToday(s.milestones.dryRun?.target);const dPP=deltaFromToday(s.milestones.pp?.target);
+  const dryTxt=dDry==null?'—':dDry<0?`DRY RUN ${Math.abs(dDry)}d overdue`:`DRY RUN in ${dDry}d`;
+  const ppTxt=dPP==null?'—':dPP<0?`PP ${Math.abs(dPP)}d overdue`:`PP in ${dPP}d`;
+  const overdue=(s.steps.s5.pca||[]).filter(p=>p.due_date&&p.status!=='Erledigt'&&p.due_date<todayISO()).length;
+  const card=el('div',{class:'card tile'});
+  card.addEventListener('click',()=>location.hash=`#/sari/${s.id}`);
+  const head=el('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'8px'}});
+  head.append(el('div',{style:{fontWeight:'800'}},s.id));
+  const badges=el('div',{style:{display:'flex',gap:'8px',alignItems:'center'}});
+  badges.append(chip(s.level,'info')); if(s.level==='L1'||rpn>=300)badges.append(chip('Top Irritant','warn'));
+  head.append(badges); card.append(head);
+  card.append(el('div',{class:'muted'}, s.meta?.title || s.steps?.s2?.issue_description || '—'));
+  const row=el('div',{class:'row c3',style:{marginTop:'8px'}});
+  const b1=el('div'); b1.append(el('label',{class:'lab'},'RPN'), el('div',{style:{fontWeight:'700'}},String(rpn)), el('div',{class:'muted',style:{fontSize:'12px'}},`S/O/D ${s.sod.s}/${s.sod.o}/${s.sod.d}`));
+  const b2=el('div'); b2.append(el('label',{class:'lab'},'Fortschritt'), el('div',{style:{fontWeight:'700'}},`${prog}%`));
+  const b3=el('div'); b3.append(el('label',{class:'lab'},'Overdue Aktionen'), el('div',{style:{fontWeight:'700'}},String(overdue)));
+  row.append(b1,b2,b3); card.append(row);
+  const chips=el('div',{class:'row c2'});
+  chips.append(el('div',{},chip(dryTxt,dDry<0?'warn':'info'))); chips.append(el('div',{},chip(ppTxt,dPP<0?'warn':'info')));
+  card.append(chips);
+  return card
 }
 
-function renderTimeline(s){
-  const nodes = [
-    {id:'s0',label:'S0'}, {id:'s1',label:'S1'}, {id:'s2',label:'S2'}, {id:'s3',label:'S3'}, {id:'s4',label:'S4'}, {id:'s5',label:'S5'},
-    {id:'dry',label:'Dry Run', milestone:true, target:s.milestones.dryRun?.target },
-    {id:'s6',label:'S6'}, {id:'pp',label:'PP', milestone:true, target:s.milestones.pp?.target }, {id:'s7',label:'S7'}, {id:'s8',label:'S8'}
-  ];
-  const bar = el('div',{class:'timeline'});
-  nodes.forEach(n=>{
-    const d = n.milestone ? deltaFromToday(n.target) : null;
-    const node = el('div',{class:'node'});
-    const dot = el('div',{class:'dot '+(n.milestone?'milestone':'' )+' '+(d!=null && d<0?'overdue':'')});
-    node.appendChild(dot);
-    node.appendChild(el('div',{style:{fontWeight:n.milestone?800:600}}, n.label));
-    if(n.milestone) node.appendChild(el('div',{class:'muted',style:{fontSize:'12px'}}, n.target || '—'));
-    node.addEventListener('click',()=>{
-      document.querySelector(`[data-panel="${n.id}"]`)?.scrollIntoView({behavior:'smooth', inline:'start', block:'nearest'});
-    });
-    bar.appendChild(node);
-  });
-  return bar;
+function timeline(s){
+  const nodes=[{id:'s0',label:'S0'},{id:'s1',label:'S1'},{id:'s2',label:'S2'},{id:'s3',label:'S3'},{id:'s4',label:'S4'},{id:'s5',label:'S5'},{id:'dry',label:'Dry Run',ms:true,target:s.milestones.dryRun?.target},{id:'s6',label:'S6'},{id:'pp',label:'PP',ms:true,target:s.milestones.pp?.target},{id:'s7',label:'S7'},{id:'s8',label:'S8'}];
+  const bar=el('div',{class:'timeline'});
+  nodes.forEach(n=>{const d=n.ms?deltaFromToday(n.target):null;const node=el('div',{class:'n'});const dot=el('div',{class:'d '+(n.ms?'ms':'')+' '+(d!=null&&d<0?'over':'')});node.append(dot,el('div',{style:{fontWeight:n.ms?800:600}},n.label));if(n.ms)node.append(el('div',{class:'muted',style:{fontSize:'12px'}},n.target||'—'));node.addEventListener('click',()=>document.querySelector(`[data-panel="${n.id}"]`)?.scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'}));bar.append(node)});
+  return bar
 }
 
-function panel(title, id){ const p = el('div',{class:'card panel', 'data-panel': id}); p.appendChild(el('div',{style:{fontWeight:'700',marginBottom:'6px'}}, title)); return p; }
+function panel(title,id){const p=el('div',{class:'card p','data-panel':id});p.append(el('div',{style:{fontWeight:'700',marginBottom:'6px'}},title));return p}
+function qg(ok){return el('div',{class:'qg '+(ok?'ok':'open')}, ok?'Requirements OK':'Requirements offen')}
+function f(label,input){const w=el('div');w.append(el('label',{class:'lab'},label),input);return w}
+function iText(val,on){const i=el('input',{value:val||''});i.addEventListener('input',e=>on(e.target.value));return i}
+function iDate(val,on){const i=el('input',{type:'date',value:val||''});i.addEventListener('input',e=>on(e.target.value));return i}
+function iArea(val,on){const i=el('textarea',{});i.value=val||'';i.addEventListener('input',e=>on(e.target.value));return i}
+function iCheck(val,on,label){const l=el('label',{style:{display:'flex',gap:'8px',alignItems:'center'}});const i=el('input',{type:'checkbox'});i.checked=!!val;i.addEventListener('change',e=>on(!!e.target.checked));l.append(i,document.createTextNode(label));return l}
 
-function field(label, input){ const wrap = el('div'); wrap.appendChild(el('label',{class:'label'}, label)); wrap.appendChild(input); return wrap; }
-function inputText(val, on){ const i=el('input',{value:val||''}); i.addEventListener('input', e=> on(e.target.value)); return i; }
-function inputDate(val, on){ const i=el('input',{type:'date',value:val||''}); i.addEventListener('input', e=> on(e.target.value)); return i; }
-function inputBool(val, on){ const i=el('select',{}); ['Nein','Ja'].forEach(x=> i.appendChild(el('option',{value:x, selected: (val? 'Ja':'Nein')===x}, x))); i.addEventListener('change', e=> on(e.target.value==='Ja')); return i; }
-function inputArea(val, on){ const i=el('textarea',{},); i.value = val||''; i.addEventListener('input', e=> on(e.target.value)); return i; }
-function inputCheck(val, on, label){ const l=el('label',{style:{display:'flex',gap:'8px',alignItems:'center'}}); const i=el('input',{type:'checkbox'}); i.checked=!!val; i.addEventListener('change', e=> on(!!e.target.checked)); l.appendChild(i); l.appendChild(document.createTextNode(label)); return l; }
+function renderDetail(s){
+  const wrap=el('div');
+  const head=el('div',{class:'card'});
+  const top=el('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center'}});
+  const left=el('div');left.append(el('div',{style:{fontSize:'18px',fontWeight:'800'}},s.id),el('div',{class:'muted',style:{fontSize:'12px'}},`ATA ${s.meta?.ata||'—'} • SIM ${s.meta?.sim||'—'}`));
+  const right=el('div',{style:{display:'flex',gap:'8px',alignItems:'center'}});right.append(chip(s.level,'info'),chip('RPN '+computeRPN(s.sod)),chip('Status '+s.status));
+  top.append(left,right); head.append(top); wrap.append(head);
+  wrap.append(el('div',{style:{height:'10px'}})); wrap.append(el('div',{class:'card'}, timeline(s))); wrap.append(el('div',{style:{height:'10px'}}));
 
-function qgBadge(ok){ return el('div',{class:'qg '+(ok?'ok':'open')}, ok? 'Requirements OK' : 'Requirements offen'); }
-
-function renderSariDetail(s){
-  const wrap = el('div');
-  // Header
-  const head = el('div',{class:'card'});
-  const top = el('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center'}});
-  const left = el('div'); left.appendChild(el('div',{style:{fontSize:'18px',fontWeight:'800'}}, s.id)); left.appendChild(el('div',{class:'muted',style:{fontSize:'12px'}}, `ATA ${s.meta?.ata||'—'} • SIM ${s.meta?.sim||'—'}`));
-  const right = el('div',{style:{display:'flex',gap:'8px',alignItems:'center'}});
-  right.appendChild(chip(s.level,'info'));
-  right.appendChild(chip('RPN '+computeRPN(s.sod)));
-  right.appendChild(chip('Status '+s.status));
-  top.append(left,right); head.appendChild(top); wrap.appendChild(head);
-  wrap.appendChild(el('div',{style:{height:'10px'}}));
-  wrap.appendChild(el('div',{class:'card'}, renderTimeline(s)));
-  wrap.appendChild(el('div',{style:{height:'10px'}}));
-
-  // Lane with interactive forms per Canon (edit-in-place)
-  const lane = el('div',{class:'lane'});
-
+  const lane=el('div',{class:'lane'});
   // S0
-  const p0 = panel('S0 • Containment','s0');
-  const s0 = s.steps.s0_qg;
-  p0.appendChild(qgBadge(canon_QG(s.steps.s0_qg,s).S0));
-  p0.appendChild(field('First Event', inputDate(s0.first_event_date, v=>{ s0.first_event_date=v; rerender(); } )));
-  p0.appendChild(field('Kundeninfo gesendet am', inputDate(s0.customer_informed_on, v=>{ s0.customer_informed_on=v; rerender(); } )));
-  p0.appendChild(field('Line Stop', (function(){ const i=el('select',{}); ['Nein','Ja'].forEach(x=> i.appendChild(el('option',{value:x, selected:(s0.line_stop||'Nein')===x}, x))); i.addEventListener('change', e=>{ s0.line_stop=e.target.value; }); return i; })()));
-  p0.appendChild(field('Containment‑Plan (Nachweis)', inputText(s0.containment_action_plan?.name||'', v=>{ s0.containment_action_plan = v? {name:v}: null; rerender(); })));
-  lane.appendChild(p0);
-
+  const p0=panel('S0 • Containment','s0');const S0=s.steps.s0; p0.append(qg(QG({s0:S0},s).S0)); p0.append(f('First Event', iDate(S0.first_event_date,v=>{S0.first_event_date=v; render()})), f('Kundeninfo', iDate(S0.customer_informed_on,v=>{S0.customer_informed_on=v; render()})), f('Containment‑Plan (Ref)', iText(S0.containment_action_plan?.name||'',v=>{S0.containment_action_plan=v?{name:v}:null; render()}))); lane.append(p0);
   // S1
-  const p1 = panel('S1 • Team Charter','s1');
-  const s1 = s.steps.s1_qg;
-  p1.appendChild(qgBadge(canon_QG(s.steps.s1_qg,s).S1));
-  p1.appendChild(field('Leader', inputText(s1.leader, v=>{ s1.leader=v; })));
-  p1.appendChild(field('Sponsor', inputText(s1.sponsor, v=>{ s1.sponsor=v; })));
-  p1.appendChild(field('Problem Owner', inputText(s1.problem_owner, v=>{ s1.problem_owner=v; })));
-  p1.appendChild(field('Operations', inputText(s1.operations_rep, v=>{ s1.operations_rep=v; })));
-  lane.appendChild(p1);
-
+  const p1=panel('S1 • Team Charter','s1');const S1=s.steps.s1; p1.append(qg(QG({s1:S1},s).S1)); p1.append(f('Leader',iText(S1.leader,v=>{S1.leader=v})), f('Sponsor',iText(S1.sponsor,v=>{S1.sponsor=v})), f('Problem Owner',iText(S1.problem_owner,v=>{S1.problem_owner=v})), f('Operations',iText(S1.operations_rep,v=>{S1.operations_rep=v}))); lane.append(p1);
   // S2
-  const p2 = panel('S2 • Evidence Hub','s2');
-  const s2 = s.steps.s2_qg;
-  p2.appendChild(qgBadge(canon_QG(s.steps.s2_qg,s).S2));
-  p2.appendChild(field('Issue Description (1 Objekt / 1 Defekt)', inputArea(s2.issue_description, v=>{ s2.issue_description=v; })));
-  p2.appendChild(field('5W2H', inputArea(s2.fiveWtwoH, v=>{ s2.fiveWtwoH=v; })));
-  // complex case toggle
-  p2.appendChild(inputCheck(!!s2.complex_case, v=>{ s2.complex_case=v; rerender(); }, 'Komplexer Fall (IS/IS NOT Pflicht)'));
-  if(s2.complex_case){ p2.appendChild(field('IS / IS NOT', inputArea(s2.is_is_not, v=>{ s2.is_is_not=v; }))); }
-  lane.appendChild(p2);
-
+  const p2=panel('S2 • Evidence Hub','s2');const S2=s.steps.s2; p2.append(qg(QG({s2:S2},s).S2)); p2.append(f('Issue (1 Objekt/1 Defekt)', iArea(S2.issue_description,v=>{S2.issue_description=v})), f('5W2H', iArea(S2.fiveWtwoH,v=>{S2.fiveWtwoH=v}))); const cx=iCheck(!!S2.complex_case,v=>{S2.complex_case=v; render()},'Komplexer Fall (IS/IS NOT Pflicht)'); p2.append(cx); if(S2.complex_case){ p2.append(f('IS / IS NOT', iArea(S2.is_is_not,v=>{S2.is_is_not=v}))); } lane.append(p2);
   // S3
-  const p3 = panel('S3 • Validate Containment','s3');
-  const s3 = s.steps.s3_qg;
-  p3.appendChild(qgBadge(canon_QG(s.steps.s3_qg,s).S3));
-  p3.appendChild(field('Validierungsbericht (Ref)', inputText(s3.containment_validation_report?.name||'', v=>{ s3.containment_validation_report = v? {name:v}: null; rerender(); })));
-  p3.appendChild(field('Traceability (TOAC/Alt)', inputText(s3.traceability_report_toac?.name||s3.traceability_alt?.name||'', v=>{ s3.traceability_report_toac = v? {name:v}: null; s3.traceability_alt=null; rerender(); })));
-  p3.appendChild(inputCheck(!!s3.curative_actions_done, v=>{ s3.curative_actions_done=v; rerender(); }, 'Curative Actions umgesetzt'));
-  lane.appendChild(p3);
-
+  const p3=panel('S3 • Validate Containment','s3');const S3=s.steps.s3; p3.append(qg(QG({s3:S3},s).S3)); p3.append(f('Validierungsbericht (Ref)', iText(S3.containment_validation_report?.name||'',v=>{S3.containment_validation_report=v?{name:v}:null; render()})), f('Traceability (TOAC/Alt)', iText(S3.traceability_report_toac?.name||S3.traceability_alt?.name||'',v=>{S3.traceability_report_toac=v?{name:v}:null; S3.traceability_alt=null; render()})), iCheck(!!S3.curative_actions_done,v=>{S3.curative_actions_done=v; render()},'Curative Actions umgesetzt')); lane.append(p3);
   // S4
-  const p4 = panel('S4 • Root Cause Analysis','s4');
-  const s4 = s.steps.s4_qg;
-  p4.appendChild(qgBadge(canon_QG(s.steps.s4_qg,s).S4));
-  p4.appendChild(field('RC1 (Occurrence)', inputText(s4.rc1_occurrence, v=>{ s4.rc1_occurrence=v; })));
-  p4.appendChild(field('RC2 (Non‑Detection)', inputText(s4.rc2_non_detection, v=>{ s4.rc2_non_detection=v; })));
-  p4.appendChild(field('RC3 (Systemic)', inputText(s4.rc3_systemic, v=>{ s4.rc3_systemic=v; })));
-  // evidence add quick
-  const evidWrap = el('div'); evidWrap.appendChild(el('label',{class:'label'},'Evidenzen'));
-  const addE = el('button',{class:'btn'},'➕ Evidenz');
-  addE.addEventListener('click', ()=>{ s4.rc_evidence.push({name:`evidence-${s4.rc_evidence.length+1}.pdf`}); rerender(); });
-  evidWrap.appendChild(addE);
-  if(s4.rc_evidence?.length){ const ul=el('ul'); s4.rc_evidence.forEach(e=> ul.appendChild(el('li',{}, e.name))); evidWrap.appendChild(ul); }
-  p4.appendChild(evidWrap);
-  lane.appendChild(p4);
-
+  const p4=panel('S4 • RCA','s4');const S4=s.steps.s4; p4.append(qg(QG({s4:S4},s).S4)); p4.append(f('RC1 (Occurrence)', iText(S4.rc1_occurrence,v=>{S4.rc1_occurrence=v})), f('RC2 (Non‑Detection)', iText(S4.rc2_non_detection,v=>{S4.rc2_non_detection=v})), f('RC3 (Systemic)', iText(S4.rc3_systemic,v=>{S4.rc3_systemic=v}))); const ev=el('div'); ev.append(el('label',{class:'lab'},'Evidenzen'), (()=>{
+            const b=el('button',{class:'chip'},'➕ Evidenz'); b.addEventListener('click',()=>{ (S4.rc_evidence=S4.rc_evidence||[]).push({name:`evidence-${(S4.rc_evidence.length||0)+1}.pdf`}); render(); }); return b; })() ); if(S4.rc_evidence?.length){const ul=el('ul'); S4.rc_evidence.forEach(e=>ul.append(el('li',{},e.name))); ev.append(ul);} p4.append(ev); lane.append(p4);
   // S5
-  const p5 = panel('S5 • Corrective Actions','s5');
-  const s5 = s.steps.s5_qg;
-  p5.appendChild(qgBadge(canon_QG(s.steps.s5_qg,s).S5));
-  const addP = el('button',{class:'btn'},'➕ Maßnahme');
-  addP.addEventListener('click', ()=>{ (s5.pca=s5.pca||[]).push({ action:'', owner:'', due_date:'', rc_link:'RC1', effectiveness_metric:'', status:'Offen' }); rerender(); });
-  p5.appendChild(addP);
-  if((s5.pca||[]).length===0){ p5.appendChild(el('div',{class:'muted'},'Keine Maßnahmen erfasst.')); }
-  else{
-    const tbl = el('table');
-    const thead = el('thead'); const trh = el('tr'); ['Maßnahme','Owner','Fällig','RC','Metrik','Status'].forEach(h=> trh.appendChild(el('th',{},h))); thead.appendChild(trh); tbl.appendChild(thead);
-    const tb = el('tbody');
-    s5.pca.forEach((p,i)=>{
-      const tr = el('tr');
-      const rcSel = el('select',{}); ['RC1','RC2','RC3'].forEach(x=> rcSel.appendChild(el('option',{value:x,selected:(p.rc_link||'RC1')===x},x))); rcSel.addEventListener('change', e=>{ p.rc_link=e.target.value; });
-      const stSel = el('select',{}); ['Offen','In Arbeit','Erledigt'].forEach(x=> stSel.appendChild(el('option',{value:x,selected:(p.status||'Offen')===x},x))); stSel.addEventListener('change', e=>{ p.status=e.target.value; });
-      tr.appendChild(el('td',{class:'td'}, inputText(p.action, v=>{ p.action=v; })));
-      tr.appendChild(el('td',{class:'td'}, inputText(p.owner, v=>{ p.owner=v; })));
-      tr.appendChild(el('td',{class:'td'}, inputDate(p.due_date, v=>{ p.due_date=v; })));
-      tr.appendChild(el('td',{class:'td'}, rcSel));
-      tr.appendChild(el('td',{class:'td'}, inputText(p.effectiveness_metric, v=>{ p.effectiveness_metric=v; })));
-      tr.appendChild(el('td',{class:'td'}, stSel));
-      tb.appendChild(tr);
-    });
-    tbl.appendChild(tb);
-    p5.appendChild(tbl);
-  }
-  lane.appendChild(p5);
-
+  const p5=panel('S5 • Corrective Actions','s5');const S5=s.steps.s5; p5.append(qg(QG({s5:S5},s).S5)); const addP=el('button',{class:'chip'},'➕ Maßnahme'); addP.addEventListener('click',()=>{(S5.pca=S5.pca||[]).push({action:'',owner:'',due_date:'',rc_link:'RC1',effectiveness_metric:'',status:'Offen'}); render()}); p5.append(addP); if((S5.pca||[]).length===0){p5.append(el('div',{class:'muted'},'Keine Maßnahmen erfasst.'))} else { const tbl=el('table'); const th=el('thead'); const trh=el('tr'); ['Maßnahme','Owner','Fällig','RC','Metrik','Status'].forEach(h=>trh.append(el('th',{},h))); th.append(trh); tbl.append(th); const tb=el('tbody'); S5.pca.forEach((p,i)=>{ const tr=el('tr'); const rcSel=el('select',{}); ['RC1','RC2','RC3'].forEach(x=>rcSel.append(el('option',{value:x,selected:(p.rc_link||'RC1')===x},x))); rcSel.addEventListener('change',e=>{p.rc_link=e.target.value}); const stSel=el('select',{}); ['Offen','In Arbeit','Erledigt'].forEach(x=>stSel.append(el('option',{value:x,selected:(p.status||'Offen')===x},x))); stSel.addEventListener('change',e=>{p.status=e.target.value}); tr.append(el('td',{class:'td'}, iText(p.action,v=>{p.action=v})), el('td',{class:'td'}, iText(p.owner,v=>{p.owner=v})), el('td',{class:'td'}, iDate(p.due_date,v=>{p.due_date=v})), el('td',{class:'td'}, rcSel), el('td',{class:'td'}, iText(p.effectiveness_metric,v=>{p.effectiveness_metric=v})), el('td',{class:'td'}, stSel)); tb.append(tr); }); tbl.append(tb); p5.append(tbl); } lane.append(p5);
   // Dry Run
-  const pDry = panel('Milestone • Dry Run (≤60d)','dry');
-  const dry = s.steps.dry_run;
-  pDry.appendChild(qgBadge(canon_QG(s.steps.dry_run,s).Dry));
-  pDry.appendChild(field('Zieltermin', el('div',{class:'td'}, s.milestones.dryRun?.target || '—')));
-  pDry.appendChild(inputCheck(!!dry.id_card_ready, v=>{ dry.id_card_ready=v; }, 'ID‑Card vorhanden'));
-  pDry.appendChild(inputCheck(!!dry.pca_plan_consistent, v=>{ dry.pca_plan_consistent=v; }, 'PCA‑Plan konsistent zu RCs'));
-  pDry.appendChild(inputCheck(!!dry.demo_artifacts, v=>{ dry.demo_artifacts=v; }, 'Demo‑Artefakte vorhanden'));
-  pDry.appendChild(inputCheck(!!dry.open_risks_listed, v=>{ dry.open_risks_listed=v; }, 'Offene Risiken gelistet'));
-  lane.appendChild(pDry);
-
+  const pDry=panel('Milestone • Dry Run (≤60d)','dry');const DR=s.steps.dry; pDry.append(qg(QG({dry:DR},s).Dry)); pDry.append(f('Zieltermin', el('div',{class:'td'}, s.milestones.dryRun?.target||'—')), iCheck(!!DR.id_card_ready,v=>{DR.id_card_ready=v},'ID‑Card vorhanden'), iCheck(!!DR.pca_plan_consistent,v=>{DR.pca_plan_consistent=v},'PCA‑Plan konsistent'), iCheck(!!DR.demo_artifacts,v=>{DR.demo_artifacts=v},'Demo‑Artefakte vorhanden'), iCheck(!!DR.open_risks_listed,v=>{DR.open_risks_listed=v},'Offene Risiken gelistet')); lane.append(pDry);
   // S6
-  const p6 = panel('S6 • Implement & Effectiveness','s6');
-  const s6 = s.steps.s6_qg;
-  p6.appendChild(qgBadge(canon_QG(s.steps.s6_qg,s).S6));
-  const addEff = el('button',{class:'btn'},'➕ Wirksamkeitsnachweis');
-  addEff.addEventListener('click', ()=>{ (s6.pca_effectiveness=s6.pca_effectiveness||[]).push({ pca_index:0, implemented:false, effective:false, effectiveness_evidence:{name:'evidence.pdf'} }); rerender(); });
-  p6.appendChild(addEff);
-  if((s6.pca_effectiveness||[]).length===0){ p6.appendChild(el('div',{class:'muted'},'Noch keine Wirksamkeitsnachweise.')); }
-  else{
-    const ul = el('ul');
-    s6.pca_effectiveness.forEach((e,i)=>{
-      const li = el('li');
-      li.appendChild(inputCheck(!!e.implemented, v=>{ e.implemented=v; }, 'Implementiert'));
-      li.appendChild(document.createTextNode(' '));
-      li.appendChild(inputCheck(!!e.effective, v=>{ e.effective=v; }, 'Wirksam'));
-      li.appendChild(document.createTextNode(' '));
-      li.appendChild(field('Evidenz', inputText(e.effectiveness_evidence?.name||'', v=>{ e.effectiveness_evidence = v? {name:v}: null; })));
-      ul.appendChild(li);
-    });
-    p6.appendChild(ul);
-  }
-  lane.appendChild(p6);
-
+  const p6=panel('S6 • Implement & Effectiveness','s6');const S6=s.steps.s6; p6.append(qg(QG({s6:S6},s).S6)); const addE=el('button',{class:'chip'},'➕ Wirksamkeitsnachweis'); addE.addEventListener('click',()=>{(S6.pca_effectiveness=S6.pca_effectiveness||[]).push({pca_index:0,implemented:false,effective:false,effectiveness_evidence:{name:'evidence.pdf'}}); render()}); p6.append(addE); if((S6.pca_effectiveness||[]).length===0){p6.append(el('div',{class:'muted'},'Noch keine Wirksamkeitsnachweise.'))} else {const ul=el('ul'); S6.pca_effectiveness.forEach(e=>{ const li=el('li'); li.append(iCheck(!!e.implemented,v=>{e.implemented=v},'Implementiert'),' ', iCheck(!!e.effective,v=>{e.effective=v},'Wirksam'),' ', f('Evidenz', iText(e.effectiveness_evidence?.name||'',v=>{e.effectiveness_evidence=v?{name:v}:null}))); ul.append(li)}); p6.append(ul);} lane.append(p6);
   // PP
-  const pPP = panel('Milestone • PP (≤100d)','pp');
-  const pp = s.steps.pp;
-  pPP.appendChild(qgBadge(canon_QG(s.steps.pp,s).PP));
-  pPP.appendChild(field('Zieltermin', el('div',{class:'td'}, s.milestones.pp?.target || '—')));
-  pPP.appendChild(inputCheck(!!pp.ppm_review_green, v=>{ pp.ppm_review_green=v; }, 'PPM‑Review abgeschlossen'));
-  pPP.appendChild(inputCheck(!!pp.risks_documented, v=>{ pp.risks_documented=v; }, 'Residualrisiken dokumentiert'));
-  pPP.appendChild(inputCheck(!!pp.pp_pack_ready, v=>{ pp.pp_pack_ready=v; }, 'PP‑Pack (Slides + ID‑Card) bereit'));
-  lane.appendChild(pPP);
-
+  const ppp=panel('Milestone • PP (≤100d)','pp');const PP=s.steps.pp; ppp.append(qg(QG({pp:PP},s).PP)); ppp.append(f('Zieltermin', el('div',{class:'td'}, s.milestones.pp?.target||'—')), iCheck(!!PP.ppm_review_green,v=>{PP.ppm_review_green=v},'PPM‑Review abgeschlossen'), iCheck(!!PP.risks_documented,v=>{PP.risks_documented=v},'Residualrisiken dokumentiert'), iCheck(!!PP.pp_pack_ready,v=>{PP.pp_pack_ready=v},'PP‑Pack bereit')); lane.append(ppp);
   // S7
-  const p7 = panel('S7 • Standardize & Prevent','s7');
-  const s7 = s.steps.s7_qg;
-  p7.appendChild(qgBadge(canon_QG(s.steps.s7_qg,s).S7));
-  p7.appendChild(field('SOP aktualisiert (Ref)', inputText(s7.sop_updated?.name||'', v=>{ s7.sop_updated = v? {name:v}: null; rerender(); })));
-  p7.appendChild(field('FMEA aktualisiert (Ref)', inputText(s7.fmea_updated?.name||'', v=>{ s7.fmea_updated = v? {name:v}: null; rerender(); })));
-  lane.appendChild(p7);
-
+  const p7=panel('S7 • Standardize & Prevent','s7');const S7=s.steps.s7; p7.append(qg(QG({s7:S7},s).S7)); p7.append(f('SOP aktualisiert (Ref)', iText(S7.sop_updated?.name||'',v=>{S7.sop_updated=v?{name:v}:null; render()})), f('FMEA aktualisiert (Ref)', iText(S7.fmea_updated?.name||'',v=>{S7.fmea_updated=v?{name:v}:null; render()}))); lane.append(p7);
   // S8
-  const p8 = panel('S8 • Close & Recognize','s8');
-  const s8 = s.steps.s8_qg;
-  p8.appendChild(qgBadge(canon_QG(s.steps.s8_qg,s).S8));
-  const c = s8.checks;
-  p8.appendChild(inputCheck(!!c.each_action_effective, v=>{ c.each_action_effective=v; }, 'Wirksamkeit je Maßnahme belegt'));
-  p8.appendChild(inputCheck(!!c.docs_complete, v=>{ c.docs_complete=v; }, 'Dokumente vollständig'));
-  p8.appendChild(inputCheck(!!c.lessons_integrated, v=>{ c.lessons_integrated=v; }, 'Lessons Learned integriert'));
-  p8.appendChild(inputCheck(!!c.five_why_valid, v=>{ c.five_why_valid=v; }, '5‑Whys zeigen tatsächliche RC'));
-  p8.appendChild(field('Kundenkommunikation (Ref)', inputText(s8.customer_closure_comm?.name||'', v=>{ s8.customer_closure_comm = v? {name:v}: null; })));
-  p8.appendChild(field('Abschluss‑Kommentar', inputArea(s8.closure_comment, v=>{ s8.closure_comment=v; })));
-  lane.appendChild(p8);
+  const p8=panel('S8 • Close & Recognize','s8');const S8=s.steps.s8; p8.append(qg(QG({s8:S8},s).S8)); const c=S8.checks; p8.append(iCheck(!!c.each_action_effective,v=>{c.each_action_effective=v},'Wirksamkeit je Maßnahme belegt'), iCheck(!!c.docs_complete,v=>{c.docs_complete=v},'Dokumente vollständig'), iCheck(!!c.lessons_integrated,v=>{c.lessons_integrated=v},'Lessons Learned integriert'), iCheck(!!c.five_why_valid,v=>{c.five_why_valid=v},'5‑Whys zeigen tatsächliche RC')); p8.append(f('Kundenkommunikation (Ref)', iText(S8.customer_closure_comm?.name||'',v=>{S8.customer_closure_comm=v?{name:v}:null})), f('Abschluss‑Kommentar', iArea(S8.closure_comment,v=>{S8.closure_comment=v}))); lane.append(p8);
 
-  wrap.appendChild(lane);
-
-  // Footer KPI strip for live progress
-  const kp = el('div',{class:'row cols-4'});
-  kp.appendChild(kpi('RPN', computeRPN(s.sod), `S/O/D ${s.sod.s}/${s.sod.o}/${s.sod.d}`));
-  kp.appendChild(kpi('Fortschritt 9S', computeProgressSari(s)+'%'));
-  const dDry = deltaFromToday(s.milestones.dryRun?.target); const dPP = deltaFromToday(s.milestones.pp?.target);
-  kp.appendChild(kpi('Dry Run', (s.milestones.dryRun?.target||'—'), dDry==null?'—': (dDry<0? `overdue ${Math.abs(dDry)}d`: `in ${dDry}d`)));
-  kp.appendChild(kpi('PP', (s.milestones.pp?.target||'—'), dPP==null?'—': (dPP<0? `overdue ${Math.abs(dPP)}d`: `in ${dPP}d`)));
-  wrap.appendChild(kp);
-
+  wrap.append(lane);
+  const kp=el('div',{class:'row c4'});
+  kp.append(kpi('RPN', computeRPN(s.sod), `S/O/D ${s.sod.s}/${s.sod.o}/${s.sod.d}`));
+  kp.append(kpi('Fortschritt 9S', progress(s)+'%'));
+  const dDry=deltaFromToday(s.milestones.dryRun?.target); const dPP=deltaFromToday(s.milestones.pp?.target);
+  kp.append(kpi('Dry Run', (s.milestones.dryRun?.target||'—'), dDry==null?'—':(dDry<0?`overdue ${Math.abs(dDry)}d`:`in ${dDry}d`)));
+  kp.append(kpi('PP', (s.milestones.pp?.target||'—'), dPP==null?'—':(dPP<0?`overdue ${Math.abs(dPP)}d`:`in ${dPP}d`)));
+  wrap.append(kp);
   return wrap;
-
-  function rerender(){ renderApp(); }
+  function render(){ renderApp(); }
 }
 
-// initial render
+function renderApp(){
+  const app=document.getElementById('app'); app.innerHTML='';
+  const hash=location.hash.replace(/^#\/?/,''); const seg=hash.split('/');
+  if(!hash||seg[0]===''||seg[0]==='dashboard'){ app.append(renderDashboard()); return; }
+  if(seg[0]==='sari'&&seg[1]){ const s=DB.find(x=>x.id===seg[1]); app.append(s?renderDetail(s):el('div',{class:'card'},'Unbekanntes SARI.')); return; }
+  app.append(renderDashboard());
+}
+window.addEventListener('hashchange',renderApp);
 renderApp();
 </script>
 </body>
