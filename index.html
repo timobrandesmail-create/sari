@@ -1,3 +1,886 @@
+Weiter zum Inhalt
+Chatverlauf
+
+Du:
+Projektskizze & Konzept: SARI Governance Tool
+
+Dokumentenversion: 1.0
+Datum: 16.10.2025
+Autor: Gemini, Berater für Prozess-Standardisierung
+
+1. Management Summary
+
+Dieses Dokument beschreibt das Konzept für ein digitales SARI Governance Tool. Ziel des Tools ist es, den 9S-Untersuchungsprozess für Safety-Related Items (SARI) nicht nur zu verwalten, sondern aktiv zu steuern und qualitativ zu verbessern.
+
+Problemstellung: Heutige 9S-Prozesse leiden oft unter qualitativen Mängeln: unvollständige Analysen, Vermischung von Ursachenebenen (Occurrence/Non-Detection), fehlende System-Ursachen und eine inkonsistente Dokumentation. Dies führt zu ineffektiven Maßnahmen, erhöhtem Risiko von Wiederholfehlern und erschwert das Management-Reporting.
+
+Lösung: Das SARI Governance Tool agiert als digitaler Prozess-Assistent ("Wizard"). Es führt den Anwender (Safety Item Manager, Lieferant) interaktiv durch die 9S-Schritte. Die entscheidende Innovation ist, dass das Tool die qualitativen Anforderungen des 8D/9S Maturity Assessment Grids (FM2201022) direkt in seine Struktur und Deliverables integriert. Anstatt nur ein Tracking-Tool zu sein, wird es zu einem aktiven Quality Gate.
+
+Management-Nutzen:
+
+Qualitätssprung: Stellt sicher, dass jede 9S-Analyse automatisch die "Benchmark"-Anforderungen des Maturity Grids erfüllt.
+
+Prozess-Standardisierung: Erzwingt eine konsistente, methodisch saubere Vorgehensweise bei allen Untersuchungen.
+
+Echtzeit-Transparenz: Bietet über ein KPI-Dashboard sofortigen Einblick in Status, Risiken und Fortschritt jeder SARI.
+
+Effizienzsteigerung: Reduziert den administrativen Aufwand durch geführte Workflows, Templates und automatisierte Vorschläge.
+
+2. Projekt-Vision & Leitprinzipien
+
+Das Tool folgt vier zentralen Leitprinzipien:
+
+Vom Tracker zum Assistenten: Das Tool fragt nicht nur "Ist es erledigt?", sondern leitet an "So wird es richtig gemacht". Es integriert Anleitungen, Anforderungen und Best Practices direkt in den Workflow.
+
+Qualität durch Design: Die Architektur des Tools basiert auf den Kriterien des Maturity Grids. Indem der User dem Tool folgt, ist ein qualitativ hochwertiges Ergebnis keine Option, sondern der Standard.
+
+Datengetriebene Intelligenz: Das Tool nutzt die eingegebenen Daten, um den Anwender zu unterstützen (z.B. Vorschlag von M1750-Kriterien basierend auf der Problembeschreibung).
+
+Visuelles Management: Komplexe Zusammenhänge (Supply Chain, Ishikawa, 5-Why) werden visualisiert, um die Analyse zu erleichtern und die Ergebnisse für Management-Reviews verständlich aufzubereiten.
+
+3. Wissensbasis & Referenzdokumente
+
+Das Konzept des Tools ist fest in der bestehenden Airbus-Prozesslandschaft verankert. Die folgenden Dokumente bilden die normative und methodische Grundlage:
+
+P70_8D_9S Maturity Assessment Grid (FM2201022): Das Kerndokument. Definiert die Qualitätsanforderungen für jedes Deliverable und dient als "Blaupause" für die Tool-Architektur.
+
+M1012.1 (Method for Problem Solving): Definiert die offizielle Abfolge und die grundlegenden Ziele der 9S-Schritte, die das Tool strukturell abbildet.
+
+A2757 (Manage Product Safety in Production): Beschreibt den übergeordneten SARI-Prozess, die Rollen (SIM, PP) und die Kritikalität der Untersuchung. Das Tool dient der direkten Umsetzung dieses Prozesses.
+
+M2500 (SIM Handbuch): Definiert die Rolle des Hauptanwenders (Safety Item Manager). Das Tool ist als dessen primäres Arbeitsmittel konzipiert.
+
+M1750 (Safety Criteria): Liefert die Kriterien für die Klassifizierung von Sicherheitsproblemen, die das Tool durch intelligente Vorschläge unterstützt.
+
+4. Funktionales Konzept: Die Module (S0 - S8)
+
+Jeder S-Schritt wird im Tool als ein eigenes, erweiterbares Modul abgebildet.
+
+S0: Containment Cockpit
+
+Ziel: Sofortige Eindämmung des Problems und Schutz des Kunden.
+
+Kern-Deliverables:
+
+Nachweis (Kundeninformation): Datumsfeld.
+
+Containment-Aktionsplan: Dateiupload.
+
+Nachweis (Line Stop): Checkbox.
+
+Nachweis (Bestandsprüfung): Dateiupload/Textfeld.
+
+Tool-Funktion: Dringlichkeits-Dashboard, das die Einhaltung der 1-Tages-Frist für die Kundeninformation anzeigt.
+
+S1: Team Charter
+
+Ziel: Etablierung eines kompetenten, funktionsübergreifenden Teams mit Management-Mandat.
+
+Kern-Deliverables:
+
+Team Charter (MFT-Liste): Strukturierte Eingabefelder für Leader, Sponsor, Problem Owner, Operations etc.
+
+Meeting-Protokoll (Kick-off): Dateiupload.
+
+Tool-Funktion: Erzwingt die Besetzung der im Maturity Grid geforderten Schlüsselrollen.
+
+S2: Evidence Hub
+
+Ziel: Eine unmissverständliche, faktenbasierte Problembeschreibung und Kontextualisierung.
+
+Kern-Deliverables:
+
+Supply Chain Breakdown: Visuelles Template zur Darstellung der betroffenen Wertschöpfungskette.
+
+Issue Description: Mehrzeiliges Textfeld für die präzise Beschreibung.
+
+M1750 Kriterien-Vorschlag: Automatisierte Analyse der Issue Description mit Vorschlag des passenden GEN-Kriteriums.
+
+Foto-/Videobeweis: Dateiupload mit Bildvorschau.
+
+5W2H-Analyse: Strukturiertes Template.
+
+IS / IS NOT-Analyse: Strukturiertes Template (für komplexe Fälle).
+
+Tool-Funktion: "KI"-gestützte Assistenz zur Klassifizierung und ein zentraler Ort für alle Fakten und Beweise.
+
+S3: Validate Containment
+
+Ziel: Der Beweis, dass die Sofortmaßnahmen zu 100% wirksam sind.
+
+Kern-Deliverables:
+
+Validierungsbericht der Eindämmung: Dateiupload (z.B. Protokoll eines Testlaufs mit fehlerhaften Teilen).
+
+Traceability-Bericht: Dateiupload (z.B. TOAC).
+
+Tool-Funktion: Fokussiert auf den Nachweis der Effektivität, nicht nur der Implementierung.
+
+S4: Root Cause Analysis Workspace
+
+Ziel: Systematische und getrennte Identifikation aller Ursachenebenen (Occurrence, Non-Detection, Systemic).
+
+Kern-Deliverables:
+
+Ishikawa-Diagramm: Interaktives Template zur Sammlung potenzieller Ursachen.
+
+RC 1: Occurrence: Eingabefeld für die finale Ursache (abgeleitet aus 5-Why).
+
+RC 2: Non-Detection: Eingabefeld für die finale Ursache.
+
+RC 3: Systemic: Eingabefeld für die finale Ursache.
+
+Nachweis der Grundursachen: Dateiuploads (z.B. Testprotokolle).
+
+Tool-Funktion: Erzwingt die 3-spurige Analyse und verhindert das Vermischen von Ursachenebenen.
+
+S5: Define Corrective Actions
+
+Ziel: Definition wirksamer Maßnahmen, die jede in S4 identifizierte Ursache adressieren.
+
+Kern-Deliverables:
+
+PCA-Aktionsplan: Strukturiertes Template, das die Maßnahmen den Ursachen aus S4 (RC1, RC2, RC3) direkt zuordnet.
+
+Definition der Erfolgsmetrik: Textfeld pro Maßnahme.
+
+Tool-Funktion: Stellt die logische Verknüpfung zwischen Ursache und Maßnahme sicher.
+
+S6: Implement & Check Effectiveness
+
+Ziel: Implementierung der Maßnahmen und statistischer Nachweis der Wirksamkeit.
+
+Kern-Deliverables:
+
+Implementierungsnachweis: Dateiuploads pro Maßnahme.
+
+Effektivitäts-Validierungsbericht: Dateiupload (z.B. SPC-Chart, Audit-Bericht).
+
+Tool-Funktion: Schließt den Regelkreis (PDCA).
+
+S7: Standardize & Prevent
+
+Ziel: Verankerung der Lösung im Gesamtsystem, um Wiederholfehler zu verhindern.
+
+Kern-Deliverables:
+
+"Look Across"-Bericht: Dateiupload.
+
+Aktualisierte Prozessdokumente: Dateiuploads (z.B. neue SOP).
+
+Aktualisierte FMEA: Dateiupload.
+
+Tool-Funktion: Stellt den Transfer von korrektiven zu präventiven Maßnahmen sicher.
+
+S8: Close & Recognize
+
+Ziel: Formaler Abschluss und Würdigung der Teamleistung.
+
+Kern-Deliverables:
+
+9S-Abschluss-Checkliste: Interaktive Checkliste im Tool.
+
+Abschlusskommunikation (Kunde): Dateiupload.
+
+Tool-Funktion: Gewährleistet einen sauberen, auditiersicheren Abschluss.
+
+5. Technisches Konzept & Prototyping
+
+Der erste Prototyp wird als Single-Page-Webanwendung mit reinen Frontend-Technologien (HTML, CSS, JavaScript) realisiert. Dies ermöglicht:
+
+Schnelle Iteration: Änderungen am Konzept können sofort visualisiert werden.
+
+Einfaches Deployment: Die index.html-Datei kann direkt auf GitHub Pages gehostet werden.
+
+Keine Backend-Abhängigkeit: Der Fokus liegt rein auf der Demonstration des User-Interfaces und der Prozesslogik.
+
+Der auf dem Canvas erstellte Code bildet die Grundlage für diesen Prototyp und implementiert bereits viele der hier beschriebenen "sophisticated" Features in einer demonstrierbaren Form.
+
+Anhang 1: Maturity Grid in CSV format
+
+Step,Not mature at all,Improve proposal, Early beginning,Improve proposal, Basics in place,Improve proposal,Requirements in place,Improve proposal,Benchmark,Improve proposal
+"S0
+Start Immediate containment actions",- No immediate containment or containment implemented in a non appropriate lead time (more than 1 week).,"- No immediate containment or containment implemented in a non appropriate lead time (more than 1 week).
+'- Customer not informed","- Not efficient - partial containment actions in place (not all bullets of ""Basics in place"" are realised)
+- Immediate containment implemented 4 or more days after the first event.
+- Customer informed 8 or more days  compared to the date of the first event.","- Partial immediate containment actions in place (not all bullets of ""Basics in place"" are realised)
+- Customer informed more than 5 days compared to the date of the first event.","In addition to Early beginning,
+- Supplier Work in Progress (WIP) / Internal stocks / stock on transport checked within 3 Days.
+- Non conforming parts quarantined within 3 Days.
+- If applicable, Supplier WIP / Internal stocks reworked or repaired to support Customer orders within 7 days.
+- Production restarted with effective containment within 7 days
+- Customer informed within 7 days of the 1st event.","In addition to Early beginning,
+- Supplier WIP / Internal stocks checked within 3 Days. And parts are quarantined
+- Supplier WIP / Internal stocks reworked or repaired with dedicated containment in place  within 7 days.
+- Customer informed within 5 days
+- Line stopped within 3 days (72 hours).","In addition to Basics,
+- Supplier Line stopped immediately.
+- If applicable, Supplier WIP / Internal stocks reworked or repaired, production restarted with effective containment within 3 working days.
+- Customer informed within 3 days to limit the impact in service and in Final Assembly Linse (FALs) / Plants.
+- Within 3 working days, a formal containment action plan is presented (with action responsible, due date, status).","In addition to Basics,
+- Supplier Line stopped immediately.
+- Supplier WIP / Internal stocks reworked or repaired, with dedicated containment in place  within 3 days (72 hours). (stopp delivery of non conforming parts immediately, at least before next shipment)
+- Customer informed within 1 day.
+- Action plan presented (with action responsible, due date, status).
+","In addition to Requirements:
+- production restarted with effective containment within 24h.
+- Issue description with a clear reminder of the customer view (different from the problem description in D2/S2).","In addition to Requirements:
+- production restarted with efficient containment in place within 24h.
+"
+Maturity,,,,,,,,,,
+"D1/S1
+Build the Team",- No evidence of Multi Functional Team (MFT) involved.,- No evidence of Multi Functional Team (MFT) involved.,"- MFT nominated (function of each participant is listed)
+- 8D/9S leader clearly identified.
+- Operations not part of the MFT.
+- Sponsor is not nominated.","- MFT nominated but no meetings have taken place within 5 days (function of each participant is listed; MFT is created with the intention to speed up investigations, root causes identification, actions implementation and closure)
+- 8D/9S leader clearly identified.
+- Operations not part of the MFT.
+- Sponsor is not nominated.","In addition to Early beginning,
+- Operations are part of the MFT.
+- For D&B contracts, Chief Engineering is part of the MFT.
+- MFT regularly updated (team members leave and join the MFT as required).
+- The MFT know the tools to achieve the expected results and have the correct competencies.","In addition to Early beginning,
+- MFT nominated with formal meetings in place within 5 days.
+- 8D / 9S leader (facilitator) has proven 9S knowledge/experiance (skills matrix available)
+- Problem owner (manager of the area where the problem originated) identified 
+- Operations part of the MFT (but not e.g the operator...).
+- For D&B contracts, Engineering is part of the MFT.
+- MFT members updated as required 
+","In addition to Basics,
+- 8D/9S Sponsored and effectively supported by top management.
+- MFT nominated within 7 days.
+- MFT includes operations representative, those performing the job (e.g. operator, inspector...).
+- Supplier integrated in the team or supplier 8D/9S provided when sub-tier issue.
+- When the Customer requests to be part of the MFT they are fully informed and invited.","In addition to Basics,
+- 8D/9S Sponsored available
+- MFT includes operations representative, those performing the job (e.g. operators themselves).
+- Supplier integrated in the team or supplier 8D/9S provided when sub-tier issue.
+- When the Customer requests to be part of the MFT they are fully informed and invited.","In addition to Requirements,
+- 8D/9S lead by the department responsible of the Non-conformance (NC).
+- MFT is aware of the expected outcome (8D/9S quality, further KPIs) and fully understand the process.
+- Lessons learnt from previous investigations are an input for new investigations.","
+In addition to Requirements,
+
+- MFT nominated with formal meetings in place within 3 days.
+- Selection criteria matrix in accordance to the EN9136 (5.2 Step1G)"
+Maturity,,,,,,,,,,
+"D2/S2
+Define Problem",- Problem description summarizing mainly the effect to the customer (problem description does not integrate any investigation effort in order to limit the scope of the problem).,"- Problem Description (What is wrong with what) summarizing mainly the effect to the customers problem Statement. 
+- No internal analysis has been carried out.","- Problem description is based on facts and figures and not perception, however a lack of synthesis exists (e.g. 1 object, 1 defect).
+- Problem description starts to be applied in the supplier context, however customer view is missing.","- Problem description is based on perception, however a lack of synthesis exists (1 object, 1 defect).
+- Defects description starts to be applied in the supplier context, however a mix with customer perception still exists.
+- Tier X has not been considered as part of the problem","In addition to Early beginning,
+- It is the Problem described and not the solution or effect/symptoms.
+- Problem description specifies clearly only 1 object 1 defect compared to the standard.
+- If appropriate, at this point the 8D/9S has been separated into several investigations for different defects.
+-  Effort has been applied to limit the scope and to specify as much as possible the problem with facts and figures and integrating results of the first investigations.","In addition to Early beginning,
+- It is the Problem described and not the solution or effect/symptoms.
+- Problem description specifies clearly only 1 object 1 defect compared to the standard 
+-  Effort has been applied to limit the scope and to specify as much as possible the problem with facts and figures but some perception still exists
+- Tier X has been involved but not contributed to the Problem Statement.","In addition to Basics, 
+- 5W & 2H or equivalent is used (based on facts, not on perception).
+- No confusion between the effect/symptoms and Root Cause (RC), including contributing causes.
+- A Problem Statement summarising the 5W/2H.
+- Clear reminder of the customer view.","In addition to Basics, 
+- 5W & 2H or equivalent is used (based on facts & figures, not on perception including Tier X Problem statements).
+- A Problem Statement summarising the 5W/2H.
+- Problem Statement changed in case of further information throughout the investigation.
+- No confusion between the effect/symptoms and Root Cause (RC), including contributing causes
+- Customer impact has been considered
+- The solution should not be defined in the description. 
+","In addition to Requirements,
+- IS / IS NOT to describe the problem when complex.
+- process workflow (included current quality gates) from step of the creation of the defect until delivery.","In addition to Requirements,
+- IS / IS NOT proposed to describe the problem when complex .
+- process workflow available (included current quality gates) from step of the creation of the defect until delivery.
+- Lessons learnt from previous investigations  used as an input for new investigations"
+Maturity,,,,,,,,,,
+"D3/S3
+Complete, optimise and validate containment actions","- Containment actions not efficient and/or not implemented.
+- Containment coverage incomplete.","- Containment actions not efficient and/or not implemented.
+- Containment (e.g. stock not checked, replacement delivery not done, additional check missing...)incomplete","- Containment actions implemented but effectiveness not demonstrated.
+- First traceability actions issued but with some doubts on the completion or with a scope too wide.
+- Curative actions, e.g. replacement of bad parts delivered to customer implemented within 2 weeks.","- Containment actions implemented but effectiveness and validation not demonstrated (eg. customer recieved bad parts after containment implementation).
+- First traceability actions issued but with some doubts on the completion or with a scope too wide.
+","In addition to Early beginning,
+- Containment actions implemented, effectiveness demonstrated but not formally communicated with facts and figures.
+- Partial control of WIP/All stocks (Supplier & Airbus): partial TOAC (Table of Aircraft) where applicable.
+","In addition to Early beginning,
+- Containment actions implemented and the triggering point for the NC identified. 
+- Effectiveness demonstrated but not formally communicated with facts and figures.
+- The 8D/9S ensures partial control of WIP/All stocks (Supplier & Airbus): partial TOAC (Table of Aircraft) where applicable.
+- Curative actions, e.g. replacement of bad/defective parts delivered to customer implemented within 2 weeks.
+- Supplier ability to produce into conformity (if not -> concession)
+- When possible define the trigger point (A trigger point is the specific event or condition that initiates a problem or a chain of events. It's the ""spark"" that sets off the issue.)
+- look across if other parts in production could be affected
+- ","In addition to Basics,
+- Optimised containment is in place which suitably address the Problem Statement within 7 days.
+- Effectiveness of containment actions demonstrated or reviewed if needed (e.g. defective product is returned through the cycle to ensure that it is captured in 100% of cases) not waiting for customer feedback.
+- Containment actions are sustained until the validation of the effectiveness of the permanent corrective actions.
+- Full traceability secured (e.g. Quality escape issued).
+Full analysis of WIP/All stocks (incl. In-Transit) / In-Service (Supplier & Airbus & Customer): full TOAC (Table of Aircraft). For standard parts and Elementary parts ( detail parts) a TOAC cannot be created in advance, thus the horizon of the deliveries has to be considered.
+- Curative actions, e.g. replacement of bad parts delivered to the customer, implemented within an appropriate and agreed timing to protect customer rate.","In addition to Basics,
+- Optimised containment is in place within 7 days.
+- Effectiveness of containment actions demonstrated and validated or reviewed if needed; 
+- Containment actions are in place until the implementation of permanent corrective actions. (Break down the supply chain and identify actions by each supplier)
+- Full traceability secured the complete supply chain  (e.g. Quality escape issued).
+-The 8D/9S ensures full analysis of WIP/All stocks (incl. In-Transit) / In-Service (Supplier & Airbus & Customer): full TOAC (Table of Aircraft). For standard parts and Elementary parts ( detail parts) a TOAC cannot be created in advance, thus the horizon of the deliveries shall be considered.
+- Curative actions, e.g. replacement of bad parts delivered to the customer, implemented within an appropriate and agreed timing to protect customer rate.
+- To be considered: Identifed root causes may help new containment actions are required until corrective actions are identified and verified","In addition to Requirements,
+- Effectiveness of containment actions continuously reviewed.
+- Containment actions implemented to similar products being potentially impacted by the same NC.
+- Curative actions implemented within an appropriate timing to protect customer rate and customer industrial effectiveness consistent with the tact (e.g. 2 days for SA).","In addition to Requirements,
+
+
+- Containment actions implemented to similar products being potentially impacted by the same NC.
+- Lessons learnt from previous investigations  used as an input for new investigations"
+Maturity,,,,,,,,,,
+"D4/S4
+Identify Root Causes",- No evidence of link between the root cause proposed and the effect.,- No evidence of link between the root cause proposed and the effect,"- No clear separation between occurrence RCA and non-detection RCA.
+- Direct cause or main potential causes identified and 5 Whys started (5 whys being the only mandatory tool).
+- 5Why ends with a Human factor with no supporting evidence ","- No clear separation between occurrence RCA and non-detection RCA 
+
+- Direct cause or main potential causes identified and 5 Whys started (5 whys being the only mandatory tool).
+
+- 5Why ends with a Human factor with no supporting evidence","In addition to Early beginning,
+- Problem statement generated in D2/S2 is carried forward to D4/S4 and potential RC identified are consistent with these facts.
+- Clear separation between RCA for the occurrence and for the non-detection (non-detection performed at all level of the Supply Chain).
+- When occurrence RCA not possible (supplier change, catalogue parts...), clear focus on non detection RCA.
+","In addition to Early beginning,
+- Clear separation between RCA (Root Cause Analysis)  for the occurrence and for the non-detection (non-detection performed at all level of the Supply Chain).
+- 5 Whys cascaded to the lowest level  with a clear and understandable root cause for occurence and non-detection.
+- When occurrence RCA is not possible (supplier change, catalogue parts...), clear focus is on non detection RCA.
+- Defined problem (S2) is mentioned in the RCA method (Ishikawa).
+-  Summary of 5Y 2H is considered for root cause identification.
+- Check of the PFMEA is mandatory for potential RC's ","In addition to Basics,
+- Brainstorm using Ishikawa, Default tree or equivalent to formalize all potential causes (when appropriate)
+- 5 Whys cascaded until lowest level of root cause (including 5 Why tree where appropriate).
+- Right root cause(s) identification demonstrated (defect reproduced, effect of the cause check, other potential causes killed...).
+- Technical (Product) root causes identified as well as process root causes (whatever is the process, it can be outside manufacturing).
+- Systemic / management root cause(s) identified.","In addition to Basics,
+- Brainstorm using Ishikawa, Default tree or equivalent to formalize all potential causes (when appropriate e.g.SARI Level 1)
+
+- Ishikawa is a mandatory tool
+
+- 5 Whys cascaded until lowest level of root cause (including 5 Why tree where appropriate).
+
+- Right root cause(s) identification demonstrated (defect reproduced, effect of the cause check, other potential causes killed...).
+
+- Technical (Product) root causes identified as well as process root causes (whatever is the process, it can be outside manufacturing).
+
+- Systemic / management root cause(s) identified.","In addition to Requirements,
+- Appropriate RCA method used (5 Whys if sufficient, ""Ishikawa"", ""comparison good parts / bad parts / standard"", Kepner Tregoe (KT), ""Shainin"", Design of Experiments (DoE),...).","In addition to Requirements,
+- Systemic root cause(s) identified.
+- appropriate RCA method used (5 Whys if sufficient, ""Ishikawa"", ""comparison good parts / bad parts / standard"", ""KT"", ""Shainin"", ""DoE"",...)."
+Maturity,,,,,,,,,,
+"D5/S5
+Define and select permanent corrective actions","- No evidence of link between proposed action and the root cause(s).
+- Proposed actions not robust enough over the time.","- No evidence of link between proposed action and the root cause
+- Proposed actions not robust enough over the time.","- Corrective action(s) has a direct link to each identified potential root cause.
+- Ownership and/or schedule not clearly visible.","- Corrective action(s) has a direct link to the root cause.
+- Ownership and/or schedule not clearly visible.","In addition to Early beginning,
+- Clear ownership of actions defined and schedule communicated and endorsed.
+- When detectability is low, clear focus on prevention (e.g. Corrosion, reliability issues...).","In addition to Early beginning,
+
+- Clear ownership of actions defined and schedule communicated and endorsed.
+- When detectability is low, clear focus on prevention (e.g. Corrosion, reliability issues...)","In addition to Basics,
+- Corrective actions are identified within 30 days from day 1.
+- Corrective actions have a direct link to the root cause(s) for occurrence, non detection and Systemic.
+- Non detection corrective actions are taken at all levels of the Supply Chain.","In addition to Basics,
+- Corrective actions are identified within 30 days from day 1.
+- Corrective actions has a direct link to the root cause as well in terms of occurrence, non detection and sytemic.
+- Non detection corrective actions are taken at all levels of the Supply Chain.
+- Corrective actions shall be taken in to account for the complete supply chain.","In addition to Requirements,
+- Effectiveness criteria defined when choosing the solution.
+- Additional risks due to the defined action are evaluated (as for every change).
+- Above criteria help to select the most appropriate action taking into account cost and lead time.","In addition to Requirements,
+- Effectiveness criteria defined when choosing the solution.
+- Additional risks due to the defined action are evaluated (as for every change).
+- Above criteria help to select the most appropriate action taking into account cost and lead time."
+Maturity,,,,,,,,,,
+"D6/S6
+Implement permanent corrective actions and check effectiveness",- No follow-up of the implemented actions.,- No follow-up of the implemented actions.,"- Less than 100% of actions scheduled are implemented.
+- Effectiveness of the action plan not clearly demonstrated","- Less than 100% of actions scheduled are implemented.
+- Effectiveness of the action plan not clearly demonstrated","In addition to Early beginning,
+- 100% of actions scheduled are implemented.
+- Effectiveness of the action plan demonstrated with no further non-conformities.","In addition to Early beginning,
+- 100% of actions scheduled are implemented.
+- Effectiveness of the action plan is demonstrated (e.g. defective product is returned through the Supplier internal cycle to ensure that it is captured in 100% of cases) not waiting for customer feedback.","In addition to Basics,
+- The effectiveness of the actions are confirmed within 60 days from day 1. 
+- 100% of actions scheduled implemented in line with the original schedule or delays effectively managed.
+- Effectiveness demonstrated and consistently monitored over a period (in house) using a statistical approach (justification needed if a statistics are not used).","In addition to Basics,
+- The effectiveness of the actions are confirmed within 60 days from day 1. 
+- 100% of actions scheduled implemented in line with the original schedule or delays effectively managed
+- Effectiveness demonstrated and consistently monitored over a period (in house) of time.
+- Containment properly closed only after full demonstration of the effectiveness of the solution.","In addition to Requirements,
+- Effectiveness of each action demonstrated.
+- Containment properly closed only after full demonstration of the effectiveness of the solution.
+- Additional risks identified in step 5 due to the defined action are monitored.",Benchmark Criteria to be defined
+Maturity,,,,,,,,,,
+"D7/S7
+Standardize and transfer the knowledge across business","- Actions taken are more corrective actions rather than preventive.
+- Lessons learnt process not used.","- Actions taken are more corrective actions rather than preventive.
+- Lessons learnt process not used.",- Corrective actions effectively deployed on all process/product potentially impacted by the root cause.,- Corrective actions effectively deployed on all process/ product potentially impacted by the root cause.,"In addition to Early beginning,
+- Processes/Procedures that lead to failure are updated (e.g. Standard Operating Procedure (SOP), Transfer of Work (ToW) standard procedure, control plan updated, Critical Items (CTI) / Key Characteristics (KC) list for product / process updated....)
+- action plan to deploy all preventive actions effectively managed.","In addition to Early beginning,
+- Processes/Procedures that lead to failure are updated (e.g. SOP, ToW standard procedure, control plan updated, CTI / KC list for product / process updated....)
+- action plan to deploy all preventive actions effectively managed.","In addition to Basics,
+- appropriate risk analysis updated Design/Process Failure Effect Analysis (D/PFMEA) for industrial products.
+- product/process design guidelines and/or check-lists updated (Lessons Learnt).
+- Look across to similar Business Units with similar processes / products / production lines / factories / services / suppliers is conducted.","In addition to Basics,
+- appropriate risk analysis updated (D/PFMEA for industrial products).
+- product/process design guidelines and/or check-lists updated (Lessons Learnt).
+- Look across to similar Business Units with similar products is conducted.
+- Has our first tier initiated  preventive measures to significantly increase the resilience of its supply chain and to sustainably minimize the likelihood of a recurring error? ","In addition to Requirements,
+- Systemic lessons learnt implemented (or clearly integrated in another company progress plan).
+- All stakeholders potentially impacted by the issue have been informed (such as suppliers, competitors, customers, authorities) integrated into the feedback loop to support the global risk reduction).","In addition to Requirements,
+- Systemic lessons learnt implemented (or clearly integrated in another company progress plan).
+- All stakeholders potentially impacted by the issue have been informed (such as suppliers, competitors, customers, FAA, EASA)  integrated into the feedback loop to support the global risk reduction)."
+Maturity,,,,,,,,,,
+"D8/S8
+Recognize and close the Team",- No official closure.,- Noclosure. -> no recognition to the team.,- All documentation linked to the 8D/9S recorded and the project closed.,"- All documentation linked to the 8D/9S recorded and st the end of the project communicated.
+- recognition to the team given.","In addition to Early beginning,
+- Official closure communicated and team acknowledged by the sponsor or leader (e.g. validated by a signature) and to the customer.
+- All stakeholders informed.","In addition to Early beginning,
+- Official closure communicated by the sponsor to the team (e.g. validated by a signature) and to the customer.","In addition to Basics, 
+- A checklist is filled in order to secure a proper closure (e.g. Is the effectiveness of each action demonstrated? Actions adequately documented and retained. Are lessons learnt taken into account? Does the 5 whys demonstrate the actual root cause?....).","In addition to Basics, 
+- A checklist is filled in order to secure a proper closure (e.g. Is the effectiveness of each action effectively demonstrated?, Are lessons learnt taken into account? Does the 5 whys demonstrate the actual root cause?....).","In addition to Requirements,
+- Effectiveness of the 8D/9S process itself evaluated and improvement actions proposed (e.g.: how to improve lead time to get a fix, to close the 8D/9S...)","In addition to Requirements,
+- Effectiveness of the 8D/9S  methodology itself evaluated and improvement actions proposed (e.g.: how to improve lead time to get a fix, to close the 8D/9S...)"
+
+Anhang A: Allumfassende Zusammenfassung M1012.1 - Method for Problem Solving
+
+Dieses Dokument definiert den standardisierten Problemlösungsprozess bei Airbus und ist die methodische Grundlage für das Governance Tool.
+
+Kapitel 2: Schlüsselprinzipien
+
+2.1 Duales System:
+
+Light Solving (LS): Ein einfacher 5-Schritte-Ansatz für Probleme mit mittlerem Impact und geringer Komplexität, die innerhalb eines Monats vom lokalen Team gelöst werden können.
+
+Structured 9S Approach: Ein rigoroser 9-Schritte-Ansatz für komplexe Probleme mit hohem bis sehr hohem Impact, die ein MFT, spezielle Skills und signifikante Ressourcen erfordern.
+
+Tool-Fokus: Das SARI Governance Tool konzentriert sich ausschließlich auf den Structured 9S Approach.
+
+2.2 Bedingungen für den Start einer Problemlösung:
+
+Die Entscheidung zur Problemlösung basiert auf einer Matrix aus Impact (Auswirkung) und Komplexity (Lösungskomplexität).
+
+Impact-Faktoren (RPN-Logik):
+
+Severity (S): Technischer/Sicherheits-, Kunden- oder industrieller Einfluss.
+
+Occurrence (O): Häufigkeit des Problems (Wiederholfehler).
+
+Detection (D): Fähigkeit, das Problem vor der Eskalation zu entdecken.
+
+Komplexitäts-Faktoren: Aufwand zur Lösungsfindung und -implementierung (Lösung bekannt vs. Analyse durch MFT erforderlich).
+
+2.3 Schlüsselerfolgsfaktoren:
+
+Problemdefinition: Muss faktenbasiert sein (Prinzip von San Gen Shugi: realer Ort, reales Produkt, reale Daten). Das Tool 5W2H ist empfohlen.
+
+Priorisierung: Stellt sicher, dass Ressourcen auf die wichtigsten Probleme konzentriert werden.
+
+Ownership (Verantwortung): Jedem Problem müssen klare Rollen zugewiesen sein:
+
+Accountable Leader: Rechenschaftspflichtig, stellt Ressourcen sicher.
+
+Responsible Solver: Verantwortlich für die Durchführung der Analyse.
+
+Governance: Ein strukturierter Rahmen für die Steuerung der Problemlösung auf "Ecosystem"-Ebene, unterteilt in:
+
+Inflow: Entscheidung über Start/Nicht-Start einer 9S-Analyse.
+
+Execution: Verfolgung des Fortschritts (z.B. in "MyTop3"-Routinen).
+
+Monitoring: Überwachung der Systemleistung (KPIs).
+
+Skills & Verfügbarkeit: Der Problemlöser muss qualifiziert und verfügbar sein.
+
+Kapitel 4: Der strukturierte 9S-Ansatz
+
+Klassifizierung von 9S-Untersuchungen:
+
+'Top Irritants' (RPN ≥ 300): Müssen den vollen 9S-Prozess durchlaufen, inklusive S7 (Systemische Ursachenanalyse und Standardisierung).
+
+'Irritants' (150 ≤ RPN < 300): Können nach S6 (Wirksamkeitsprüfung) abgeschlossen werden.
+
+4.1 Rollen und Verantwortlichkeiten:
+
+Ecosystem Leader: Gesamtverantwortlich, weist Sponsor und Solving Leader zu.
+
+Sponsor: Rechenschaftspflichtig für eine spezifische 9S-Analyse; stellt sicher, dass der Solving Leader alle Mittel hat. Validiert das Problem-Statement und prüft die Wirksamkeit.
+
+Solving Leader: Verantwortlich für die Leitung des MFT und die methodisch korrekte Durchführung der 9S-Analyse von S0 bis S8.
+
+MFT (Multi-Functional Team): Stellt Fachexpertise bereit und übernimmt Verantwortung für zugewiesene Aktionen.
+
+4.3 Detaillierte Beschreibung der 9S-Schritte:
+
+S0 - Start Immediate containment actions:
+
+Ziel: Auswirkungen sofort mindern, Eskalation stoppen.
+
+Aktivitäten: Vordefinierten Reaktionsplan ausführen, Korrekturen einleiten (z.B. NC erstellen), Wirksamkeit prüfen.
+
+S1 - Build the team:
+
+Ziel: Sicherstellen, dass alle Kompetenzen und Stakeholder an Bord sind.
+
+Aktivitäten: Sponsor und qualifizierten Solving Leader nominieren, MFT mit allen Schlüsselkompetenzen aufbauen.
+
+S2 - Define the problem:
+
+Ziel: Präzise und faktenbasierte Problemdefinition.
+
+Aktivitäten: Auswirkungen auf das Geschäft beschreiben, 5W2H und Is/Could be but is not anwenden, RPN berechnen, "As-Is"-Performance messen und "To-Be"-Ziel definieren.
+
+S3 - Complete and optimize containment actions:
+
+Ziel: Wirksamkeit der Eindämmung sicherstellen und validieren.
+
+Aktivitäten: Eindämmungsmaßnahmen optimieren, Kunden global schützen, "Escapes" identifizieren, Wirksamkeit verifizieren. Maßnahmen bleiben bis zur Wirksamkeit von S6 aktiv.
+
+S4 - Identify Root causes:
+
+Ziel: Identifikation aller Grundursachenebenen.
+
+Aktivitäten: Go Look See/Gemba Walk durchführen. Klare Trennung zwischen Technical/Occurrence RC und Non-Detection RC. Für "Top Irritants" ist die Systemic RC verpflichtend. Die Ursachen müssen durch Evidenz bestätigt werden (z.B. Reproduktion des Fehlers).
+
+S5 - Define and select permanent corrective actions (PCA):
+
+Ziel: Maßnahmen definieren, die die Grundursachen dauerhaft beseitigen.
+
+Aktivitäten: Korrekturmaßnahmen definieren, die RCs eliminieren. Kosten, Risiken und Implementierungsaufwand bewerten. Einen detaillierten Aktionsplan (Was, Wer, Wann) erstellen.
+
+S6 - Implement permanent corrective actions and check effectiveness:
+
+Ziel: Maßnahmen umsetzen und deren Wirksamkeit nachweisen.
+
+Aktivitäten: Implementierung sicherstellen, Wirksamkeitsprüfung definieren und durchführen (statistische Methoden empfohlen). Eindämmung erst nach erfolgreicher Prüfung beenden.
+
+S7 - Standardize and transfer the knowledge across business (für Top Irritants):
+
+Ziel: Wiederauftreten des Problems in anderen Bereichen verhindern.
+
+Aktivitäten: Potenziell betroffene Bereiche identifizieren (cross-plant, cross-program), präventive Maßnahmen definieren und deren Implementierung sicherstellen.
+
+S8 - Recognize and close the team:
+
+Ziel: Formaler Abschluss und Würdigung.
+
+Aktivitäten: Qualitäts-Selbstbewertung der 9S-Analyse durchführen, mit allen Stakeholdern kommunizieren, Erfolg anerkennen und die 9S-Untersuchung schließen.
+
+Anhang B: Allumfassende Zusammenfassung A2757 - Manage Product Safety in Production
+
+Dieses Dokument beschreibt den übergeordneten Prozess zur Behandlung von sicherheitsrelevanten Vorfällen, die ihren Ursprung in der Produktion haben (POA - Production Organisation Approval). Es liefert den regulatorischen und organisatorischen Rahmen für das SARI Governance Tool.
+
+Kapitel 2: Prozessprinzipien und Definitionen
+
+2.1 & 2.2 SARI Definition & Auslöser:
+
+Ein SARI (Safety-Related Item) wird für jede Nicht-Konformität (NC) ausgelöst, die:
+
+Einen Ursprung in der Produktion hat (inkl. Lieferanten).
+
+Nicht durch den normalen, geplanten Inspektionsprozess entdeckt wurde (ein "Escape" ist).
+
+Die Kriterien der M1750 ("Airbus Safety Criteria") erfüllt.
+
+Ein SARI wird ebenfalls zwingend ausgelöst, wenn ein Occurrence (OCC) aus Engineering oder Flugtest mit Produktionsbezug gemeldet wird.
+
+2.4 SARI-Level & Methodik:
+
+Die Kritikalität eines SARI wird in drei Stufen eingeteilt:
+
+Level 1 (L1): Das Problem hat Auswirkungen auf die "In-Service"-Flotte UND wird von der Design Organisation (DOA) als "mögliche unsichere Bedingung" (possible Unsafe condition) klassifiziert.
+
+Level 2 (L2): Das Problem hat Auswirkungen auf die "In-Service"-Flotte, wird aber nicht als "unsafe condition" eingestuft.
+
+Level 3 (L3): Das Problem wurde innerhalb der Produktion eingedämmt und hat keine Auswirkungen auf die "In-Service"-Flotte.
+
+Untersuchungsmethodik: Die 9S-Methodologie ist für die Untersuchung zwingend vorgeschrieben.
+
+Umfang der Analyse: Die Analyse muss immer drei Ursachenebenen identifizieren:
+
+Technische Ursache (Occurrence)
+
+Nicht-Entdeckungs-Ursache (Non-Detection)
+
+Systemische Ursache
+
+Abweichende Regeln für SARI-Level:
+
+L1 SARI: Die Untersuchung muss bis zur vollständigen Ausrottung aller Ursachenebenen (inkl. systemischer Ursache) durchgeführt werden. Der Abschluss erfordert die Genehmigung durch die EASA.
+
+L2 & L3 SARI: Die Untersuchung kann an jedem beliebigen Punkt gestoppt werden, basierend auf einer Risikoanalyse, die gemeinsam vom Chief Engineer und dem Quality Program Representative durchgeführt wird. Diese Entscheidung und deren Begründung muss im System (CAPRI) dokumentiert werden.
+
+2.10 Governance-Gremien:
+
+Safety Manufacturing Panel (SMP):
+
+Rolle: Ein Triage- und Analyse-Gremium.
+
+Aufgaben: Prüft Events und entscheidet, ob sie zu einem SARI hochgestuft werden müssen; kann die SARI-Level-3-Einstufung vornehmen; identifiziert Trends und Cluster.
+
+Production Panel (PP):
+
+Rolle: Das zentrale Governance-Gremium für die Steuerung der SARI-Untersuchungen.
+
+Aufgaben: Weist den Safety Item Manager (SIM) zu; bewertet und validiert die Ergebnisse der Ursachenanalyse (RC) und der Korrekturmaßnahmen (PCA). Für L1 SARIs ist das zentrale PP unter Vorsitz des Prozess-Owners zuständig. Für L2/L3 SARIs wird dies durch die Programm-Qualität organisiert.
+
+Tooling:
+
+Das offizielle Tool zur Dokumentation des Prozesses ist CAPRI (Corrective Action for Production Related Items). Unser Governance Tool dient als konzeptioneller "Wizard", der die Erstellung qualitativ hochwertiger CAPRI-Einträge sicherstellt.
+
+Zusammenfassende Relevanz für das Governance Tool:
+
+Level-spezifische Workflows: Das Tool muss in der Lage sein, unterschiedliche Prozesspfade oder "Exit-Points" für L1 vs. L2/L3 SARIs abzubilden, insbesondere die Möglichkeit des "early closure" nach einer dokumentierten Risikoanalyse.
+
+Rollen-Integration: Das Tool muss die Interaktion mit den Governance-Gremien (SMP, PP) abbilden, z.B. durch Status-Updates wie "Wartet auf PP-Validierung".
+
+Methodische Tiefe: Das Tool muss die von A2757 geforderte 3-spurige Ursachenanalyse (Occurrence, Non-Detection, Systemic) als zwingendes Strukturelement in S4 implementieren.
+
+Regulatorischer Kontext: Die Notwendigkeit der EASA-Genehmigung für L1-Abschlüsse unterstreicht die Wichtigkeit einer lückenlosen und qualitativ hochwertigen Dokumentation, die das Tool sicherstellen muss.
+
+Anhang C: Allumfassende Zusammenfassung M2500 - Safety Item Manager (SIM) Handbuch
+
+Dieses Dokument ist das zentrale Handbuch für den Hauptanwender des SARI Governance Tools, den Safety Item Manager (SIM). Es beschreibt seine Rolle, Verantwortlichkeiten und die operativen Abläufe bei der Bearbeitung eines SARI.
+
+Kapitel 4: Definitionen
+
+4.3 Was ist ein SIM?
+
+Der SIM ist die verantwortliche Person für die Steuerung und ordnungsgemäße Durchführung der Untersuchung eines SARI. Er ist kein Einzelkämpfer, sondern ein Manager und Facilitator eines MFT.
+
+Hauptaufgaben des SIM:
+
+Ein MFT aufbauen und leiten.
+
+Sicherstellen, dass Sofortmaßnahmen (Containment) gestartet und validiert werden.
+
+Die 9S-Methodik zur Ursachenanalyse anwenden oder deren Anwendung durch PPS-Owner koordinieren.
+
+Die Untersuchungsergebnisse zusammenfassen (Synthese), insbesondere wenn mehrere parallele Analysen (z.B. bei Lieferanten) laufen.
+
+Den SARI-Fall vor dem Production Panel (PP) zur Validierung präsentieren.
+
+Die gesamte Untersuchung konsistent und nachvollziehbar im CAPRI-Tool dokumentieren.
+
+4.4 Wer sind die Schlüsselakteure?
+
+PPS Owner: Führt die technische Detailuntersuchung (z.B. 5-Why) für einen spezifischen Aspekt des Problems durch. Der SIM interagiert mit einem oder mehreren PPS Ownern.
+
+Production Panel Member (PPM): Der Coach und Hauptansprechpartner für den SIM. Der PPM unterstützt den SIM, stellt die Qualität des SARI-Dossiers sicher und meldet den Fall zur Präsentation im Production Panel an.
+
+Program Quality Representative: Ist rechenschaftspflichtig für die SARI-Prozessleistung seines Programms und leitet die Governance für L2/L3 SARIs.
+
+Process Owner Team (MC.PS.07): Leitet das zentrale PP für L1 SARIs und ist die Schnittstelle zur EASA.
+
+4.5 Was sind die wichtigsten Gremien (Panels)?
+
+Production Panel (PP): Das zentrale Validierungsgremium für L1 SARIs. Hier präsentiert der SIM seine Ergebnisse (RC & PCA) zur Genehmigung.
+
+Program Production Panel (PPP): Das Äquivalent zum PP, aber für L2 & L3 SARIs, geleitet von der Programm-Qualität.
+
+Safety Manufacturing Panel (SMP): Das "Triage"-Gremium, das Events prüft und entscheidet, ob ein SARI erstellt werden muss. Der SIM interagiert mit dem SMP, um Fragen zur Kritikalität und zum "In-Service"-Impact zu klären, was den SARI-Level bestimmt.
+
+Production Organization Approval Review Meeting (POARM): Das Meeting mit der EASA, in dem L1 SARIs vom Process Owner Team formal zum Abschluss vorgestellt werden.
+
+Kapitel 5 & 6: Der SARI-Prozess aus SIM-Sicht
+
+5.5 SARI-Allokation:
+
+Ein SARI muss der Organisation zugewiesen werden, die am wahrscheinlichsten für die Ursache der Entstehung (Occurrence) verantwortlich ist.
+
+Der Prozess der Zuweisung (Takeover Request) und Eskalation bei Uneinigkeit (über ICB zum PP) ist formalisiert. Das Governance Tool sollte diesen Status abbilden können.
+
+6.1 PPS/9S-Prinzipien:
+
+Jeder SARI muss mit mindestens einer formalen Untersuchungsmethodik (PPS/9S) verknüpft sein. Diese Verbindung muss im CAPRI-Tool (und somit im Governance Tool) hergestellt werden.
+
+Für Lieferanten-Themen kann eine "Supplier Synthesis" in ePPS genutzt werden, um externe 8D-Berichte in das Airbus-System zu integrieren.
+
+6.5 Mindestanforderungen für die Panel-Präsentation:
+
+Bevor ein SIM seinen Fall im PP/PPP präsentieren darf, muss eine "ID Card" (FM2201652) erstellt werden. Dies ist eine standardisierte 1-Seiten-Zusammenfassung der gesamten Untersuchung.
+
+Eine SARI Maturity Check-List (FM2201494) muss sicherstellen, dass alle administrativen und inhaltlichen Voraussetzungen für die Präsentation erfüllt sind.
+
+Kapitel 7: Abschluss
+
+Der Abschluss eines SARI (CAE - Corrective Action Effectiveness) erfolgt je nach Level durch unterschiedliche Parteien:
+
+L2/L3: Abschluss durch SIM nach Validierung durch Programm-Qualität oder den delegierten PPM.
+
+L1: Abschluss durch das Process Owner Team nach erfolgreicher Präsentation im POARM (EASA-Zustimmung).
+
+Zusammenfassende Relevanz für das Governance Tool:
+
+SIM als zentraler User: Das Tool muss als das primäre "Cockpit" für den SIM konzipiert sein. Es muss ihn durch seine Aufgaben führen, von der Koordination des MFT bis zur Vorbereitung der PP-Präsentation.
+
+Integration von Checklisten & Templates: Die vom Handbuch geforderten Dokumente wie die "ID Card" und die "Maturity Checklist" müssen als Funktionalität im Tool integriert sein (z.B. "Generate ID Card" Button).
+
+Governance-Workflow abbilden: Das Tool muss die Status und Übergänge zwischen dem SIM und den Gremien (PPM, SMP, PP) klar visualisieren (z.B. Status "Ready for PPM Review", "Scheduled for PP").
+
+Verknüpfung erzwingen: Das Tool muss die vom Prozess geforderte Verknüpfung eines SARI mit einem oder mehreren PPS/9S-Untersuchungsobjekten erzwingen.
+
+Anhang D: Allumfassende Zusammenfassung M1750 - Airbus Safety Criteria and Guidance
+
+Dieses Dokument ist der Schlüssel zur Klassifizierung von sicherheitsrelevanten Vorfällen und damit der entscheidende Input für die Entscheidung, ob ein Vorfall als SARI behandelt werden muss. Es stellt die Logik für die "intelligente Assistenz" im S2-Modul des Governance Tools bereit.
+
+Kapitel 2: Methode zur Erkennung von sicherheitsrelevanten Ereignissen
+
+Grundprinzip: Ein Ereignis wird als sicherheitsrelevant eingestuft, wenn es einen negativen Einfluss auf den sicheren Betrieb des Luftfahrzeugs haben könnte.
+
+Anwendungsprozess:
+
+Informationssammlung: Sammeln aller verfügbaren Daten zum Vorfall (Was ist passiert? Wo? Welche Konsequenzen?).
+
+Vergleich mit der Kriterien-Tabelle: Der Vorfall wird mit der "Safety Criteria Table" (Anhang A des Dokuments) abgeglichen.
+
+"Engineering Judgement": Wenn kein Kriterium exakt passt, aber Zweifel bestehen, soll das "Engineering Judgement" (die Einschätzung des Ingenieurs) angewendet werden, um den Vorfall dennoch als sicherheitsrelevant zu melden. Im Zweifel für die Sicherheit.
+
+Kapitel 3 & Anhang A: Die "Safety Criteria Table"
+
+Dies ist das Herzstück des Dokuments. Die Tabelle ist strukturiert, um eine systematische Bewertung zu ermöglichen.
+
+Struktur der Tabelle:
+
+ATA Chapter: Ordnet die Kriterien den Systemen des Flugzeugs zu (z.B. ATA 27 - Flight Controls, ATA 52 - Doors).
+
+Safety Criteria: Beschreibt das spezifische Ereignis (z.B. "Uncommanded flight control surface movement").
+
+Guidelines: Gibt zusätzliche Erklärungen und Beispiele, um die Interpretation des Kriteriums zu erleichtern.
+
+"In-House event with no in-service aircraft potentially impacted": Eine entscheidende Spalte. Ist hier ein "X" gesetzt, muss auch dann ein SARI erstellt werden, wenn der Vorfall nur intern (z.B. in der Produktion) entdeckt wurde und kein Flugzeug im Liniendienst betroffen ist.
+
+Applicability: Definiert, in welchen Bereichen (z.B. Engineering, Manufacturing, In-Service) das Kriterium typischerweise Anwendung findet.
+
+Generische Kriterien (GEN):
+
+Für Vorfälle, die keinem spezifischen ATA-Kapitel zugeordnet werden können, gibt es eine Liste von GEN-Kriterien (z.B. GEN-001 für FOD, GEN-004 für Incorrect Assembly).
+
+Diese GEN-Kriterien sind für die Klassifizierung von Produktionsfehlern von zentraler Bedeutung.
+
+Zusammenfassende Relevanz für das Governance Tool:
+
+Logik für die "KI-Assistenz": Die GEN-Kriterien und die dazugehörigen Beschreibungen sind die Wissensbasis für die Funktion im S2-Modul, die basierend auf der "Issue Description" automatisch ein passendes Kriterium vorschlägt. Das Tool kann auf Schlüsselwörter wie "FOD", "torque", "corrosion" etc. trainiert werden, um die richtigen Vorschläge zu machen (z.B. GEN-001, GEN-004, GEN-010).
+
+Kontext für den SIM: Das Tool kann dem SIM über die Info-Buttons nicht nur das vorgeschlagene Kriterium nennen, sondern auch die dazugehörige "Guideline" aus der M1750-Tabelle anzeigen, um die Entscheidung transparent und nachvollziehbar zu machen.
+
+Unterstützung des "Engineering Judgement": Indem das Tool Vorschläge macht, aber die finale Entscheidung beim User belässt, unterstützt es den im Dokument geforderten Prozess des "Engineering Judgement" und automatisiert gleichzeitig den Standardfall.
+
+Anhang E: Allumfassende Zusammenfassung "Program Quality governance for SARI process" (X00WD2300810)
+
+Dieses Dokument konkretisiert den allgemeinen SARI-Prozess aus A2757 für die spezifische Anwendung in den Single Aisle (SA) und Widebody (WB) Programmen. Es definiert die operativen Governance-Strukturen, Meetings und Verantwortlichkeiten.
+
+Kapitel 3 & 4: Rollen und Verantwortlichkeiten
+
+Program Quality (QLA/QSXS): Ist der Prozesseigner auf Programmebene. Leitet die Governance-Meetings (ICB, PPP) und ist rechenschaftspflichtig für die SARI-Performance des Programms.
+
+PPM (Production Panel Member): Agiert als operativer Arm der Programm-Qualität in den jeweiligen Funktionsbereichen (z.B. Werk, FAL, Procurement). Seine Hauptaufgabe ist das Coaching des SIM und die Sicherstellung der Dossier-Qualität vor der Präsentation in den Panels.
+
+Program SARI Focal Point: Ein zentraler Ansprechpartner innerhalb der Programm-Qualität, der den Prozess operativ steuert, Meetings vorbereitet und als Experte für SIMs und PPMs dient.
+
+Kapitel 5 & 6: Governance-Routinen und Prozessschritte
+
+Inflow Control Board (ICB):
+
+Zweck: Das wöchentliche Triage-Meeting zur Steuerung des SARI-Starts.
+
+Hauptaufgaben:
+
+SARI-Erstellung sicherstellen: Stellt sicher, dass für relevante Vorfälle (z.B. RFI, Events) zeitnah ein SARI erstellt wird.
+
+SARI-Allokation: Entscheidet, welche Organisation den Lead für die Untersuchung übernimmt (Zuweisung des SIM). Dient als erste Eskalationsstufe bei Uneinigkeit.
+
+SIM-Nominierung: Fordert die betreffende Organisation auf, einen SIM zu benennen.
+
+Program Production Panel (PPP):
+
+Zweck: Das formale Validierungs-Gremium für L2- und L3-SARIs auf Programmebene.
+
+Hauptaufgaben:
+
+Review und Validierung: Formale Genehmigung der vom SIM präsentierten Ursachenanalyse (RC) und Korrekturmaßnahmen (PCA).
+
+Qualitätssicherung: Stellt sicher, dass die Untersuchungstiefe und die Qualität des Dossiers den Anforderungen entsprechen.
+
+Entscheidung über "Early Closure": Validiert die Risikoanalyse und die Entscheidung, eine L2/L3-Untersuchung vorzeitig (vor S8) zu beenden.
+
+Der Prozess des "Early Closure" für L2/L3 SARIs:
+
+Das Dokument konkretisiert die in A2757 erlaubte Praxis: Die Entscheidung, eine Untersuchung zu stoppen, basiert auf einer Risikoanalyse.
+
+Diese Analyse muss die Wahrscheinlichkeit eines Wiederauftretens und die Schwere der potenziellen Auswirkungen bewerten.
+
+Die Begründung für den Stopp muss vom SIM im SARI-Dossier (CAPRI) klar dokumentiert und im PPP validiert werden.
+
+Anforderungen an die Dossier-Qualität:
+
+Ein SARI wird nur dann für das PPP zugelassen, wenn der zuständige PPM die Reife und Vollständigkeit des Dossiers bestätigt hat. Die ID Card ist das zentrale Dokument für die Präsentation.
+
+Kapitel 7: Performance Management
+
+SARI Process Management Team (PMT):
+
+Zweck: Das monatliche Meeting zur Überwachung der Prozessleistung.
+
+Aktivitäten: Analyse von KPIs (z.B. "Time to Get a Fix", "Overdue SARIs"), Identifikation von Blockern und Einleitung von Verbesserungsmaßnahmen (PDCA-Zyklus).
+
+PPMs sind dafür verantwortlich, den Status ihrer SARIs zu berichten und Abweichungen zu erklären.
+
+Zusammenfassende Relevanz für das Governance Tool:
+
+Abbildung der Meeting-Struktur: Das Tool muss die verschiedenen Governance-Meetings als Status oder Meilensteine im Prozessfluss abbilden können (z.B. "Wartet auf ICB-Allokation", "Bereit für PPP-Review", "PPP-validiert").
+
+Rollenbasierte Ansichten/Rechte: In einer späteren Ausbaustufe könnte das Tool unterschiedliche Ansichten für einen SIM (operativer Fokus), einen PPM (Coaching- & Review-Fokus) und einen Program Quality Manager (Performance-Fokus) bieten.
+
+Integration des Risikoanalyse-Prozesses: Für L2/L3 SARIs muss das Tool ein spezifisches Deliverable "Risikoanalyse für Early Closure" vorsehen, das den formalen Stopp der Untersuchung dokumentiert.
+
+Unterstützung des PPM: Das Tool kann dem PPM eine "Review-Checkliste" bereitstellen, um die Dossier-Qualität vor der Weiterleitung an das PPP systematisch zu prüfen.l
+ChatGPT:
+
+Nachgedacht für 28s
+mega—starkes Konzept! 🔧✈️
+Ich hab dir dazu direkt einen lauffähigen Single-File-Prototyp (SPA) gebaut, der deine S0–S8-Module, Wizard-Logik, Maturity-Guidance, KPI-Dashboard, RPN-Steuerung, „Early Closure“ (L2/L3), ID-Card-Generator u.v.m. demonstriert — ohne Backend, perfekt für GitHub Pages.
+Einfach als index.html speichern und öffnen.
+
+Was ist drin (Kurzüberblick)
+KPI-Cockpit: Live-KPIs (Overdue, SARI-Level, RPN, Status-Heatmap).
+
+Wizard/Quality Gates: Jeder Schritt zeigt Maturity-Hinweise (Requirements/Benchmark). „Weiter“ ist nur möglich, wenn Pflichtfelder erfüllt sind.
+
+S0 Dringlichkeits-Check: 1-Tages-Frist „Kundeninfo“ wird automatisch überwacht.
+
+S1 Team Charter: Rollen nach Grid erzwungen (Leader, Sponsor, Problem Owner, Ops etc.).
+
+S2 Evidence Hub: 5W2H + IS/IS NOT + M1750-KI-Vorschläge (GEN-Kriterien via Keyword-Heuristik).
+
+S3 Containment-Validierung: Fokus auf Wirksamkeits-Nachweis, Traceability (TOAC-Platzhalter).
+
+S4 RCA Workspace: 3-spurig (Occurrence / Non-Detection / Systemic) mit Ishikawa-Board und 5-Whys-Baum.
+
+S5 PCA-Plan: Maßnahmen → direkte Verknüpfung zu RC1/RC2/RC3 inkl. Erfolgsmetriken.
+
+S6 Implement & Effectiveness: Implementierungsnachweise, SPC/Audit-Upload (lokal gespeichert, falls < 500 KB).
+
+S7 Standardize & Prevent: Look-Across, SOP/FMEA-Updates, Lieferkette.
+
+S8 Close & Recognize: interaktive Abschluss-Checkliste + Abschlusskommunikation.
+
+Governance-Flows: ICB/PPP/PP-Status, Early-Closure-Risikoanalyse (L2/L3), L1 zwingt S7.
+
+ID-Card (FM2201652) & Maturity-Checklist: 1-Klick-Generierung & Druck/Export (Print-CSS).
+
+Maturity Grid: Demo-Subset integriert; vollständiges Grid kann per CSV importiert werden.
+
+Persistenz & Export: Auto-Save in localStorage, JSON-Export/Import, „Neues SARI“ anlegen.
+
+Hinweis: Der Prototyp nutzt bewusst keine externen Libraries. Alles Vanilla HTML/CSS/JS, barrierearm, mit Tastatur-Shortcuts und druckfreundlichen Ansichten.
+
 <!doctype html>
 <html lang="de">
 <head>
@@ -1064,3 +1947,377 @@ document.addEventListener('keydown', e=>{
 </script>
 </body>
 </html>
+So nutzt du den Prototyp
+Datei als index.html speichern, doppelklicken (oder auf GitHub Pages hosten).
+
+Oben im Dashboard RPN/Level setzen, Stammdaten pflegen.
+
+Durch S0→S8 arbeiten; der Wizard lässt dich nur weiter, wenn Pflichtfelder erfüllt sind (Quality Gates).
+
+CSV fürs Maturity-Grid kannst du (vereinfacht) importieren; für „echte“ Nutzung würde man das Grid in JSON normalisieren.
+
+ID-Card generieren → „Drucken / PDF“.
+
+Mit Export JSON Snapshots sichern; mit Import wieder laden.
+
+Wenn du willst, passe ich dir als nächsten Schritt:
+
+die CSV-Zuordnung zum Maturity-Grid 1:1 an (inkl. Spalten „Requirements“ vs. „Benchmark“),
+
+eine druckoptimierte ID-Card nach FM2201652,
+
+und ein echtes Ishikawa-Canvas (Drag&Drop) plus 5-Why-Tree mit Parent/Child-Relationen.
+
+Du:
+ich kann die einzelnen seiten nicht anklicken. Mein hauptziel ist es ja die idee zu pitchen und dafür die eingaben in 9s schritte zeigen
+ChatGPT:
+
+Nachgedacht für 10s
+Alles klar — ich hab dir rechts eine klickbare React-SPA auf den Canvas gelegt:
+
+Links in der Sidebar kannst du jetzt S0–S8 anwählen; jede Seite hat passende Eingabefelder.
+
+Mit 🎤 Pitch Mode schaltest du in eine read-only Slide-Ansicht, perfekt fürs Vorführen (Weiter/Zurück oben rechts).
+
+Oben im Dashboard setzt du Titel, Level und S/O/D → RPN/KPIs werden live berechnet.
+
+Export/Import JSON ist dabei, um einen Fall schnell zu laden/teilen.
+
+Wenn du stattdessen eine einfache HTML-Datei ohne React bevorzugst (für GitHub Pages ohne Build), sag Bescheid — ich generiere dir sofort eine Single-File-Variante mit denselben klickbaren Reitern.
+
+Du:
+Sari Governance Pitch Spa (clickable 9s)
+Lass uns gemeinsam erstmal brainstormen wie alles grob aufgebaut seien soll und dann welche inhalte.
+
+Ich will einen Tab mit Dashboard, hier soll man verschiedene beispiel saris sehen wie einzelne kacheln und diese sind nach dringlichkeit sortiert. Man sieht bei jeder sari kachel eine kurzübersicht
+
+dann soll man auf eine Sari draufklicken können und gelangt dann in die Sari, hier will ich dass dann oben Sari name 'SE-25.XXXX' und darunter die timeline mit den einzelnen S stept und jeweiligen Due dates. Zwischen S5 und S6 soll 'Dry Run' sein welches hervorgehoben ist, sowie nach S6 'PP' auch hervorgehoben. Bis dry run 60 tage, bis PP 100 tage. 
+
+darunter soll man dann den kern sehen. Von links nach rechts alle S steps. Pro S steps die eingaben und deliverables.
+ChatGPT:
+
+Nachgedacht für 6s
+Sari Governance – Ia & Wireframe Plan
+
+SARI Governance – Informationsarchitektur & Wireframe-Plan
+Ziel: Pitch-fähige UI-Story. Erst Struktur (IA) und Inhalte festzurren, dann im bestehenden SPA-Code umsetzen.
+
+A. Top-Level-Navigation
+Dashboard
+
+Raster aus SARI-Kacheln (Cards), sortiert nach Dringlichkeit.
+
+Globale Filter/Chips: Level (L1/L2/L3), Programm/ATA, Status (Open, In Dry Run, In PP, Closed), Owner/SIM.
+
+KPI-Row oben: Open SARIs, Overdue Milestones, Ø Time-to-Dry-Run, Ø Time-to-PP, Top Irritants.
+
+SARI-Detail (bei Klick auf eine Kachel)
+
+Header mit SARI-ID (z. B. SE-25.XXXX), Level-Badge, RPN, Status-Chips.
+
+Timeline: S0—S8 mit Due Dates. Milestones: Dry Run (zwischen S5↔S6, highlighted), PP (nach S6, highlighted). Zieltermine: Dry Run ≤ 60 Tage, PP ≤ 100 Tage ab Day‑1.
+
+Kernbereich: Horizontal-Layout – alle S‑Steps nebeneinander (scrollbar), pro Step Inputs & Deliverables in kompakten Cards.
+
+B. Dashboard – Kacheln (Card-Spezifikation)
+SARI Card (kompakt, 1:1,5):
+
+Titel: SE-25.XXXX + Kurzbeschreibung (1 Objekt, 1 Defekt)
+
+Badges: Level (L1/L2/L3), Top Irritant (wenn RPN≥300), Early Closure Draft (falls markiert)
+
+Mini-KPIs: RPN (S/O/D), Fortschritt %, Overdue-Aktionen
+
+Milestone-Status:
+
+Dry Run Chip mit D‑Tage (z. B. DRY RUN in 14d / +5d overdue)
+
+PP Chip mit D‑Tage (z. B. PP in 42d / +10d overdue)
+
+Step-Progress Bar: S0→S8 Indikator (gefüllte Etappen)
+
+Klick auf Card → SARI-Detail
+
+Sortierlogik (Dringlichkeit)
+
+L1 vor L2 vor L3
+
+Dry Run: Tage bis Ziel (60) – Overdue ganz oben
+
+PP: Tage bis Ziel (100) – Overdue danach
+
+RPN absteigend
+
+Overdue PCA‑Actions Count absteigend
+
+Filter/Chips (Mehrfachauswahl): Level, Status (z. B. S≤3, In RCA, In PCA, In Dry Run, In PP, Closed), Owner (SIM), ATA, Plant/Programm.
+
+Leere Zustände: „Keine SARIs im Filter. Filter zurücksetzen“ + CTA „Neues SARI“ (nur Demo).
+
+C. SARI-Detail – Header & Timeline
+Header
+
+H1: SE-25.XXXX
+
+Chips: Level, RPN, Status (Open/In Dry Run/In PP/Closed), ggf. Early Closure (L2/L3)
+
+Meta: ATA, First Event (Day‑1), SIM, Sponsor
+
+Timeline (horizontale Rail)
+
+Steps: S0, S1, S2, S3, S4, S5, Dry Run, S6, PP, S7, S8
+
+Jeder Step/Milestone: Dot + Label + Due Date (wenn gesetzt) + State (done/active/pending/overdue)
+
+Regeln:
+
+Dry Run Ziel: Day‑1 + 60 Tage
+
+PP Ziel: Day‑1 + 100 Tage
+
+Overdue, wenn Heute > Ziel und nicht done.
+
+Klick auf Step-Label scrollt zum entsprechenden S‑Panel im Kernbereich.
+
+D. SARI-Detail – Kernbereich (horizontale S‑Panels)
+Layout: Horizontal scrollbare Lane (sticky Titel), Reihenfolge S0→S8.
+Jedes Panel (Card):
+
+Titel: Sx – Name
+
+Inputs (Kurzfassung)
+
+Deliverables (Anhänge/Links/Status)
+
+Ready/Not‑Ready Badge (gemäß Minimalkriterien)
+
+Inhalte je Step (kompakt, für Pitch)
+
+S0 Containment: Kundeninfo (Datum), Containment‑Plan (Ref), Line Stop (Ja/Nein), Bestandsprüfung (Ref)
+
+S1 Team Charter: Leader, Sponsor, Problem Owner, Ops, MFT‑Liste
+
+S2 Evidence Hub: Issue Description, Supply Chain, 5W2H, IS/IS NOT, (optional) M1750 Vorschlag (GEN)
+
+S3 Validate Containment: Validierungsbericht (Ref), Traceability/TOAC (Ref), Trigger‑Point, Curative Actions
+
+S4 RCA: RC1 (Occurrence), RC2 (Non‑Detection), RC3 (Systemic), 5‑Whys Summary
+
+S5 Corrective Actions: Maßnahmen‑Tabelle (Owner, Due, RC‑Link, Metrik, Status)
+
+Dry Run (Milestone): Checkliste „Pitch‑fähig“ (ID‑Card vorhanden, Slides, Demo‑Artefakte)
+
+S6 Implement & Effectiveness: Wirksamkeitsnachweis je Maßnahme (Implementiert/Wirksam)
+
+PP (Milestone): Ready for PP Check (PPM Review grün, Risiken dokumentiert)
+
+S7 Standardize & Prevent: Look‑Across, SOP/Prozess aktualisiert, FMEA aktualisiert
+
+S8 Close & Recognize: Abschluss‑Checkliste, Kundenkommunikation, Lessons Learned
+
+E. Datenmodell (Pitch‑Level)
+Sari {
+  id: string;            // "SE-25.XXXX"
+  level: "L1"|"L2"|"L3";
+  rpn: number;           // derived from s,o,d
+  day1: string;          // ISO-Date
+  sim: string; sponsor: string; ata?: string;
+  sod: { s:number; o:number; d:number };
+  steps: {
+    s0: {...}; s1: {...}; s2: {...}; s3: {...}; s4: {...}; s5: { pca: Pca[] }; s6: { eff: EffRow[] };
+    s7: {...}; s8: {...};
+  };
+  milestones: {
+    dryRun: { target: ISODate; done?: ISODate };
+    pp: { target: ISODate; done?: ISODate };
+  };
+  status: "Open"|"In Dry Run"|"In PP"|"Closed";
+}
+Berechnungen
+
+dryRun.target = day1 + 60d
+
+pp.target = day1 + 100d
+
+Urgency score (für Dashboard): w1*level + w2*dryRunDelta + w3*ppDelta + w4*rpn + w5*overduePCA (Gewichte feinjustierbar)
+
+F. Interaktionen
+Dashboard → Detail: Klick auf Card öffnet SARI‑Detail (Route #/sari/:id).
+
+Timeline Click: Scroll zu Panel, Highlight.
+
+Sticky Controls: „Pitch Mode“ (read‑only) / „Edit Mode“ (Eingaben möglich).
+
+Chips: Filter als URL‑Params (für Demo optional).
+
+G. Wireframe-Skizze (ASCII)
+[DASHBOARD]
+┌─────────────────────────────────────────────────────────────────────┐
+│ KPIs: Open | Overdue | ØDryRun | ØPP | Top Irritants               │
+├─────────────────────────────────────────────────────────────────────┤
+│ [Filter Chips....................................................] │
+├─────────────┬─────────────┬─────────────┬─────────────┬─────────────┤
+│ SARI Card   │ SARI Card   │ SARI Card   │ SARI Card   │ SARI Card   │
+│ SE-25.0123  │ ...         │ ...         │ ...         │ ...         │
+│ RPN 420     │             │             │             │             │
+│ DRY RUN +5d │ PP in 30d   │ ...         │ ...         │ ...         │
+└─────────────┴─────────────┴─────────────┴─────────────┴─────────────┘
+
+[SARI DETAIL]
+SE-25.0123   [Level L1] [RPN 420] [Open] [SIM: …]
+S0 • S1 • S2 • S3 • S4 • S5 • **Dry Run** • S6 • **PP** • S7 • S8
+(Each with Due: dd.mm.yyyy, overdue state)
+
+[ S0 ] [ S1 ] [ S2 ] [ S3 ] [ S4 ] [ S5 ] [ Dry Run ] [ S6 ] [ PP ] [ S7 ] [ S8 ]
+(Scroll horizontally; each box shows Inputs + Deliverables)
+H. Nächste Schritte (Umsetzung im bestehenden SPA)
+Routing ergänzen: #/sari/:id + State sarilist für Dashboard.
+
+Dashboard-Kacheln: Card-Komponente + Sortier-/Filterlogik (Urgency).
+
+Detail-Header & Timeline: Milestones zwischen/ nach Steps, Zieltermine 60/100d, Overdue‑Logik.
+
+Kern-Lane: Horizontale Panels S0–S8 + Dry Run + PP (Milestones als Panels mit Checklisten).
+
+Demo-Daten: 5–8 Beispiel‑SARIs (verschiedene Level, RPN, Stati), damit die Sortierung sichtbar wird.
+
+Pitch Mode: Read‑only Snapshot für alle Panels.
+
+Wenn du „Go“ gibst, implementiere ich die Punkte 1–4 direkt in der vorhandenen Canvas‑SPA (inkl. Beispiel‑SARIs & Sortierung).
+
+super — ich hab dir links auf dem Canvas eine klar strukturierte IA & Wireframe-Skizze angelegt. Kurz die Kernelemente aus dem Brainstorm:
+
+#1 Dashboard
+Kachel-Grid mit Beispiel-SARIs, nach Dringlichkeit sortiert (L1→L3, Dry-Run-Delta, PP-Delta, RPN, Overdues). Jede Kachel zeigt: ID SE-25.XXXX, Kurzbeschreibung, Level/Top-Irritant, RPN (S/O/D), Fortschritt, Dry-Run/PP-Chips mit verbleibenden Tagen/Overdue.
+
+#2 SARI-Detail
+Header mit SARI-ID, Level, RPN, Status. Darunter eine Timeline: S0 … S5 • Dry Run • S6 • PP • S7 • S8 mit Due-Dates.
+Milestones: Dry Run (60 Tage) zwischen S5/S6, PP (100 Tage) nach S6 – beide hervorgehoben.
+Darunter der Kernbereich: Horizontal scrollbare Lane mit allen S-Steps links→rechts, je Panel kompakte Inputs & Deliverables.
+
+#3 Regeln & Daten
+Zieltermine = Day-1 + 60/100 Tage; Overdue-Logik; Urgency-Sortierung; leichte Demo-Datenstruktur für Pitch.
+
+Wenn dir das so gefällt, bau ich es direkt in die bestehende React-SPA ein:
+
+Dashboard-Kacheln + Sortierung/Filter,
+
+Detail-Route #/sari/:id mit Header, Timeline (inkl. Dry Run/PP),
+
+Kern-Lane mit den S-Panels inkl. Checklisten.
+
+Sag einfach „Go“, oder nenn mir Änderungen (z. B. weitere Felder auf den Kacheln, andere Sortierreihenfolge, zusätzliches KPI auf dem Dashboard).
+
+Du:
+Sari Governance Pitch Spa (clickable 9s)
+go.
+ChatGPT:
+
+Nachgedacht für 8s
+Sari Governance Pitch Spa (clickable 9s)
+· typescript
+import React, { useMemo, useState, useEffect } from "react";
+
+/**
+ * SARI Governance – Pitch SPA (React, single-file)
+ * v2: Dashboard with urgency-sorted SARI tiles + SARI Detail with timeline (Dry Run @60d, PP @100d)
+ * - No backend; demo SARIs in-memory
+ * - Hash routing: #/ (dashboard), #/sari/:id (detail)
+ * - Pitch Mode toggle (read-only snapshot)
+ */
+
+// ---- Utilities ----
+const addDays = (iso, d) => {
+  if (!iso) return null;
+  const t = new Date(iso);
+  const x = new Date(t.getTime());
+  x.setDate(t.getDate() + d);
+  return x.toISOString().slice(0, 10);
+};
+const todayISO = () => new Date(Date.now()).toISOString().slice(0, 10);
+const daysBetween = (a, b) => {
+  if (!a || !b) return null;
+  const A = new Date(a), B = new Date(b);
+  return Math.round((B - A) / (24 * 3600 * 1000));
+};
+const deltaFromToday = (target) => (target ? daysBetween(todayISO(), target) : null);
+const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+
+// ---- Demo Data ----
+const mkSari = (id, level, day1, sod, meta = {}) => ({
+  id, level, day1, sod, meta,
+  steps: {
+    s0: { customerInfo: "", firstEvent: day1, lineStop: "Nein", stockProof: "" },
+    s1: { leader: "", sponsor: "", owner: "", ops: "", members: "" },
+    s2: { issue: "", supply: "", a5w2h: "", isNot: "" },
+    s3: { validation: "", trace: "", trigger: "Nein", curative: "Nein" },
+    s4: { rc1: "", rc2: "", rc3: "", whys: [] },
+    s5: { pca: [] },
+    s6: { eff: [] },
+    s7: { lookAcross: "", sop: "", fmea: "" },
+    s8: { checks: { eff: false, docs: false, lessons: false, why: false }, comment: "" },
+  },
+  milestones: { dryRun: { target: addDays(day1, 60) }, pp: { target: addDays(day1, 100) } },
+  status: "Open",
+});
+
+const demoSARIs = [
+  mkSari("SE-25.0123", "L1", "2025-09-01", { s: 8, o: 5, d: 9 }, { title: "GEN-004 Incorrect Assembly – hinge bracket" }),
+  mkSari("SE-25.0456", "L2", "2025-08-30", { s: 6, o: 6, d: 6 }, { title: "GEN-010 Torque issue – fasteners" }),
+  mkSari("SE-25.0789", "L3", "2025-10-01", { s: 4, o: 5, d: 7 }, { title: "GEN-001 FOD – wiring bay" }),
+  mkSari("SE-25.0999", "L2", "2025-07-20", { s: 7, o: 7, d: 7 }, { title: "GEN-012 Corrosion – panel" }),
+];
+// seed some content so tiles look alive
+ demoSARIs[0].steps.s2.issue = "1 object / 1 defect: hinge mis-assembly on LH door";
+ demoSARIs[0].steps.s5.pca = [
+   { txt: "Introduce Poka-Yoke", owner: "Ops", due: "2025-10-12", rc: "RC2", metric: "Cpk >=1.33", status: "In Arbeit" },
+   { txt: "Revise SOP 27-14", owner: "QE", due: "2025-10-20", rc: "RC3", metric: "Audit=0 NC", status: "Offen" },
+ ];
+ demoSARIs[1].steps.s4.rc1 = "Incorrect torque procedure";
+ demoSARIs[1].steps.s4.rc2 = "Missing in-process torque check";
+ demoSARIs[2].status = "In Dry Run";
+
+// ---- Routing ----
+function useRouter() {
+  const parse = () => {
+    const hash = window.location.hash.replace(/^#\/?/, "");
+    const seg = hash.split("/");
+    if (!hash || hash === "" || hash === "dashboard") return { page: "dashboard" };
+    if (seg[0] === "sari" && seg[1]) return { page: "sari", id: seg[1] };
+    return { page: "dashboard" };
+  };
+  const [route, setRoute] = useState(parse());
+  useEffect(() => {
+    const onHash = () => setRoute(parse());
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+  const go = (to) => (window.location.hash = to);
+Fertig! 🎯
+
+Dashboard: zeigt jetzt SARI-Kacheln, automatisch nach Dringlichkeit sortiert (Level → Dry-Run-Delta → PP-Delta → RPN → Overdues). Jede Kachel hat ID, Kurz-Text, Level/Top-Irritant-Badge, RPN & Fortschritt sowie Dry-Run/PP-Chips mit Resttagen/Overdue. Klick auf eine Kachel öffnet den Detail-View.
+
+SARI-Detail: oben Header mit SE-25.XXXX, Level, RPN, Status. Darunter eine Timeline:
+S0 • S1 • S2 • S3 • S4 • S5 • Dry Run • S6 • PP • S7 • S8
+– Dry Run (Ziel = Day-1 + 60 Tage) und PP (Day-1 + 100 Tage) sind hervorgehoben; Overdues werden farblich markiert.
+
+Kernbereich: darunter eine horizontale Lane mit allen S-Steps von links nach rechts, jeweils kompakte Inputs & Deliverables (read-only für den Pitch). Milestones Dry Run und PP haben eigene Panels mit Zieltermin.
+
+Demo-Daten: ein paar SARIs sind vorgeladen, damit Sortierung, KPIs und Timeline sofort sichtbar sind.
+
+Wenn du willst, kann ich als Nächstes:
+
+Edit-Modus im Detail hinzufügen (live anpassbare Eingaben je Step),
+
+Filter/Chips auf dem Dashboard (Level, Programm, Status),
+
+Export/Import für die gesamte SARI-Liste,
+
+zusätzliche KPIs (z. B. „Time-to-Fix“), oder die ID-Card-Generierung als PDF.
+
+
+
+
+
+Keine ausgewähltKeine ausgewählt
+ChatGPT kann Fehler machen. Überprüfe wichtige Informationen. Siehe Cookie-Voreinstellungen.
