@@ -1,2221 +1,3 @@
-Weiter zum Inhalt
-Chatverlauf
-
-Du:
-Projektskizze & Konzept: SARI Governance Tool
-
-Dokumentenversion: 1.0
-Datum: 16.10.2025
-Autor: Gemini, Berater für Prozess-Standardisierung
-
-1. Management Summary
-
-Dieses Dokument beschreibt das Konzept für ein digitales SARI Governance Tool. Ziel des Tools ist es, den 9S-Untersuchungsprozess für Safety-Related Items (SARI) nicht nur zu verwalten, sondern aktiv zu steuern und qualitativ zu verbessern.
-
-Problemstellung: Heutige 9S-Prozesse leiden oft unter qualitativen Mängeln: unvollständige Analysen, Vermischung von Ursachenebenen (Occurrence/Non-Detection), fehlende System-Ursachen und eine inkonsistente Dokumentation. Dies führt zu ineffektiven Maßnahmen, erhöhtem Risiko von Wiederholfehlern und erschwert das Management-Reporting.
-
-Lösung: Das SARI Governance Tool agiert als digitaler Prozess-Assistent ("Wizard"). Es führt den Anwender (Safety Item Manager, Lieferant) interaktiv durch die 9S-Schritte. Die entscheidende Innovation ist, dass das Tool die qualitativen Anforderungen des 8D/9S Maturity Assessment Grids (FM2201022) direkt in seine Struktur und Deliverables integriert. Anstatt nur ein Tracking-Tool zu sein, wird es zu einem aktiven Quality Gate.
-
-Management-Nutzen:
-
-Qualitätssprung: Stellt sicher, dass jede 9S-Analyse automatisch die "Benchmark"-Anforderungen des Maturity Grids erfüllt.
-
-Prozess-Standardisierung: Erzwingt eine konsistente, methodisch saubere Vorgehensweise bei allen Untersuchungen.
-
-Echtzeit-Transparenz: Bietet über ein KPI-Dashboard sofortigen Einblick in Status, Risiken und Fortschritt jeder SARI.
-
-Effizienzsteigerung: Reduziert den administrativen Aufwand durch geführte Workflows, Templates und automatisierte Vorschläge.
-
-2. Projekt-Vision & Leitprinzipien
-
-Das Tool folgt vier zentralen Leitprinzipien:
-
-Vom Tracker zum Assistenten: Das Tool fragt nicht nur "Ist es erledigt?", sondern leitet an "So wird es richtig gemacht". Es integriert Anleitungen, Anforderungen und Best Practices direkt in den Workflow.
-
-Qualität durch Design: Die Architektur des Tools basiert auf den Kriterien des Maturity Grids. Indem der User dem Tool folgt, ist ein qualitativ hochwertiges Ergebnis keine Option, sondern der Standard.
-
-Datengetriebene Intelligenz: Das Tool nutzt die eingegebenen Daten, um den Anwender zu unterstützen (z.B. Vorschlag von M1750-Kriterien basierend auf der Problembeschreibung).
-
-Visuelles Management: Komplexe Zusammenhänge (Supply Chain, Ishikawa, 5-Why) werden visualisiert, um die Analyse zu erleichtern und die Ergebnisse für Management-Reviews verständlich aufzubereiten.
-
-3. Wissensbasis & Referenzdokumente
-
-Das Konzept des Tools ist fest in der bestehenden Airbus-Prozesslandschaft verankert. Die folgenden Dokumente bilden die normative und methodische Grundlage:
-
-P70_8D_9S Maturity Assessment Grid (FM2201022): Das Kerndokument. Definiert die Qualitätsanforderungen für jedes Deliverable und dient als "Blaupause" für die Tool-Architektur.
-
-M1012.1 (Method for Problem Solving): Definiert die offizielle Abfolge und die grundlegenden Ziele der 9S-Schritte, die das Tool strukturell abbildet.
-
-A2757 (Manage Product Safety in Production): Beschreibt den übergeordneten SARI-Prozess, die Rollen (SIM, PP) und die Kritikalität der Untersuchung. Das Tool dient der direkten Umsetzung dieses Prozesses.
-
-M2500 (SIM Handbuch): Definiert die Rolle des Hauptanwenders (Safety Item Manager). Das Tool ist als dessen primäres Arbeitsmittel konzipiert.
-
-M1750 (Safety Criteria): Liefert die Kriterien für die Klassifizierung von Sicherheitsproblemen, die das Tool durch intelligente Vorschläge unterstützt.
-
-4. Funktionales Konzept: Die Module (S0 - S8)
-
-Jeder S-Schritt wird im Tool als ein eigenes, erweiterbares Modul abgebildet.
-
-S0: Containment Cockpit
-
-Ziel: Sofortige Eindämmung des Problems und Schutz des Kunden.
-
-Kern-Deliverables:
-
-Nachweis (Kundeninformation): Datumsfeld.
-
-Containment-Aktionsplan: Dateiupload.
-
-Nachweis (Line Stop): Checkbox.
-
-Nachweis (Bestandsprüfung): Dateiupload/Textfeld.
-
-Tool-Funktion: Dringlichkeits-Dashboard, das die Einhaltung der 1-Tages-Frist für die Kundeninformation anzeigt.
-
-S1: Team Charter
-
-Ziel: Etablierung eines kompetenten, funktionsübergreifenden Teams mit Management-Mandat.
-
-Kern-Deliverables:
-
-Team Charter (MFT-Liste): Strukturierte Eingabefelder für Leader, Sponsor, Problem Owner, Operations etc.
-
-Meeting-Protokoll (Kick-off): Dateiupload.
-
-Tool-Funktion: Erzwingt die Besetzung der im Maturity Grid geforderten Schlüsselrollen.
-
-S2: Evidence Hub
-
-Ziel: Eine unmissverständliche, faktenbasierte Problembeschreibung und Kontextualisierung.
-
-Kern-Deliverables:
-
-Supply Chain Breakdown: Visuelles Template zur Darstellung der betroffenen Wertschöpfungskette.
-
-Issue Description: Mehrzeiliges Textfeld für die präzise Beschreibung.
-
-M1750 Kriterien-Vorschlag: Automatisierte Analyse der Issue Description mit Vorschlag des passenden GEN-Kriteriums.
-
-Foto-/Videobeweis: Dateiupload mit Bildvorschau.
-
-5W2H-Analyse: Strukturiertes Template.
-
-IS / IS NOT-Analyse: Strukturiertes Template (für komplexe Fälle).
-
-Tool-Funktion: "KI"-gestützte Assistenz zur Klassifizierung und ein zentraler Ort für alle Fakten und Beweise.
-
-S3: Validate Containment
-
-Ziel: Der Beweis, dass die Sofortmaßnahmen zu 100% wirksam sind.
-
-Kern-Deliverables:
-
-Validierungsbericht der Eindämmung: Dateiupload (z.B. Protokoll eines Testlaufs mit fehlerhaften Teilen).
-
-Traceability-Bericht: Dateiupload (z.B. TOAC).
-
-Tool-Funktion: Fokussiert auf den Nachweis der Effektivität, nicht nur der Implementierung.
-
-S4: Root Cause Analysis Workspace
-
-Ziel: Systematische und getrennte Identifikation aller Ursachenebenen (Occurrence, Non-Detection, Systemic).
-
-Kern-Deliverables:
-
-Ishikawa-Diagramm: Interaktives Template zur Sammlung potenzieller Ursachen.
-
-RC 1: Occurrence: Eingabefeld für die finale Ursache (abgeleitet aus 5-Why).
-
-RC 2: Non-Detection: Eingabefeld für die finale Ursache.
-
-RC 3: Systemic: Eingabefeld für die finale Ursache.
-
-Nachweis der Grundursachen: Dateiuploads (z.B. Testprotokolle).
-
-Tool-Funktion: Erzwingt die 3-spurige Analyse und verhindert das Vermischen von Ursachenebenen.
-
-S5: Define Corrective Actions
-
-Ziel: Definition wirksamer Maßnahmen, die jede in S4 identifizierte Ursache adressieren.
-
-Kern-Deliverables:
-
-PCA-Aktionsplan: Strukturiertes Template, das die Maßnahmen den Ursachen aus S4 (RC1, RC2, RC3) direkt zuordnet.
-
-Definition der Erfolgsmetrik: Textfeld pro Maßnahme.
-
-Tool-Funktion: Stellt die logische Verknüpfung zwischen Ursache und Maßnahme sicher.
-
-S6: Implement & Check Effectiveness
-
-Ziel: Implementierung der Maßnahmen und statistischer Nachweis der Wirksamkeit.
-
-Kern-Deliverables:
-
-Implementierungsnachweis: Dateiuploads pro Maßnahme.
-
-Effektivitäts-Validierungsbericht: Dateiupload (z.B. SPC-Chart, Audit-Bericht).
-
-Tool-Funktion: Schließt den Regelkreis (PDCA).
-
-S7: Standardize & Prevent
-
-Ziel: Verankerung der Lösung im Gesamtsystem, um Wiederholfehler zu verhindern.
-
-Kern-Deliverables:
-
-"Look Across"-Bericht: Dateiupload.
-
-Aktualisierte Prozessdokumente: Dateiuploads (z.B. neue SOP).
-
-Aktualisierte FMEA: Dateiupload.
-
-Tool-Funktion: Stellt den Transfer von korrektiven zu präventiven Maßnahmen sicher.
-
-S8: Close & Recognize
-
-Ziel: Formaler Abschluss und Würdigung der Teamleistung.
-
-Kern-Deliverables:
-
-9S-Abschluss-Checkliste: Interaktive Checkliste im Tool.
-
-Abschlusskommunikation (Kunde): Dateiupload.
-
-Tool-Funktion: Gewährleistet einen sauberen, auditiersicheren Abschluss.
-
-5. Technisches Konzept & Prototyping
-
-Der erste Prototyp wird als Single-Page-Webanwendung mit reinen Frontend-Technologien (HTML, CSS, JavaScript) realisiert. Dies ermöglicht:
-
-Schnelle Iteration: Änderungen am Konzept können sofort visualisiert werden.
-
-Einfaches Deployment: Die index.html-Datei kann direkt auf GitHub Pages gehostet werden.
-
-Keine Backend-Abhängigkeit: Der Fokus liegt rein auf der Demonstration des User-Interfaces und der Prozesslogik.
-
-Der auf dem Canvas erstellte Code bildet die Grundlage für diesen Prototyp und implementiert bereits viele der hier beschriebenen "sophisticated" Features in einer demonstrierbaren Form.
-
-Anhang 1: Maturity Grid in CSV format
-
-Step,Not mature at all,Improve proposal, Early beginning,Improve proposal, Basics in place,Improve proposal,Requirements in place,Improve proposal,Benchmark,Improve proposal
-"S0
-Start Immediate containment actions",- No immediate containment or containment implemented in a non appropriate lead time (more than 1 week).,"- No immediate containment or containment implemented in a non appropriate lead time (more than 1 week).
-'- Customer not informed","- Not efficient - partial containment actions in place (not all bullets of ""Basics in place"" are realised)
-- Immediate containment implemented 4 or more days after the first event.
-- Customer informed 8 or more days  compared to the date of the first event.","- Partial immediate containment actions in place (not all bullets of ""Basics in place"" are realised)
-- Customer informed more than 5 days compared to the date of the first event.","In addition to Early beginning,
-- Supplier Work in Progress (WIP) / Internal stocks / stock on transport checked within 3 Days.
-- Non conforming parts quarantined within 3 Days.
-- If applicable, Supplier WIP / Internal stocks reworked or repaired to support Customer orders within 7 days.
-- Production restarted with effective containment within 7 days
-- Customer informed within 7 days of the 1st event.","In addition to Early beginning,
-- Supplier WIP / Internal stocks checked within 3 Days. And parts are quarantined
-- Supplier WIP / Internal stocks reworked or repaired with dedicated containment in place  within 7 days.
-- Customer informed within 5 days
-- Line stopped within 3 days (72 hours).","In addition to Basics,
-- Supplier Line stopped immediately.
-- If applicable, Supplier WIP / Internal stocks reworked or repaired, production restarted with effective containment within 3 working days.
-- Customer informed within 3 days to limit the impact in service and in Final Assembly Linse (FALs) / Plants.
-- Within 3 working days, a formal containment action plan is presented (with action responsible, due date, status).","In addition to Basics,
-- Supplier Line stopped immediately.
-- Supplier WIP / Internal stocks reworked or repaired, with dedicated containment in place  within 3 days (72 hours). (stopp delivery of non conforming parts immediately, at least before next shipment)
-- Customer informed within 1 day.
-- Action plan presented (with action responsible, due date, status).
-","In addition to Requirements:
-- production restarted with effective containment within 24h.
-- Issue description with a clear reminder of the customer view (different from the problem description in D2/S2).","In addition to Requirements:
-- production restarted with efficient containment in place within 24h.
-"
-Maturity,,,,,,,,,,
-"D1/S1
-Build the Team",- No evidence of Multi Functional Team (MFT) involved.,- No evidence of Multi Functional Team (MFT) involved.,"- MFT nominated (function of each participant is listed)
-- 8D/9S leader clearly identified.
-- Operations not part of the MFT.
-- Sponsor is not nominated.","- MFT nominated but no meetings have taken place within 5 days (function of each participant is listed; MFT is created with the intention to speed up investigations, root causes identification, actions implementation and closure)
-- 8D/9S leader clearly identified.
-- Operations not part of the MFT.
-- Sponsor is not nominated.","In addition to Early beginning,
-- Operations are part of the MFT.
-- For D&B contracts, Chief Engineering is part of the MFT.
-- MFT regularly updated (team members leave and join the MFT as required).
-- The MFT know the tools to achieve the expected results and have the correct competencies.","In addition to Early beginning,
-- MFT nominated with formal meetings in place within 5 days.
-- 8D / 9S leader (facilitator) has proven 9S knowledge/experiance (skills matrix available)
-- Problem owner (manager of the area where the problem originated) identified 
-- Operations part of the MFT (but not e.g the operator...).
-- For D&B contracts, Engineering is part of the MFT.
-- MFT members updated as required 
-","In addition to Basics,
-- 8D/9S Sponsored and effectively supported by top management.
-- MFT nominated within 7 days.
-- MFT includes operations representative, those performing the job (e.g. operator, inspector...).
-- Supplier integrated in the team or supplier 8D/9S provided when sub-tier issue.
-- When the Customer requests to be part of the MFT they are fully informed and invited.","In addition to Basics,
-- 8D/9S Sponsored available
-- MFT includes operations representative, those performing the job (e.g. operators themselves).
-- Supplier integrated in the team or supplier 8D/9S provided when sub-tier issue.
-- When the Customer requests to be part of the MFT they are fully informed and invited.","In addition to Requirements,
-- 8D/9S lead by the department responsible of the Non-conformance (NC).
-- MFT is aware of the expected outcome (8D/9S quality, further KPIs) and fully understand the process.
-- Lessons learnt from previous investigations are an input for new investigations.","
-In addition to Requirements,
-
-- MFT nominated with formal meetings in place within 3 days.
-- Selection criteria matrix in accordance to the EN9136 (5.2 Step1G)"
-Maturity,,,,,,,,,,
-"D2/S2
-Define Problem",- Problem description summarizing mainly the effect to the customer (problem description does not integrate any investigation effort in order to limit the scope of the problem).,"- Problem Description (What is wrong with what) summarizing mainly the effect to the customers problem Statement. 
-- No internal analysis has been carried out.","- Problem description is based on facts and figures and not perception, however a lack of synthesis exists (e.g. 1 object, 1 defect).
-- Problem description starts to be applied in the supplier context, however customer view is missing.","- Problem description is based on perception, however a lack of synthesis exists (1 object, 1 defect).
-- Defects description starts to be applied in the supplier context, however a mix with customer perception still exists.
-- Tier X has not been considered as part of the problem","In addition to Early beginning,
-- It is the Problem described and not the solution or effect/symptoms.
-- Problem description specifies clearly only 1 object 1 defect compared to the standard.
-- If appropriate, at this point the 8D/9S has been separated into several investigations for different defects.
--  Effort has been applied to limit the scope and to specify as much as possible the problem with facts and figures and integrating results of the first investigations.","In addition to Early beginning,
-- It is the Problem described and not the solution or effect/symptoms.
-- Problem description specifies clearly only 1 object 1 defect compared to the standard 
--  Effort has been applied to limit the scope and to specify as much as possible the problem with facts and figures but some perception still exists
-- Tier X has been involved but not contributed to the Problem Statement.","In addition to Basics, 
-- 5W & 2H or equivalent is used (based on facts, not on perception).
-- No confusion between the effect/symptoms and Root Cause (RC), including contributing causes.
-- A Problem Statement summarising the 5W/2H.
-- Clear reminder of the customer view.","In addition to Basics, 
-- 5W & 2H or equivalent is used (based on facts & figures, not on perception including Tier X Problem statements).
-- A Problem Statement summarising the 5W/2H.
-- Problem Statement changed in case of further information throughout the investigation.
-- No confusion between the effect/symptoms and Root Cause (RC), including contributing causes
-- Customer impact has been considered
-- The solution should not be defined in the description. 
-","In addition to Requirements,
-- IS / IS NOT to describe the problem when complex.
-- process workflow (included current quality gates) from step of the creation of the defect until delivery.","In addition to Requirements,
-- IS / IS NOT proposed to describe the problem when complex .
-- process workflow available (included current quality gates) from step of the creation of the defect until delivery.
-- Lessons learnt from previous investigations  used as an input for new investigations"
-Maturity,,,,,,,,,,
-"D3/S3
-Complete, optimise and validate containment actions","- Containment actions not efficient and/or not implemented.
-- Containment coverage incomplete.","- Containment actions not efficient and/or not implemented.
-- Containment (e.g. stock not checked, replacement delivery not done, additional check missing...)incomplete","- Containment actions implemented but effectiveness not demonstrated.
-- First traceability actions issued but with some doubts on the completion or with a scope too wide.
-- Curative actions, e.g. replacement of bad parts delivered to customer implemented within 2 weeks.","- Containment actions implemented but effectiveness and validation not demonstrated (eg. customer recieved bad parts after containment implementation).
-- First traceability actions issued but with some doubts on the completion or with a scope too wide.
-","In addition to Early beginning,
-- Containment actions implemented, effectiveness demonstrated but not formally communicated with facts and figures.
-- Partial control of WIP/All stocks (Supplier & Airbus): partial TOAC (Table of Aircraft) where applicable.
-","In addition to Early beginning,
-- Containment actions implemented and the triggering point for the NC identified. 
-- Effectiveness demonstrated but not formally communicated with facts and figures.
-- The 8D/9S ensures partial control of WIP/All stocks (Supplier & Airbus): partial TOAC (Table of Aircraft) where applicable.
-- Curative actions, e.g. replacement of bad/defective parts delivered to customer implemented within 2 weeks.
-- Supplier ability to produce into conformity (if not -> concession)
-- When possible define the trigger point (A trigger point is the specific event or condition that initiates a problem or a chain of events. It's the ""spark"" that sets off the issue.)
-- look across if other parts in production could be affected
-- ","In addition to Basics,
-- Optimised containment is in place which suitably address the Problem Statement within 7 days.
-- Effectiveness of containment actions demonstrated or reviewed if needed (e.g. defective product is returned through the cycle to ensure that it is captured in 100% of cases) not waiting for customer feedback.
-- Containment actions are sustained until the validation of the effectiveness of the permanent corrective actions.
-- Full traceability secured (e.g. Quality escape issued).
-Full analysis of WIP/All stocks (incl. In-Transit) / In-Service (Supplier & Airbus & Customer): full TOAC (Table of Aircraft). For standard parts and Elementary parts ( detail parts) a TOAC cannot be created in advance, thus the horizon of the deliveries has to be considered.
-- Curative actions, e.g. replacement of bad parts delivered to the customer, implemented within an appropriate and agreed timing to protect customer rate.","In addition to Basics,
-- Optimised containment is in place within 7 days.
-- Effectiveness of containment actions demonstrated and validated or reviewed if needed; 
-- Containment actions are in place until the implementation of permanent corrective actions. (Break down the supply chain and identify actions by each supplier)
-- Full traceability secured the complete supply chain  (e.g. Quality escape issued).
--The 8D/9S ensures full analysis of WIP/All stocks (incl. In-Transit) / In-Service (Supplier & Airbus & Customer): full TOAC (Table of Aircraft). For standard parts and Elementary parts ( detail parts) a TOAC cannot be created in advance, thus the horizon of the deliveries shall be considered.
-- Curative actions, e.g. replacement of bad parts delivered to the customer, implemented within an appropriate and agreed timing to protect customer rate.
-- To be considered: Identifed root causes may help new containment actions are required until corrective actions are identified and verified","In addition to Requirements,
-- Effectiveness of containment actions continuously reviewed.
-- Containment actions implemented to similar products being potentially impacted by the same NC.
-- Curative actions implemented within an appropriate timing to protect customer rate and customer industrial effectiveness consistent with the tact (e.g. 2 days for SA).","In addition to Requirements,
-
-
-- Containment actions implemented to similar products being potentially impacted by the same NC.
-- Lessons learnt from previous investigations  used as an input for new investigations"
-Maturity,,,,,,,,,,
-"D4/S4
-Identify Root Causes",- No evidence of link between the root cause proposed and the effect.,- No evidence of link between the root cause proposed and the effect,"- No clear separation between occurrence RCA and non-detection RCA.
-- Direct cause or main potential causes identified and 5 Whys started (5 whys being the only mandatory tool).
-- 5Why ends with a Human factor with no supporting evidence ","- No clear separation between occurrence RCA and non-detection RCA 
-
-- Direct cause or main potential causes identified and 5 Whys started (5 whys being the only mandatory tool).
-
-- 5Why ends with a Human factor with no supporting evidence","In addition to Early beginning,
-- Problem statement generated in D2/S2 is carried forward to D4/S4 and potential RC identified are consistent with these facts.
-- Clear separation between RCA for the occurrence and for the non-detection (non-detection performed at all level of the Supply Chain).
-- When occurrence RCA not possible (supplier change, catalogue parts...), clear focus on non detection RCA.
-","In addition to Early beginning,
-- Clear separation between RCA (Root Cause Analysis)  for the occurrence and for the non-detection (non-detection performed at all level of the Supply Chain).
-- 5 Whys cascaded to the lowest level  with a clear and understandable root cause for occurence and non-detection.
-- When occurrence RCA is not possible (supplier change, catalogue parts...), clear focus is on non detection RCA.
-- Defined problem (S2) is mentioned in the RCA method (Ishikawa).
--  Summary of 5Y 2H is considered for root cause identification.
-- Check of the PFMEA is mandatory for potential RC's ","In addition to Basics,
-- Brainstorm using Ishikawa, Default tree or equivalent to formalize all potential causes (when appropriate)
-- 5 Whys cascaded until lowest level of root cause (including 5 Why tree where appropriate).
-- Right root cause(s) identification demonstrated (defect reproduced, effect of the cause check, other potential causes killed...).
-- Technical (Product) root causes identified as well as process root causes (whatever is the process, it can be outside manufacturing).
-- Systemic / management root cause(s) identified.","In addition to Basics,
-- Brainstorm using Ishikawa, Default tree or equivalent to formalize all potential causes (when appropriate e.g.SARI Level 1)
-
-- Ishikawa is a mandatory tool
-
-- 5 Whys cascaded until lowest level of root cause (including 5 Why tree where appropriate).
-
-- Right root cause(s) identification demonstrated (defect reproduced, effect of the cause check, other potential causes killed...).
-
-- Technical (Product) root causes identified as well as process root causes (whatever is the process, it can be outside manufacturing).
-
-- Systemic / management root cause(s) identified.","In addition to Requirements,
-- Appropriate RCA method used (5 Whys if sufficient, ""Ishikawa"", ""comparison good parts / bad parts / standard"", Kepner Tregoe (KT), ""Shainin"", Design of Experiments (DoE),...).","In addition to Requirements,
-- Systemic root cause(s) identified.
-- appropriate RCA method used (5 Whys if sufficient, ""Ishikawa"", ""comparison good parts / bad parts / standard"", ""KT"", ""Shainin"", ""DoE"",...)."
-Maturity,,,,,,,,,,
-"D5/S5
-Define and select permanent corrective actions","- No evidence of link between proposed action and the root cause(s).
-- Proposed actions not robust enough over the time.","- No evidence of link between proposed action and the root cause
-- Proposed actions not robust enough over the time.","- Corrective action(s) has a direct link to each identified potential root cause.
-- Ownership and/or schedule not clearly visible.","- Corrective action(s) has a direct link to the root cause.
-- Ownership and/or schedule not clearly visible.","In addition to Early beginning,
-- Clear ownership of actions defined and schedule communicated and endorsed.
-- When detectability is low, clear focus on prevention (e.g. Corrosion, reliability issues...).","In addition to Early beginning,
-
-- Clear ownership of actions defined and schedule communicated and endorsed.
-- When detectability is low, clear focus on prevention (e.g. Corrosion, reliability issues...)","In addition to Basics,
-- Corrective actions are identified within 30 days from day 1.
-- Corrective actions have a direct link to the root cause(s) for occurrence, non detection and Systemic.
-- Non detection corrective actions are taken at all levels of the Supply Chain.","In addition to Basics,
-- Corrective actions are identified within 30 days from day 1.
-- Corrective actions has a direct link to the root cause as well in terms of occurrence, non detection and sytemic.
-- Non detection corrective actions are taken at all levels of the Supply Chain.
-- Corrective actions shall be taken in to account for the complete supply chain.","In addition to Requirements,
-- Effectiveness criteria defined when choosing the solution.
-- Additional risks due to the defined action are evaluated (as for every change).
-- Above criteria help to select the most appropriate action taking into account cost and lead time.","In addition to Requirements,
-- Effectiveness criteria defined when choosing the solution.
-- Additional risks due to the defined action are evaluated (as for every change).
-- Above criteria help to select the most appropriate action taking into account cost and lead time."
-Maturity,,,,,,,,,,
-"D6/S6
-Implement permanent corrective actions and check effectiveness",- No follow-up of the implemented actions.,- No follow-up of the implemented actions.,"- Less than 100% of actions scheduled are implemented.
-- Effectiveness of the action plan not clearly demonstrated","- Less than 100% of actions scheduled are implemented.
-- Effectiveness of the action plan not clearly demonstrated","In addition to Early beginning,
-- 100% of actions scheduled are implemented.
-- Effectiveness of the action plan demonstrated with no further non-conformities.","In addition to Early beginning,
-- 100% of actions scheduled are implemented.
-- Effectiveness of the action plan is demonstrated (e.g. defective product is returned through the Supplier internal cycle to ensure that it is captured in 100% of cases) not waiting for customer feedback.","In addition to Basics,
-- The effectiveness of the actions are confirmed within 60 days from day 1. 
-- 100% of actions scheduled implemented in line with the original schedule or delays effectively managed.
-- Effectiveness demonstrated and consistently monitored over a period (in house) using a statistical approach (justification needed if a statistics are not used).","In addition to Basics,
-- The effectiveness of the actions are confirmed within 60 days from day 1. 
-- 100% of actions scheduled implemented in line with the original schedule or delays effectively managed
-- Effectiveness demonstrated and consistently monitored over a period (in house) of time.
-- Containment properly closed only after full demonstration of the effectiveness of the solution.","In addition to Requirements,
-- Effectiveness of each action demonstrated.
-- Containment properly closed only after full demonstration of the effectiveness of the solution.
-- Additional risks identified in step 5 due to the defined action are monitored.",Benchmark Criteria to be defined
-Maturity,,,,,,,,,,
-"D7/S7
-Standardize and transfer the knowledge across business","- Actions taken are more corrective actions rather than preventive.
-- Lessons learnt process not used.","- Actions taken are more corrective actions rather than preventive.
-- Lessons learnt process not used.",- Corrective actions effectively deployed on all process/product potentially impacted by the root cause.,- Corrective actions effectively deployed on all process/ product potentially impacted by the root cause.,"In addition to Early beginning,
-- Processes/Procedures that lead to failure are updated (e.g. Standard Operating Procedure (SOP), Transfer of Work (ToW) standard procedure, control plan updated, Critical Items (CTI) / Key Characteristics (KC) list for product / process updated....)
-- action plan to deploy all preventive actions effectively managed.","In addition to Early beginning,
-- Processes/Procedures that lead to failure are updated (e.g. SOP, ToW standard procedure, control plan updated, CTI / KC list for product / process updated....)
-- action plan to deploy all preventive actions effectively managed.","In addition to Basics,
-- appropriate risk analysis updated Design/Process Failure Effect Analysis (D/PFMEA) for industrial products.
-- product/process design guidelines and/or check-lists updated (Lessons Learnt).
-- Look across to similar Business Units with similar processes / products / production lines / factories / services / suppliers is conducted.","In addition to Basics,
-- appropriate risk analysis updated (D/PFMEA for industrial products).
-- product/process design guidelines and/or check-lists updated (Lessons Learnt).
-- Look across to similar Business Units with similar products is conducted.
-- Has our first tier initiated  preventive measures to significantly increase the resilience of its supply chain and to sustainably minimize the likelihood of a recurring error? ","In addition to Requirements,
-- Systemic lessons learnt implemented (or clearly integrated in another company progress plan).
-- All stakeholders potentially impacted by the issue have been informed (such as suppliers, competitors, customers, authorities) integrated into the feedback loop to support the global risk reduction).","In addition to Requirements,
-- Systemic lessons learnt implemented (or clearly integrated in another company progress plan).
-- All stakeholders potentially impacted by the issue have been informed (such as suppliers, competitors, customers, FAA, EASA)  integrated into the feedback loop to support the global risk reduction)."
-Maturity,,,,,,,,,,
-"D8/S8
-Recognize and close the Team",- No official closure.,- Noclosure. -> no recognition to the team.,- All documentation linked to the 8D/9S recorded and the project closed.,"- All documentation linked to the 8D/9S recorded and st the end of the project communicated.
-- recognition to the team given.","In addition to Early beginning,
-- Official closure communicated and team acknowledged by the sponsor or leader (e.g. validated by a signature) and to the customer.
-- All stakeholders informed.","In addition to Early beginning,
-- Official closure communicated by the sponsor to the team (e.g. validated by a signature) and to the customer.","In addition to Basics, 
-- A checklist is filled in order to secure a proper closure (e.g. Is the effectiveness of each action demonstrated? Actions adequately documented and retained. Are lessons learnt taken into account? Does the 5 whys demonstrate the actual root cause?....).","In addition to Basics, 
-- A checklist is filled in order to secure a proper closure (e.g. Is the effectiveness of each action effectively demonstrated?, Are lessons learnt taken into account? Does the 5 whys demonstrate the actual root cause?....).","In addition to Requirements,
-- Effectiveness of the 8D/9S process itself evaluated and improvement actions proposed (e.g.: how to improve lead time to get a fix, to close the 8D/9S...)","In addition to Requirements,
-- Effectiveness of the 8D/9S  methodology itself evaluated and improvement actions proposed (e.g.: how to improve lead time to get a fix, to close the 8D/9S...)"
-
-Anhang A: Allumfassende Zusammenfassung M1012.1 - Method for Problem Solving
-
-Dieses Dokument definiert den standardisierten Problemlösungsprozess bei Airbus und ist die methodische Grundlage für das Governance Tool.
-
-Kapitel 2: Schlüsselprinzipien
-
-2.1 Duales System:
-
-Light Solving (LS): Ein einfacher 5-Schritte-Ansatz für Probleme mit mittlerem Impact und geringer Komplexität, die innerhalb eines Monats vom lokalen Team gelöst werden können.
-
-Structured 9S Approach: Ein rigoroser 9-Schritte-Ansatz für komplexe Probleme mit hohem bis sehr hohem Impact, die ein MFT, spezielle Skills und signifikante Ressourcen erfordern.
-
-Tool-Fokus: Das SARI Governance Tool konzentriert sich ausschließlich auf den Structured 9S Approach.
-
-2.2 Bedingungen für den Start einer Problemlösung:
-
-Die Entscheidung zur Problemlösung basiert auf einer Matrix aus Impact (Auswirkung) und Komplexity (Lösungskomplexität).
-
-Impact-Faktoren (RPN-Logik):
-
-Severity (S): Technischer/Sicherheits-, Kunden- oder industrieller Einfluss.
-
-Occurrence (O): Häufigkeit des Problems (Wiederholfehler).
-
-Detection (D): Fähigkeit, das Problem vor der Eskalation zu entdecken.
-
-Komplexitäts-Faktoren: Aufwand zur Lösungsfindung und -implementierung (Lösung bekannt vs. Analyse durch MFT erforderlich).
-
-2.3 Schlüsselerfolgsfaktoren:
-
-Problemdefinition: Muss faktenbasiert sein (Prinzip von San Gen Shugi: realer Ort, reales Produkt, reale Daten). Das Tool 5W2H ist empfohlen.
-
-Priorisierung: Stellt sicher, dass Ressourcen auf die wichtigsten Probleme konzentriert werden.
-
-Ownership (Verantwortung): Jedem Problem müssen klare Rollen zugewiesen sein:
-
-Accountable Leader: Rechenschaftspflichtig, stellt Ressourcen sicher.
-
-Responsible Solver: Verantwortlich für die Durchführung der Analyse.
-
-Governance: Ein strukturierter Rahmen für die Steuerung der Problemlösung auf "Ecosystem"-Ebene, unterteilt in:
-
-Inflow: Entscheidung über Start/Nicht-Start einer 9S-Analyse.
-
-Execution: Verfolgung des Fortschritts (z.B. in "MyTop3"-Routinen).
-
-Monitoring: Überwachung der Systemleistung (KPIs).
-
-Skills & Verfügbarkeit: Der Problemlöser muss qualifiziert und verfügbar sein.
-
-Kapitel 4: Der strukturierte 9S-Ansatz
-
-Klassifizierung von 9S-Untersuchungen:
-
-'Top Irritants' (RPN ≥ 300): Müssen den vollen 9S-Prozess durchlaufen, inklusive S7 (Systemische Ursachenanalyse und Standardisierung).
-
-'Irritants' (150 ≤ RPN < 300): Können nach S6 (Wirksamkeitsprüfung) abgeschlossen werden.
-
-4.1 Rollen und Verantwortlichkeiten:
-
-Ecosystem Leader: Gesamtverantwortlich, weist Sponsor und Solving Leader zu.
-
-Sponsor: Rechenschaftspflichtig für eine spezifische 9S-Analyse; stellt sicher, dass der Solving Leader alle Mittel hat. Validiert das Problem-Statement und prüft die Wirksamkeit.
-
-Solving Leader: Verantwortlich für die Leitung des MFT und die methodisch korrekte Durchführung der 9S-Analyse von S0 bis S8.
-
-MFT (Multi-Functional Team): Stellt Fachexpertise bereit und übernimmt Verantwortung für zugewiesene Aktionen.
-
-4.3 Detaillierte Beschreibung der 9S-Schritte:
-
-S0 - Start Immediate containment actions:
-
-Ziel: Auswirkungen sofort mindern, Eskalation stoppen.
-
-Aktivitäten: Vordefinierten Reaktionsplan ausführen, Korrekturen einleiten (z.B. NC erstellen), Wirksamkeit prüfen.
-
-S1 - Build the team:
-
-Ziel: Sicherstellen, dass alle Kompetenzen und Stakeholder an Bord sind.
-
-Aktivitäten: Sponsor und qualifizierten Solving Leader nominieren, MFT mit allen Schlüsselkompetenzen aufbauen.
-
-S2 - Define the problem:
-
-Ziel: Präzise und faktenbasierte Problemdefinition.
-
-Aktivitäten: Auswirkungen auf das Geschäft beschreiben, 5W2H und Is/Could be but is not anwenden, RPN berechnen, "As-Is"-Performance messen und "To-Be"-Ziel definieren.
-
-S3 - Complete and optimize containment actions:
-
-Ziel: Wirksamkeit der Eindämmung sicherstellen und validieren.
-
-Aktivitäten: Eindämmungsmaßnahmen optimieren, Kunden global schützen, "Escapes" identifizieren, Wirksamkeit verifizieren. Maßnahmen bleiben bis zur Wirksamkeit von S6 aktiv.
-
-S4 - Identify Root causes:
-
-Ziel: Identifikation aller Grundursachenebenen.
-
-Aktivitäten: Go Look See/Gemba Walk durchführen. Klare Trennung zwischen Technical/Occurrence RC und Non-Detection RC. Für "Top Irritants" ist die Systemic RC verpflichtend. Die Ursachen müssen durch Evidenz bestätigt werden (z.B. Reproduktion des Fehlers).
-
-S5 - Define and select permanent corrective actions (PCA):
-
-Ziel: Maßnahmen definieren, die die Grundursachen dauerhaft beseitigen.
-
-Aktivitäten: Korrekturmaßnahmen definieren, die RCs eliminieren. Kosten, Risiken und Implementierungsaufwand bewerten. Einen detaillierten Aktionsplan (Was, Wer, Wann) erstellen.
-
-S6 - Implement permanent corrective actions and check effectiveness:
-
-Ziel: Maßnahmen umsetzen und deren Wirksamkeit nachweisen.
-
-Aktivitäten: Implementierung sicherstellen, Wirksamkeitsprüfung definieren und durchführen (statistische Methoden empfohlen). Eindämmung erst nach erfolgreicher Prüfung beenden.
-
-S7 - Standardize and transfer the knowledge across business (für Top Irritants):
-
-Ziel: Wiederauftreten des Problems in anderen Bereichen verhindern.
-
-Aktivitäten: Potenziell betroffene Bereiche identifizieren (cross-plant, cross-program), präventive Maßnahmen definieren und deren Implementierung sicherstellen.
-
-S8 - Recognize and close the team:
-
-Ziel: Formaler Abschluss und Würdigung.
-
-Aktivitäten: Qualitäts-Selbstbewertung der 9S-Analyse durchführen, mit allen Stakeholdern kommunizieren, Erfolg anerkennen und die 9S-Untersuchung schließen.
-
-Anhang B: Allumfassende Zusammenfassung A2757 - Manage Product Safety in Production
-
-Dieses Dokument beschreibt den übergeordneten Prozess zur Behandlung von sicherheitsrelevanten Vorfällen, die ihren Ursprung in der Produktion haben (POA - Production Organisation Approval). Es liefert den regulatorischen und organisatorischen Rahmen für das SARI Governance Tool.
-
-Kapitel 2: Prozessprinzipien und Definitionen
-
-2.1 & 2.2 SARI Definition & Auslöser:
-
-Ein SARI (Safety-Related Item) wird für jede Nicht-Konformität (NC) ausgelöst, die:
-
-Einen Ursprung in der Produktion hat (inkl. Lieferanten).
-
-Nicht durch den normalen, geplanten Inspektionsprozess entdeckt wurde (ein "Escape" ist).
-
-Die Kriterien der M1750 ("Airbus Safety Criteria") erfüllt.
-
-Ein SARI wird ebenfalls zwingend ausgelöst, wenn ein Occurrence (OCC) aus Engineering oder Flugtest mit Produktionsbezug gemeldet wird.
-
-2.4 SARI-Level & Methodik:
-
-Die Kritikalität eines SARI wird in drei Stufen eingeteilt:
-
-Level 1 (L1): Das Problem hat Auswirkungen auf die "In-Service"-Flotte UND wird von der Design Organisation (DOA) als "mögliche unsichere Bedingung" (possible Unsafe condition) klassifiziert.
-
-Level 2 (L2): Das Problem hat Auswirkungen auf die "In-Service"-Flotte, wird aber nicht als "unsafe condition" eingestuft.
-
-Level 3 (L3): Das Problem wurde innerhalb der Produktion eingedämmt und hat keine Auswirkungen auf die "In-Service"-Flotte.
-
-Untersuchungsmethodik: Die 9S-Methodologie ist für die Untersuchung zwingend vorgeschrieben.
-
-Umfang der Analyse: Die Analyse muss immer drei Ursachenebenen identifizieren:
-
-Technische Ursache (Occurrence)
-
-Nicht-Entdeckungs-Ursache (Non-Detection)
-
-Systemische Ursache
-
-Abweichende Regeln für SARI-Level:
-
-L1 SARI: Die Untersuchung muss bis zur vollständigen Ausrottung aller Ursachenebenen (inkl. systemischer Ursache) durchgeführt werden. Der Abschluss erfordert die Genehmigung durch die EASA.
-
-L2 & L3 SARI: Die Untersuchung kann an jedem beliebigen Punkt gestoppt werden, basierend auf einer Risikoanalyse, die gemeinsam vom Chief Engineer und dem Quality Program Representative durchgeführt wird. Diese Entscheidung und deren Begründung muss im System (CAPRI) dokumentiert werden.
-
-2.10 Governance-Gremien:
-
-Safety Manufacturing Panel (SMP):
-
-Rolle: Ein Triage- und Analyse-Gremium.
-
-Aufgaben: Prüft Events und entscheidet, ob sie zu einem SARI hochgestuft werden müssen; kann die SARI-Level-3-Einstufung vornehmen; identifiziert Trends und Cluster.
-
-Production Panel (PP):
-
-Rolle: Das zentrale Governance-Gremium für die Steuerung der SARI-Untersuchungen.
-
-Aufgaben: Weist den Safety Item Manager (SIM) zu; bewertet und validiert die Ergebnisse der Ursachenanalyse (RC) und der Korrekturmaßnahmen (PCA). Für L1 SARIs ist das zentrale PP unter Vorsitz des Prozess-Owners zuständig. Für L2/L3 SARIs wird dies durch die Programm-Qualität organisiert.
-
-Tooling:
-
-Das offizielle Tool zur Dokumentation des Prozesses ist CAPRI (Corrective Action for Production Related Items). Unser Governance Tool dient als konzeptioneller "Wizard", der die Erstellung qualitativ hochwertiger CAPRI-Einträge sicherstellt.
-
-Zusammenfassende Relevanz für das Governance Tool:
-
-Level-spezifische Workflows: Das Tool muss in der Lage sein, unterschiedliche Prozesspfade oder "Exit-Points" für L1 vs. L2/L3 SARIs abzubilden, insbesondere die Möglichkeit des "early closure" nach einer dokumentierten Risikoanalyse.
-
-Rollen-Integration: Das Tool muss die Interaktion mit den Governance-Gremien (SMP, PP) abbilden, z.B. durch Status-Updates wie "Wartet auf PP-Validierung".
-
-Methodische Tiefe: Das Tool muss die von A2757 geforderte 3-spurige Ursachenanalyse (Occurrence, Non-Detection, Systemic) als zwingendes Strukturelement in S4 implementieren.
-
-Regulatorischer Kontext: Die Notwendigkeit der EASA-Genehmigung für L1-Abschlüsse unterstreicht die Wichtigkeit einer lückenlosen und qualitativ hochwertigen Dokumentation, die das Tool sicherstellen muss.
-
-Anhang C: Allumfassende Zusammenfassung M2500 - Safety Item Manager (SIM) Handbuch
-
-Dieses Dokument ist das zentrale Handbuch für den Hauptanwender des SARI Governance Tools, den Safety Item Manager (SIM). Es beschreibt seine Rolle, Verantwortlichkeiten und die operativen Abläufe bei der Bearbeitung eines SARI.
-
-Kapitel 4: Definitionen
-
-4.3 Was ist ein SIM?
-
-Der SIM ist die verantwortliche Person für die Steuerung und ordnungsgemäße Durchführung der Untersuchung eines SARI. Er ist kein Einzelkämpfer, sondern ein Manager und Facilitator eines MFT.
-
-Hauptaufgaben des SIM:
-
-Ein MFT aufbauen und leiten.
-
-Sicherstellen, dass Sofortmaßnahmen (Containment) gestartet und validiert werden.
-
-Die 9S-Methodik zur Ursachenanalyse anwenden oder deren Anwendung durch PPS-Owner koordinieren.
-
-Die Untersuchungsergebnisse zusammenfassen (Synthese), insbesondere wenn mehrere parallele Analysen (z.B. bei Lieferanten) laufen.
-
-Den SARI-Fall vor dem Production Panel (PP) zur Validierung präsentieren.
-
-Die gesamte Untersuchung konsistent und nachvollziehbar im CAPRI-Tool dokumentieren.
-
-4.4 Wer sind die Schlüsselakteure?
-
-PPS Owner: Führt die technische Detailuntersuchung (z.B. 5-Why) für einen spezifischen Aspekt des Problems durch. Der SIM interagiert mit einem oder mehreren PPS Ownern.
-
-Production Panel Member (PPM): Der Coach und Hauptansprechpartner für den SIM. Der PPM unterstützt den SIM, stellt die Qualität des SARI-Dossiers sicher und meldet den Fall zur Präsentation im Production Panel an.
-
-Program Quality Representative: Ist rechenschaftspflichtig für die SARI-Prozessleistung seines Programms und leitet die Governance für L2/L3 SARIs.
-
-Process Owner Team (MC.PS.07): Leitet das zentrale PP für L1 SARIs und ist die Schnittstelle zur EASA.
-
-4.5 Was sind die wichtigsten Gremien (Panels)?
-
-Production Panel (PP): Das zentrale Validierungsgremium für L1 SARIs. Hier präsentiert der SIM seine Ergebnisse (RC & PCA) zur Genehmigung.
-
-Program Production Panel (PPP): Das Äquivalent zum PP, aber für L2 & L3 SARIs, geleitet von der Programm-Qualität.
-
-Safety Manufacturing Panel (SMP): Das "Triage"-Gremium, das Events prüft und entscheidet, ob ein SARI erstellt werden muss. Der SIM interagiert mit dem SMP, um Fragen zur Kritikalität und zum "In-Service"-Impact zu klären, was den SARI-Level bestimmt.
-
-Production Organization Approval Review Meeting (POARM): Das Meeting mit der EASA, in dem L1 SARIs vom Process Owner Team formal zum Abschluss vorgestellt werden.
-
-Kapitel 5 & 6: Der SARI-Prozess aus SIM-Sicht
-
-5.5 SARI-Allokation:
-
-Ein SARI muss der Organisation zugewiesen werden, die am wahrscheinlichsten für die Ursache der Entstehung (Occurrence) verantwortlich ist.
-
-Der Prozess der Zuweisung (Takeover Request) und Eskalation bei Uneinigkeit (über ICB zum PP) ist formalisiert. Das Governance Tool sollte diesen Status abbilden können.
-
-6.1 PPS/9S-Prinzipien:
-
-Jeder SARI muss mit mindestens einer formalen Untersuchungsmethodik (PPS/9S) verknüpft sein. Diese Verbindung muss im CAPRI-Tool (und somit im Governance Tool) hergestellt werden.
-
-Für Lieferanten-Themen kann eine "Supplier Synthesis" in ePPS genutzt werden, um externe 8D-Berichte in das Airbus-System zu integrieren.
-
-6.5 Mindestanforderungen für die Panel-Präsentation:
-
-Bevor ein SIM seinen Fall im PP/PPP präsentieren darf, muss eine "ID Card" (FM2201652) erstellt werden. Dies ist eine standardisierte 1-Seiten-Zusammenfassung der gesamten Untersuchung.
-
-Eine SARI Maturity Check-List (FM2201494) muss sicherstellen, dass alle administrativen und inhaltlichen Voraussetzungen für die Präsentation erfüllt sind.
-
-Kapitel 7: Abschluss
-
-Der Abschluss eines SARI (CAE - Corrective Action Effectiveness) erfolgt je nach Level durch unterschiedliche Parteien:
-
-L2/L3: Abschluss durch SIM nach Validierung durch Programm-Qualität oder den delegierten PPM.
-
-L1: Abschluss durch das Process Owner Team nach erfolgreicher Präsentation im POARM (EASA-Zustimmung).
-
-Zusammenfassende Relevanz für das Governance Tool:
-
-SIM als zentraler User: Das Tool muss als das primäre "Cockpit" für den SIM konzipiert sein. Es muss ihn durch seine Aufgaben führen, von der Koordination des MFT bis zur Vorbereitung der PP-Präsentation.
-
-Integration von Checklisten & Templates: Die vom Handbuch geforderten Dokumente wie die "ID Card" und die "Maturity Checklist" müssen als Funktionalität im Tool integriert sein (z.B. "Generate ID Card" Button).
-
-Governance-Workflow abbilden: Das Tool muss die Status und Übergänge zwischen dem SIM und den Gremien (PPM, SMP, PP) klar visualisieren (z.B. Status "Ready for PPM Review", "Scheduled for PP").
-
-Verknüpfung erzwingen: Das Tool muss die vom Prozess geforderte Verknüpfung eines SARI mit einem oder mehreren PPS/9S-Untersuchungsobjekten erzwingen.
-
-Anhang D: Allumfassende Zusammenfassung M1750 - Airbus Safety Criteria and Guidance
-
-Dieses Dokument ist der Schlüssel zur Klassifizierung von sicherheitsrelevanten Vorfällen und damit der entscheidende Input für die Entscheidung, ob ein Vorfall als SARI behandelt werden muss. Es stellt die Logik für die "intelligente Assistenz" im S2-Modul des Governance Tools bereit.
-
-Kapitel 2: Methode zur Erkennung von sicherheitsrelevanten Ereignissen
-
-Grundprinzip: Ein Ereignis wird als sicherheitsrelevant eingestuft, wenn es einen negativen Einfluss auf den sicheren Betrieb des Luftfahrzeugs haben könnte.
-
-Anwendungsprozess:
-
-Informationssammlung: Sammeln aller verfügbaren Daten zum Vorfall (Was ist passiert? Wo? Welche Konsequenzen?).
-
-Vergleich mit der Kriterien-Tabelle: Der Vorfall wird mit der "Safety Criteria Table" (Anhang A des Dokuments) abgeglichen.
-
-"Engineering Judgement": Wenn kein Kriterium exakt passt, aber Zweifel bestehen, soll das "Engineering Judgement" (die Einschätzung des Ingenieurs) angewendet werden, um den Vorfall dennoch als sicherheitsrelevant zu melden. Im Zweifel für die Sicherheit.
-
-Kapitel 3 & Anhang A: Die "Safety Criteria Table"
-
-Dies ist das Herzstück des Dokuments. Die Tabelle ist strukturiert, um eine systematische Bewertung zu ermöglichen.
-
-Struktur der Tabelle:
-
-ATA Chapter: Ordnet die Kriterien den Systemen des Flugzeugs zu (z.B. ATA 27 - Flight Controls, ATA 52 - Doors).
-
-Safety Criteria: Beschreibt das spezifische Ereignis (z.B. "Uncommanded flight control surface movement").
-
-Guidelines: Gibt zusätzliche Erklärungen und Beispiele, um die Interpretation des Kriteriums zu erleichtern.
-
-"In-House event with no in-service aircraft potentially impacted": Eine entscheidende Spalte. Ist hier ein "X" gesetzt, muss auch dann ein SARI erstellt werden, wenn der Vorfall nur intern (z.B. in der Produktion) entdeckt wurde und kein Flugzeug im Liniendienst betroffen ist.
-
-Applicability: Definiert, in welchen Bereichen (z.B. Engineering, Manufacturing, In-Service) das Kriterium typischerweise Anwendung findet.
-
-Generische Kriterien (GEN):
-
-Für Vorfälle, die keinem spezifischen ATA-Kapitel zugeordnet werden können, gibt es eine Liste von GEN-Kriterien (z.B. GEN-001 für FOD, GEN-004 für Incorrect Assembly).
-
-Diese GEN-Kriterien sind für die Klassifizierung von Produktionsfehlern von zentraler Bedeutung.
-
-Zusammenfassende Relevanz für das Governance Tool:
-
-Logik für die "KI-Assistenz": Die GEN-Kriterien und die dazugehörigen Beschreibungen sind die Wissensbasis für die Funktion im S2-Modul, die basierend auf der "Issue Description" automatisch ein passendes Kriterium vorschlägt. Das Tool kann auf Schlüsselwörter wie "FOD", "torque", "corrosion" etc. trainiert werden, um die richtigen Vorschläge zu machen (z.B. GEN-001, GEN-004, GEN-010).
-
-Kontext für den SIM: Das Tool kann dem SIM über die Info-Buttons nicht nur das vorgeschlagene Kriterium nennen, sondern auch die dazugehörige "Guideline" aus der M1750-Tabelle anzeigen, um die Entscheidung transparent und nachvollziehbar zu machen.
-
-Unterstützung des "Engineering Judgement": Indem das Tool Vorschläge macht, aber die finale Entscheidung beim User belässt, unterstützt es den im Dokument geforderten Prozess des "Engineering Judgement" und automatisiert gleichzeitig den Standardfall.
-
-Anhang E: Allumfassende Zusammenfassung "Program Quality governance for SARI process" (X00WD2300810)
-
-Dieses Dokument konkretisiert den allgemeinen SARI-Prozess aus A2757 für die spezifische Anwendung in den Single Aisle (SA) und Widebody (WB) Programmen. Es definiert die operativen Governance-Strukturen, Meetings und Verantwortlichkeiten.
-
-Kapitel 3 & 4: Rollen und Verantwortlichkeiten
-
-Program Quality (QLA/QSXS): Ist der Prozesseigner auf Programmebene. Leitet die Governance-Meetings (ICB, PPP) und ist rechenschaftspflichtig für die SARI-Performance des Programms.
-
-PPM (Production Panel Member): Agiert als operativer Arm der Programm-Qualität in den jeweiligen Funktionsbereichen (z.B. Werk, FAL, Procurement). Seine Hauptaufgabe ist das Coaching des SIM und die Sicherstellung der Dossier-Qualität vor der Präsentation in den Panels.
-
-Program SARI Focal Point: Ein zentraler Ansprechpartner innerhalb der Programm-Qualität, der den Prozess operativ steuert, Meetings vorbereitet und als Experte für SIMs und PPMs dient.
-
-Kapitel 5 & 6: Governance-Routinen und Prozessschritte
-
-Inflow Control Board (ICB):
-
-Zweck: Das wöchentliche Triage-Meeting zur Steuerung des SARI-Starts.
-
-Hauptaufgaben:
-
-SARI-Erstellung sicherstellen: Stellt sicher, dass für relevante Vorfälle (z.B. RFI, Events) zeitnah ein SARI erstellt wird.
-
-SARI-Allokation: Entscheidet, welche Organisation den Lead für die Untersuchung übernimmt (Zuweisung des SIM). Dient als erste Eskalationsstufe bei Uneinigkeit.
-
-SIM-Nominierung: Fordert die betreffende Organisation auf, einen SIM zu benennen.
-
-Program Production Panel (PPP):
-
-Zweck: Das formale Validierungs-Gremium für L2- und L3-SARIs auf Programmebene.
-
-Hauptaufgaben:
-
-Review und Validierung: Formale Genehmigung der vom SIM präsentierten Ursachenanalyse (RC) und Korrekturmaßnahmen (PCA).
-
-Qualitätssicherung: Stellt sicher, dass die Untersuchungstiefe und die Qualität des Dossiers den Anforderungen entsprechen.
-
-Entscheidung über "Early Closure": Validiert die Risikoanalyse und die Entscheidung, eine L2/L3-Untersuchung vorzeitig (vor S8) zu beenden.
-
-Der Prozess des "Early Closure" für L2/L3 SARIs:
-
-Das Dokument konkretisiert die in A2757 erlaubte Praxis: Die Entscheidung, eine Untersuchung zu stoppen, basiert auf einer Risikoanalyse.
-
-Diese Analyse muss die Wahrscheinlichkeit eines Wiederauftretens und die Schwere der potenziellen Auswirkungen bewerten.
-
-Die Begründung für den Stopp muss vom SIM im SARI-Dossier (CAPRI) klar dokumentiert und im PPP validiert werden.
-
-Anforderungen an die Dossier-Qualität:
-
-Ein SARI wird nur dann für das PPP zugelassen, wenn der zuständige PPM die Reife und Vollständigkeit des Dossiers bestätigt hat. Die ID Card ist das zentrale Dokument für die Präsentation.
-
-Kapitel 7: Performance Management
-
-SARI Process Management Team (PMT):
-
-Zweck: Das monatliche Meeting zur Überwachung der Prozessleistung.
-
-Aktivitäten: Analyse von KPIs (z.B. "Time to Get a Fix", "Overdue SARIs"), Identifikation von Blockern und Einleitung von Verbesserungsmaßnahmen (PDCA-Zyklus).
-
-PPMs sind dafür verantwortlich, den Status ihrer SARIs zu berichten und Abweichungen zu erklären.
-
-Zusammenfassende Relevanz für das Governance Tool:
-
-Abbildung der Meeting-Struktur: Das Tool muss die verschiedenen Governance-Meetings als Status oder Meilensteine im Prozessfluss abbilden können (z.B. "Wartet auf ICB-Allokation", "Bereit für PPP-Review", "PPP-validiert").
-
-Rollenbasierte Ansichten/Rechte: In einer späteren Ausbaustufe könnte das Tool unterschiedliche Ansichten für einen SIM (operativer Fokus), einen PPM (Coaching- & Review-Fokus) und einen Program Quality Manager (Performance-Fokus) bieten.
-
-Integration des Risikoanalyse-Prozesses: Für L2/L3 SARIs muss das Tool ein spezifisches Deliverable "Risikoanalyse für Early Closure" vorsehen, das den formalen Stopp der Untersuchung dokumentiert.
-
-Unterstützung des PPM: Das Tool kann dem PPM eine "Review-Checkliste" bereitstellen, um die Dossier-Qualität vor der Weiterleitung an das PPP systematisch zu prüfen.l
-ChatGPT:
-
-Nachgedacht für 28s
-mega—starkes Konzept! 🔧✈️
-Ich hab dir dazu direkt einen lauffähigen Single-File-Prototyp (SPA) gebaut, der deine S0–S8-Module, Wizard-Logik, Maturity-Guidance, KPI-Dashboard, RPN-Steuerung, „Early Closure“ (L2/L3), ID-Card-Generator u.v.m. demonstriert — ohne Backend, perfekt für GitHub Pages.
-Einfach als index.html speichern und öffnen.
-
-Was ist drin (Kurzüberblick)
-KPI-Cockpit: Live-KPIs (Overdue, SARI-Level, RPN, Status-Heatmap).
-
-Wizard/Quality Gates: Jeder Schritt zeigt Maturity-Hinweise (Requirements/Benchmark). „Weiter“ ist nur möglich, wenn Pflichtfelder erfüllt sind.
-
-S0 Dringlichkeits-Check: 1-Tages-Frist „Kundeninfo“ wird automatisch überwacht.
-
-S1 Team Charter: Rollen nach Grid erzwungen (Leader, Sponsor, Problem Owner, Ops etc.).
-
-S2 Evidence Hub: 5W2H + IS/IS NOT + M1750-KI-Vorschläge (GEN-Kriterien via Keyword-Heuristik).
-
-S3 Containment-Validierung: Fokus auf Wirksamkeits-Nachweis, Traceability (TOAC-Platzhalter).
-
-S4 RCA Workspace: 3-spurig (Occurrence / Non-Detection / Systemic) mit Ishikawa-Board und 5-Whys-Baum.
-
-S5 PCA-Plan: Maßnahmen → direkte Verknüpfung zu RC1/RC2/RC3 inkl. Erfolgsmetriken.
-
-S6 Implement & Effectiveness: Implementierungsnachweise, SPC/Audit-Upload (lokal gespeichert, falls < 500 KB).
-
-S7 Standardize & Prevent: Look-Across, SOP/FMEA-Updates, Lieferkette.
-
-S8 Close & Recognize: interaktive Abschluss-Checkliste + Abschlusskommunikation.
-
-Governance-Flows: ICB/PPP/PP-Status, Early-Closure-Risikoanalyse (L2/L3), L1 zwingt S7.
-
-ID-Card (FM2201652) & Maturity-Checklist: 1-Klick-Generierung & Druck/Export (Print-CSS).
-
-Maturity Grid: Demo-Subset integriert; vollständiges Grid kann per CSV importiert werden.
-
-Persistenz & Export: Auto-Save in localStorage, JSON-Export/Import, „Neues SARI“ anlegen.
-
-Hinweis: Der Prototyp nutzt bewusst keine externen Libraries. Alles Vanilla HTML/CSS/JS, barrierearm, mit Tastatur-Shortcuts und druckfreundlichen Ansichten.
-
-<!doctype html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SARI Governance Tool – Prototype v1.0</title>
-<style>
-  :root{
-    --bg:#0c0f14;--panel:#151a22;--ink:#e6ebf1;--muted:#a7b0be;--brand:#5ee3b2;
-    --warn:#ffcc66;--danger:#ff6b6b;--ok:#63e6be;--link:#7ab0ff;--grid:#2a3140;
-    --accent:#c8e6ff;--chip:#202734;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{margin:0;background:linear-gradient(180deg,#0a0d12,#0f141c);color:var(--ink);
-       font:15px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
-  a{color:var(--link);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .app{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
-  aside{background:var(--panel);border-right:1px solid var(--grid);padding:16px;position:sticky;top:0;height:100vh;overflow:auto}
-  main{padding:16px 24px 120px}
-  header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-  .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#44b6ff)}
-  h1{font-size:18px;margin:0}
-  .sub{color:var(--muted);font-size:12px}
-  .navsec{margin-top:16px}
-  .navsec h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
-  .nav button{display:flex;align-items:center;gap:10px;width:100%;padding:10px 12px;margin:4px 0;
-    background:transparent;border:1px solid transparent;color:var(--ink);border-radius:10px;cursor:pointer}
-  .nav button.active{background:var(--chip);border-color:var(--grid)}
-  .chip{background:var(--chip);padding:3px 8px;border-radius:999px;font-size:12px;color:var(--muted);border:1px solid var(--grid)}
-  .kpi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
-  .card{background:var(--panel);border:1px solid var(--grid);border-radius:14px;padding:14px}
-  .kpi .card h4{margin:0 0 8px 0;font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-  .big{font-size:22px;font-weight:700}
-  .danger{color:var(--danger)} .warn{color:var(--warn)} .ok{color:var(--ok)}
-  .toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px}
-  .btn{background:#1d2431;border:1px solid var(--grid);color:var(--ink);padding:8px 12px;border-radius:10px;cursor:pointer}
-  .btn.primary{background:linear-gradient(135deg,#44b6ff,var(--brand));border:none;color:#00140b;font-weight:700}
-  .btn.ghost{background:transparent}
-  .btn[disabled]{opacity:.5;cursor:not-allowed}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  label{display:block;margin:8px 0 4px;color:var(--muted);font-size:12px}
-  input,select,textarea{width:100%;padding:10px;border-radius:10px;border:1px solid var(--grid);background:#0f141c;color:var(--ink)}
-  textarea{min-height:110px;resize:vertical}
-  table{width:100%;border-collapse:separate;border-spacing:0 8px}
-  th,td{text-align:left;padding:8px 10px;background:var(--panel);border:1px solid var(--grid)}
-  th{font-size:12px;color:var(--muted)}
-  tr td:first-child, tr th:first-child{border-top-left-radius:10px;border-bottom-left-radius:10px}
-  tr td:last-child, tr th:last-child{border-top-right-radius:10px;border-bottom-right-radius:10px}
-  .hint{background:#10202a;border:1px solid #1e3b46;padding:12px;border-radius:12px;color:#bfe9ff}
-  .muted{color:var(--muted)}
-  .inline{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-  .tag{font-size:12px;background:var(--chip);padding:4px 8px;border:1px solid var(--grid);border-radius:999px;color:var(--muted)}
-  .status{display:inline-flex;align-items:center;gap:8px}
-  .status i{width:10px;height:10px;border-radius:50%;background:var(--warn)}
-  .status.ok i{background:var(--ok)} .status.bad i{background:var(--danger)}
-  .pill{padding:2px 8px;border-radius:999px;border:1px solid var(--grid);font-size:12px;background:#121722}
-  .section h2{margin:8px 0 6px}
-  .guard{border-left:4px solid var(--brand);padding:10px 12px;background:#0f1921;border-radius:10px;margin:10px 0}
-  .footbar{position:fixed;bottom:0;left:280px;right:0;background:rgba(16,22,30,.9);backdrop-filter:blur(8px);border-top:1px solid var(--grid);
-     padding:10px 16px;display:flex;justify-content:space-between;align-items:center}
-  .progress{height:10px;background:#111722;border:1px solid var(--grid);border-radius:999px;overflow:hidden}
-  .progress > i{display:block;height:100%;background:linear-gradient(90deg,#44b6ff,var(--brand));width:0%}
-  .rca-board{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .rca-col{background:var(--panel);border:1px solid var(--grid);border-radius:12px;padding:10px}
-  .list{display:flex;flex-direction:column;gap:6px;margin-top:6px}
-  .list .row{display:flex;gap:6px}
-  .tiny{font-size:12px}
-  .print-only{display:none}
-  @media print{
-    aside,.footbar,.toolbar,.kpi{display:none}
-    .print-only{display:block}
-    body{background:#fff;color:#000}
-    main{padding:0}
-    .card,.rca-col,.guard{border:1px solid #ddd;background:#fff}
-    a{text-decoration:none;color:#000}
-  }
-</style>
-</head>
-<body>
-<div class="app">
-  <aside>
-    <header>
-      <div class="logo" aria-hidden="true"></div>
-      <div><h1>SARI Governance</h1><div class="sub">Prototype v1.0</div></div>
-    </header>
-
-    <div class="nav">
-      <div class="navsec">
-        <h3>Allgemein</h3>
-        <button data-view="dashboard" class="active">🏠 Dashboard</button>
-        <button data-view="meta">🗂️ SARI Stammdaten</button>
-        <button data-view="governance">🏛️ Governance</button>
-        <button data-view="idcard">🧾 ID-Card</button>
-        <button data-view="maturity">📈 Maturity-Checklist</button>
-      </div>
-      <div class="navsec">
-        <h3>9S Schritte</h3>
-        <button data-view="s0">S0 • Containment</button>
-        <button data-view="s1">S1 • Team Charter</button>
-        <button data-view="s2">S2 • Evidence Hub</button>
-        <button data-view="s3">S3 • Validate Containment</button>
-        <button data-view="s4">S4 • RCA Workspace</button>
-        <button data-view="s5">S5 • Corrective Actions</button>
-        <button data-view="s6">S6 • Implement & Effectiveness</button>
-        <button data-view="s7">S7 • Standardize & Prevent</button>
-        <button data-view="s8">S8 • Close & Recognize</button>
-      </div>
-      <div class="navsec">
-        <h3>Utility</h3>
-        <button id="btnNewSari">➕ Neues SARI</button>
-        <button id="btnExport">⬇️ Export JSON</button>
-        <button id="btnImport">⬆️ Import JSON</button>
-        <input id="importFile" type="file" accept="application/json" hidden>
-        <button id="btnGridImport">🧩 Import Maturity Grid (CSV)</button>
-        <input id="gridFile" type="file" accept=".csv,text/csv" hidden>
-      </div>
-      <div class="navsec">
-        <h3>Info</h3>
-        <div class="hint tiny">
-          Demo-Maturity-Grid (S0–S3) ist vorbefüllt. <br>Vollständiges CSV kann über „Grid Import“ geladen werden.
-        </div>
-      </div>
-    </div>
-  </aside>
-
-  <main>
-    <!-- KPI DASHBOARD -->
-    <section data-page="dashboard" class="section">
-      <div class="kpi">
-        <div class="card"><h4>Overdue Aktionen</h4><div id="kpiOverdue" class="big">0</div></div>
-        <div class="card"><h4>RPN</h4><div class="big"><span id="kpiRpn">0</span> <span class="pill" id="kpiLevel">L–</span></div></div>
-        <div class="card"><h4>Fortschritt 9S</h4><div class="progress"><i id="kpiProgress" style="width:0%"></i></div><div class="tiny muted" id="kpiProgressTxt">0%</div></div>
-        <div class="card"><h4>Status</h4><div class="inline">
-          <span class="status" id="stContain"><i></i>Containment</span>
-          <span class="status" id="stRca"><i></i>RCA</span>
-          <span class="status" id="stPca"><i></i>PCA</span>
-          <span class="status" id="stClose"><i></i>Close</span>
-        </div></div>
-      </div>
-
-      <div class="card">
-        <h2>SARI Snapshot</h2>
-        <div class="grid">
-          <div>
-            <label>SARI Titel</label><input id="metaTitle" placeholder="z.B. GEN-004 – Incorrect Assembly of …">
-          </div>
-          <div class="grid">
-            <div>
-              <label>SARI Level</label>
-              <select id="metaLevel">
-                <option value="L1">L1 – In-Service + possible Unsafe condition</option>
-                <option value="L2">L2 – In-Service, keine unsafe condition</option>
-                <option value="L3">L3 – In-Production enthalten</option>
-              </select>
-            </div>
-            <div>
-              <label>ATA (optional)</label><input id="metaAta" placeholder="z.B. ATA 27">
-            </div>
-          </div>
-
-          <div class="grid">
-            <div>
-              <label>Severity (S)</label><input id="sevS" type="number" min="1" max="10" placeholder="1–10">
-            </div>
-            <div>
-              <label>Occurrence (O)</label><input id="sevO" type="number" min="1" max="10" placeholder="1–10">
-            </div>
-            <div>
-              <label>Detection (D)</label><input id="sevD" type="number" min="1" max="10" placeholder="1–10">
-            </div>
-          </div>
-          <div><span class="muted tiny">RPN = S × O × D • „Top Irritants“ (RPN ≥ 300) → S7 verpflichtend</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- META -->
-    <section data-page="meta" class="section" hidden>
-      <div class="card">
-        <h2>Stammdaten & Rollen</h2>
-        <div class="grid">
-          <div><label>SIM (Safety Item Manager)</label><input id="roleSim" placeholder="Name SIM"></div>
-          <div><label>Sponsor</label><input id="roleSponsor"></div>
-          <div><label>Solving Leader</label><input id="roleLeader"></div>
-          <div><label>Problem Owner</label><input id="roleOwner"></div>
-          <div><label>Operations Vertreter</label><input id="roleOps"></div>
-          <div><label>PPM (Coach)</label><input id="rolePpm"></div>
-        </div>
-        <div class="grid">
-          <div><label>First Event (Datum)</label><input id="dateFirst" type="date"></div>
-          <div><label>Kundeninfo gesendet am</label><input id="dateCustomer" type="date"></div>
-          <div><label>Line Stop durchgeführt</label><select id="lineStop"><option>Nein</option><option>Ja</option></select></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GOVERNANCE -->
-    <section data-page="governance" class="section" hidden>
-      <div class="card">
-        <h2>Governance & Panels</h2>
-        <div class="grid">
-          <div>
-            <label>ICB Status</label>
-            <select id="govIcb">
-              <option value="">—</option>
-              <option>Wartet auf Allokation</option>
-              <option>SIM nominiert</option>
-              <option>Abgeschlossen</option>
-            </select>
-          </div>
-          <div>
-            <label>PPP (L2/L3)</label>
-            <select id="govPpp">
-              <option value="">—</option>
-              <option>In Vorbereitung</option>
-              <option>Ready for PPM Review</option>
-              <option>Scheduled for PPP</option>
-              <option>PPP validiert</option>
-            </select>
-          </div>
-          <div>
-            <label>PP (L1)</label>
-            <select id="govPp">
-              <option value="">—</option>
-              <option>In Vorbereitung</option>
-              <option>Ready for PPM Review</option>
-              <option>Scheduled for PP</option>
-              <option>PP validiert</option>
-            </select>
-          </div>
-          <div>
-            <label>POARM (EASA, L1)</label>
-            <select id="govPoarm">
-              <option value="">—</option>
-              <option>nicht anwendbar</option>
-              <option>vorbereitet</option>
-              <option>durchgeführt</option>
-            </select>
-          </div>
-        </div>
-
-        <h3>Early Closure (nur L2/L3)</h3>
-        <div class="guard">
-          <div class="grid">
-            <div><label>Risikoanalyse – Wiederauftreten (Likelihood)</label><input id="rcRiskL" type="text" placeholder="z.B. gering / begründet…"></div>
-            <div><label>Risikoanalyse – Auswirkung (Severity)</label><input id="rcRiskS" type="text" placeholder="z.B. niedrig / begründet…"></div>
-          </div>
-          <label>Begründung Early Closure (für PPP)</label>
-          <textarea id="rcJust">Basierend auf implementierten PCA und Wirksamkeitsnachweis wird die Untersuchung vor S7 geschlossen. Risiko ist akzeptabel, da …</textarea>
-          <div class="inline">
-            <button class="btn" id="btnMarkEarly">🔏 Early Closure markieren</button>
-            <span class="tag" id="tagEarly" hidden>EARLY CLOSURE DRAFT</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MATURITY CHECKLIST -->
-    <section data-page="maturity" class="section" hidden>
-      <div class="card">
-        <h2>Maturity-Checklist (FM2201494)</h2>
-        <div id="maturityList" class="list"></div>
-      </div>
-    </section>
-
-    <!-- ID CARD -->
-    <section data-page="idcard" class="section" hidden>
-      <div class="card">
-        <h2>ID-Card (FM2201652)</h2>
-        <div id="idCardContainer"></div>
-        <div class="toolbar">
-          <button class="btn" onclick="window.print()">🖨️ Drucken / PDF</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- S0 -->
-    <section data-page="s0" class="section" hidden>
-      <div class="card">
-        <h2>S0 – Containment Cockpit</h2>
-        <div class="guard" id="gridS0"></div>
-        <div class="grid">
-          <div>
-            <label>Nachweis Kundeninformation (Datum)</label><input id="s0CustomerDate" type="date">
-          </div>
-          <div>
-            <label>Containment-Aktionsplan (Upload)</label><input id="s0PlanFile" type="file">
-          </div>
-          <div>
-            <label>Line Stop durchgeführt</label>
-            <select id="s0LineStop"><option>Nein</option><option>Ja</option></select>
-          </div>
-          <div>
-            <label>Bestandsprüfung – Nachweis</label><textarea id="s0StockProof" placeholder="Link/Notiz; Upload unten optional"></textarea>
-          </div>
-          <div>
-            <label>Bestandsprüfung (Upload)</label><input id="s0StockFile" type="file">
-          </div>
-        </div>
-
-        <div class="hint" id="s0Urgency">
-          ⏱️ 1-Tages-Frist Kundeninfo: <b id="s0DueTxt">–</b>
-        </div>
-      </div>
-    </section>
-
-    <!-- S1 -->
-    <section data-page="s1" class="section" hidden>
-      <div class="card">
-        <h2>S1 – Team Charter</h2>
-        <div class="guard" id="gridS1"></div>
-        <div class="grid">
-          <div><label>Leader</label><input id="s1Leader"></div>
-          <div><label>Sponsor</label><input id="s1Sponsor"></div>
-          <div><label>Problem Owner</label><input id="s1Owner"></div>
-          <div><label>Operations</label><input id="s1Ops"></div>
-          <div><label>Weitere MFT-Member</label><input id="s1Mft"></div>
-          <div><label>Kick-off Protokoll (Upload)</label><input id="s1MoM" type="file"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- S2 -->
-    <section data-page="s2" class="section" hidden>
-      <div class="card">
-        <h2>S2 – Evidence Hub</h2>
-        <div class="guard" id="gridS2"></div>
-        <div class="grid">
-          <div>
-            <label>Issue Description (faktenbasiert)</label>
-            <textarea id="s2Issue" placeholder="1 Objekt, 1 Defekt; Fakten & Zahlen…"></textarea>
-          </div>
-          <div>
-            <label>Supply Chain Breakdown</label>
-            <textarea id="s2Supply" placeholder="Tier 2 → Tier 1 → FAL → …"></textarea>
-          </div>
-        </div>
-        <div class="grid">
-          <div>
-            <label>5W2H</label>
-            <textarea id="s2_5w2h" placeholder="What, Where, When, Who, Why, How, How many/cost…"></textarea>
-          </div>
-          <div>
-            <label>IS / IS NOT (bei komplexen Fällen)</label>
-            <textarea id="s2IsIsNot" placeholder="IS: … / IS NOT: …"></textarea>
-          </div>
-        </div>
-        <div class="grid">
-          <div>
-            <label>Foto/Video (Upload)</label>
-            <input id="s2Media" type="file" accept="image/*,video/*" multiple>
-          </div>
-          <div>
-            <label>M1750 – KI-Vorschlag (GEN)</label>
-            <div id="s2M1750" class="hint tiny">Ergebnis erscheint nach Eingabe/Änderung der Issue Description.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- S3 -->
-    <section data-page="s3" class="section" hidden>
-      <div class="card">
-        <h2>S3 – Validate Containment</h2>
-        <div class="guard" id="gridS3"></div>
-        <div class="grid">
-          <div>
-            <label>Validierungsbericht (Upload)</label><input id="s3ValReport" type="file">
-          </div>
-          <div>
-            <label>Traceability-Bericht (TOAC)</label><input id="s3Trace" type="file">
-          </div>
-          <div>
-            <label>Trigger-Point beschrieben?</label>
-            <select id="s3Trigger"><option>Nein</option><option>Ja</option></select>
-          </div>
-          <div>
-            <label>Curative Actions umgesetzt?</label>
-            <select id="s3Curative"><option>Nein</option><option>Ja</option></select>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- S4 -->
-    <section data-page="s4" class="section" hidden>
-      <div class="card">
-        <h2>S4 – Root Cause Analysis Workspace</h2>
-        <div class="guard">Trennung der Ursachenebenen ist verpflichtend (Occurrence, Non-Detection, Systemic). Ishikawa ist empfohlen/verpflichtend (Levelabhängig).</div>
-
-        <div class="rca-board">
-          <div class="rca-col">
-            <b>Occurrence</b>
-            <div class="list" id="ishikawa-occ"></div>
-            <div class="inline">
-              <input id="occInput" placeholder="Ursache hinzufügen …">
-              <button class="btn" id="addOcc">➕</button>
-            </div>
-            <label>Finale RC1</label><input id="rc1">
-          </div>
-          <div class="rca-col">
-            <b>Non-Detection</b>
-            <div class="list" id="ishikawa-non"></div>
-            <div class="inline">
-              <input id="nonInput" placeholder="Ursache hinzufügen …">
-              <button class="btn" id="addNon">➕</button>
-            </div>
-            <label>Finale RC2</label><input id="rc2">
-          </div>
-          <div class="rca-col">
-            <b>Systemic</b>
-            <div class="list" id="ishikawa-sys"></div>
-            <div class="inline">
-              <input id="sysInput" placeholder="Ursache hinzufügen …">
-              <button class="btn" id="addSys">➕</button>
-            </div>
-            <label>Finale RC3</label><input id="rc3">
-          </div>
-        </div>
-
-        <h3>5-Whys Baum</h3>
-        <div class="list" id="whys"></div>
-        <div class="inline">
-          <input id="whyInput" placeholder="Warum …? (Enter fügt hinzu)">
-          <button class="btn" id="addWhy">➕ Warum</button>
-        </div>
-
-        <label>Nachweise (Uploads, optional)</label>
-        <input id="s4Proof" type="file" multiple>
-      </div>
-    </section>
-
-    <!-- S5 -->
-    <section data-page="s5" class="section" hidden>
-      <div class="card">
-        <h2>S5 – Define Corrective Actions</h2>
-        <div class="guard">Jede Maßnahme muss logisch einer Ursache (RC1/RC2/RC3) zugeordnet sein. Effektivitätskriterium definieren.</div>
-        <table>
-          <thead><tr><th>Maßnahme</th><th>Owner</th><th>Fällig</th><th>RC Link</th><th>Erfolgsmetrik</th><th>Status</th><th></th></tr></thead>
-          <tbody id="pcaRows"></tbody>
-        </table>
-        <div class="inline">
-          <button class="btn" id="addPca">➕ Maßnahme</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- S6 -->
-    <section data-page="s6" class="section" hidden>
-      <div class="card">
-        <h2>S6 – Implement & Check Effectiveness</h2>
-        <div class="guard">100% der geplanten Maßnahmen umgesetzt; Wirksamkeit statistisch belegt (SPC/Audit). Containment erst nach Nachweis beenden.</div>
-        <div id="effRows" class="list"></div>
-      </div>
-    </section>
-
-    <!-- S7 -->
-    <section data-page="s7" class="section" hidden>
-      <div class="card">
-        <h2>S7 – Standardize & Prevent</h2>
-        <div class="guard">Look-Across, SOP/FMEA aktualisiert, Lieferkette berücksichtigt. Präventive Maßnahmen planen & überwachen.</div>
-        <div class="grid">
-          <div><label>Look-Across Bericht (Upload)</label><input id="s7Look" type="file"></div>
-          <div><label>Aktualisierte SOP/Prozessdoks (Upload)</label><input id="s7Sop" type="file" multiple></div>
-          <div><label>Aktualisierte FMEA (Upload)</label><input id="s7Fmea" type="file"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- S8 -->
-    <section data-page="s8" class="section" hidden>
-      <div class="card">
-        <h2>S8 – Close & Recognize</h2>
-        <div class="guard">Checkliste ausfüllen; Abschlusskommunikation an Kunden; Lessons Learned integriert. Effektivität der 9S-Methodik reflektieren.</div>
-        <div id="closeList" class="list"></div>
-        <div class="grid">
-          <div><label>Abschlusskommunikation (Upload)</label><input id="s8Comm" type="file"></div>
-          <div><label>Kommentar</label><textarea id="s8Comment" placeholder="Team würdigen, Learnings, nächste Schritte …"></textarea></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTBAR -->
-    <div class="footbar">
-      <div class="inline tiny">
-        <span class="muted">Quality Gate:</span>
-        <span id="gateTxt" class="tag">S0 Pflichtfelder offen</span>
-      </div>
-      <div class="inline">
-        <button class="btn ghost" id="btnPrev">← Zurück</button>
-        <button class="btn primary" id="btnNext">Weiter →</button>
-      </div>
-    </div>
-  </main>
-</div>
-
-<script>
-/* ------------------------ State & Helpers ------------------------ */
-const state = JSON.parse(localStorage.getItem('sari_v1')||'null') || seedState();
-const maturity = seedMaturity(); // demo subset, CSV import möglich
-
-function seedState(){
-  return {
-    meta:{title:'', level:'L3', ata:'', s:0,o:0,d:0,
-          roles:{sim:'', sponsor:'', leader:'', owner:'', ops:'', ppm:''},
-          dates:{first:'', customer:'', lineStop:'Nein'}},
-    gov:{icb:'', ppp:'', pp:'', poarm:'', early:false, riskL:'', riskS:'', just:''},
-    s0:{custDate:'', planFile:null, lineStop:'Nein', stockProof:'', stockFile:null},
-    s1:{leader:'', sponsor:'', owner:'', ops:'', mft:'', mom:null},
-    s2:{issue:'', supply:'', a5w2h:'', isnot:'', media:[], m1750:[]},
-    s3:{val:null, trace:null, trigger:'Nein', curative:'Nein'},
-    s4:{ish:{occ:[],non:[],sys:[]}, rc1:'', rc2:'', rc3:'', whys:[], proofs:[]},
-    s5:{pca:[]}, // {txt,owner,due,rc,metric,status}
-    s6:{eff:[]}, // mirrored from pca with evidence
-    s7:{look:null, sop:[], fmea:null},
-    s8:{checks:{eff:true, docs:true, lessons:true, why:true}, comm:null, comment:''},
-    view:'dashboard'
-  };
-}
-
-function seedMaturity(){
-  // Demo-Subset (S0–S3). Vollständiges CSV kann importiert werden.
-  return {
-    S0:{requirements:[
-      "Customer innerhalb 1 Tag informiert",
-      "Formaler Containment-Plan in 3 Arbeitstagen",
-      "Produktion nur mit wirksamer Containment wieder starten ≤ 3 Tage"
-    ], benchmark:[
-      "Produktion mit effizienter Containment ≤ 24h wieder gestartet",
-      "Issue Description inkl. Kundenperspektive enthalten"
-    ]},
-    S1:{requirements:[
-      "MFT nominiert inkl. Operations",
-      "8D/9S Leader klar benannt",
-      "Sponsor eingebunden"
-    ], benchmark:[
-      "Top-Management Sponsorship aktiv",
-      "Supplier integriert (bei Sub-Tier Themen)",
-      "Operator/Inspektor vertreten"
-    ]},
-    S2:{requirements:[
-      "1 Objekt, 1 Defekt – faktenbasiert (5W2H)",
-      "Keine Vermischung von Symptom/RC",
-      "IS/IS NOT bei komplexen Fällen"
-    ], benchmark:[
-      "Problem Statement mit Kunden-Sicht",
-      "Lessons Learned als Input berücksichtigt"
-    ]},
-    S3:{requirements:[
-      "Wirksamkeit der Containment demonstriert",
-      "Full TOAC/Traceability gesichert",
-      "Curative Actions zeitgerecht umgesetzt"
-    ], benchmark:[
-      "Optimierte Containment ≤ 7 Tage",
-      "Wirksamkeit validiert (nicht nur implementiert)"
-    ]}
-  };
-}
-
-function save(){ localStorage.setItem('sari_v1', JSON.stringify(state)); refreshAll(); }
-function $(sel){ return document.querySelector(sel); }
-function el(tag, attrs={}, children=[]){ const e=document.createElement(tag); Object.entries(attrs).forEach(([k,v])=> (k==='class'? e.className=v : e[k]=v)); children.forEach(c=> e.append(c)); return e; }
-function prettyDate(d){ return d? new Date(d).toLocaleDateString():'—'; }
-function daysBetween(a,b){ const x=new Date(a), y=new Date(b); if(!a||!b||isNaN(x)||isNaN(y)) return null; return Math.round((y-x)/(24*3600*1000)); }
-function todayISO(){ const t=new Date(); t.setHours(0,0,0,0); return t.toISOString().slice(0,10); }
-function computeRpn(){ const {s,o,d}=state.meta; const r=(+s||0)*(+o||0)*(+d||0); return isFinite(r)? r:0; }
-function currentLevel(){ return state.meta.level||'L3'; }
-
-/* ------------------------ Navigation ------------------------ */
-const navButtons = document.querySelectorAll('aside .nav button[data-view]');
-navButtons.forEach(btn=> btn.addEventListener('click', ()=> show(btn.dataset.view)));
-function show(view){
-  state.view=view; save();
-  document.querySelectorAll('main [data-page]').forEach(s=> s.hidden = (s.dataset.page!==view));
-  navButtons.forEach(b=> b.classList.toggle('active', b.dataset.view===view));
-  refreshAll();
-}
-show(state.view);
-
-/* ------------------------ Bind meta inputs ------------------------ */
-$('#metaTitle').value = state.meta.title;
-$('#metaTitle').addEventListener('input', e=> {state.meta.title=e.target.value; save();});
-
-$('#metaLevel').value = state.meta.level;
-$('#metaLevel').addEventListener('change', e=> {state.meta.level=e.target.value; save();});
-
-$('#metaAta').value = state.meta.ata;
-$('#metaAta').addEventListener('input', e=> {state.meta.ata=e.target.value; save();});
-
-['sevS','sevO','sevD'].forEach(id=>{
-  $('#'+id).value = state.meta[id.slice(3).toLowerCase()];
-  $('#'+id).addEventListener('input', e=> {state.meta[id.slice(3).toLowerCase()] = e.target.value; save();});
-});
-
-/* Stammdaten & Rollen */
-const roleMap = {roleSim:'sim', roleSponsor:'sponsor', roleLeader:'leader', roleOwner:'owner', roleOps:'ops', rolePpm:'ppm'};
-Object.entries(roleMap).forEach(([id,key])=>{
-  $('#'+id).value = state.meta.roles[key]||'';
-  $('#'+id).addEventListener('input', e=> {state.meta.roles[key]=e.target.value; save();});
-});
-$('#dateFirst').value = state.meta.dates.first||'';
-$('#dateCustomer').value = state.meta.dates.customer||'';
-$('#lineStop').value = state.meta.dates.lineStop||'Nein';
-$('#dateFirst').addEventListener('change', e=> {state.meta.dates.first=e.target.value; save();});
-$('#dateCustomer').addEventListener('change', e=> {state.meta.dates.customer=e.target.value; save();});
-$('#lineStop').addEventListener('change', e=> {state.meta.dates.lineStop=e.target.value; save();});
-
-/* Governance */
-[['govIcb','icb'],['govPpp','ppp'],['govPp','pp'],['govPoarm','poarm']].forEach(([id,k])=>{
-  $('#'+id).value = state.gov[k]||'';
-  $('#'+id).addEventListener('change', e=> {state.gov[k]=e.target.value; save();});
-});
-$('#rcRiskL').value = state.gov.riskL||'';
-$('#rcRiskS').value = state.gov.riskS||'';
-$('#rcJust').value = state.gov.just||'';
-$('#rcRiskL').addEventListener('input', e=> {state.gov.riskL=e.target.value; save();});
-$('#rcRiskS').addEventListener('input', e=> {state.gov.riskS=e.target.value; save();});
-$('#rcJust').addEventListener('input', e=> {state.gov.just=e.target.value; save();});
-$('#btnMarkEarly').addEventListener('click', ()=> { state.gov.early = !state.gov.early; save(); });
-
-/* S0 */
-$('#s0CustomerDate').value = state.s0.custDate||'';
-$('#s0CustomerDate').addEventListener('change', e=> {state.s0.custDate=e.target.value; save();});
-$('#s0LineStop').value = state.s0.lineStop||'Nein';
-$('#s0LineStop').addEventListener('change', e=> {state.s0.lineStop=e.target.value; save();});
-$('#s0StockProof').value = state.s0.stockProof||'';
-$('#s0StockProof').addEventListener('input', e=> {state.s0.stockProof=e.target.value; save();});
-$('#s0PlanFile').addEventListener('change', e=> handleFile(e.target.files[0], f=> {state.s0.planFile=f; save();}));
-$('#s0StockFile').addEventListener('change', e=> handleFile(e.target.files[0], f=> {state.s0.stockFile=f; save();}));
-
-/* S1 */
-['s1Leader','s1Sponsor','s1Owner','s1Ops','s1Mft'].forEach(id=>{
-  $('#'+id).value = state.s1[id.slice(2).toLowerCase()]||'';
-  $('#'+id).addEventListener('input', e=> {state.s1[id.slice(2).toLowerCase()] = e.target.value; save();});
-});
-$('#s1MoM').addEventListener('change', e=> handleFile(e.target.files[0], f=> {state.s1.mom=f; save();}));
-
-/* S2 */
-$('#s2Issue').value = state.s2.issue||'';
-$('#s2Supply').value = state.s2.supply||'';
-$('#s2_5w2h').value = state.s2.a5w2h||'';
-$('#s2IsIsNot').value = state.s2.isnot||'';
-['s2Issue','s2Supply','s2_5w2h','s2IsIsNot'].forEach(id=>{
-  $('#'+id).addEventListener('input', e=> { 
-    const key = id==='s2_5w2h'?'a5w2h': (id==='s2IsIsNot'?'isnot': id.slice(2));
-    state.s2[key]=e.target.value; 
-    if(id==='s2Issue') suggestM1750();
-    save();
-  });
-});
-$('#s2Media').addEventListener('change', e=>{
-  const files=[...e.target.files];
-  let count=0;
-  files.forEach(file=> handleFile(file, f=> { state.s2.media.push(f); count++; if(count===files.length) save(); }));
-});
-
-/* S3 */
-$('#s3ValReport').addEventListener('change', e=> handleFile(e.target.files[0], f=> {state.s3.val=f; save();}));
-$('#s3Trace').addEventListener('change', e=> handleFile(e.target.files[0], f=> {state.s3.trace=f; save();}));
-$('#s3Trigger').value = state.s3.trigger||'Nein';
-$('#s3Curative').value = state.s3.curative||'Nein';
-$('#s3Trigger').addEventListener('change', e=> {state.s3.trigger=e.target.value; save();});
-$('#s3Curative').addEventListener('change', e=> {state.s3.curative=e.target.value; save();});
-
-/* S4 Ishikawa + 5Why */
-function addIsh(col,inputId){const v=$(inputId).value.trim(); if(!v) return; state.s4.ish[col].push(v); $(inputId).value=''; save();}
-$('#addOcc').addEventListener('click', ()=> addIsh('occ','#occInput'));
-$('#addNon').addEventListener('click', ()=> addIsh('non','#nonInput'));
-$('#addSys').addEventListener('click', ()=> addIsh('sys','#sysInput'));
-['rc1','rc2','rc3'].forEach(id=> { $('#'+id).value=state.s4[id]||''; $('#'+id).addEventListener('input', e=> {state.s4[id]=e.target.value; save();}); });
-$('#addWhy').addEventListener('click', addWhy);
-$('#whyInput').addEventListener('keydown', e=> { if(e.key==='Enter'){ e.preventDefault(); addWhy(); }});
-function addWhy(){ const v=$('#whyInput').value.trim(); if(!v) return; state.s4.whys.push({q:v,depth: state.s4.whys.length}); $('#whyInput').value=''; save(); }
-$('#s4Proof').addEventListener('change', e=>{
-  const files=[...e.target.files]; let count=0;
-  files.forEach(file=> handleFile(file, f=> { state.s4.proofs.push(f); count++; if(count===files.length) save(); }));
-});
-
-/* S5 PCA */
-$('#addPca').addEventListener('click', ()=> {
-  state.s5.pca.push({txt:'',owner:'',due:'',rc:'RC1',metric:'',status:'Offen', evidence:null});
-  syncEffRows(); save();
-});
-function syncEffRows(){ state.s6.eff = state.s5.pca.map((p,i)=> ({i, txt:p.txt, implemented:false, evidence:null, effective:false})); }
-
-/* S6 */
-function toggleEff(i, key){ state.s6.eff[i][key]=!state.s6.eff[i][key]; save(); }
-
-/* S7 */
-$('#s7Look').addEventListener('change', e=> handleFile(e.target.files[0], f=> {state.s7.look=f; save();}));
-$('#s7Sop').addEventListener('change', e=>{
-  const files=[...e.target.files]; let count=0;
-  files.forEach(file=> handleFile(file, f=> { state.s7.sop.push(f); count++; if(count===files.length) save(); }));
-});
-$('#s7Fmea').addEventListener('change', e=> handleFile(e.target.files[0], f=> {state.s7.fmea=f; save();}));
-
-/* S8 */
-const closeItems = [
-  ['eff','Wirksamkeit jeder Maßnahme belegt'],
-  ['docs','Dokumente vollständig & abgelegt'],
-  ['lessons','Lessons Learned integriert'],
-  ['why','5-Whys zeigt tatsächliche RC']
-];
-function renderCloseList(){
-  const host = $('#closeList'); host.innerHTML='';
-  closeItems.forEach(([k,label])=>{
-    const id='cl_'+k;
-    const wrap=el('div',{className:'row'},[
-      el('input',{type:'checkbox', id, checked: !!state.s8.checks[k]}),
-      el('label',{htmlFor:id, innerText: label})
-    ]);
-    host.append(wrap);
-    wrap.querySelector('input').addEventListener('change', e=> {state.s8.checks[k]=e.target.checked; save();});
-  });
-}
-$('#s8Comm').addEventListener('change', e=> handleFile(e.target.files[0], f=> {state.s8.comm=f; save();}));
-$('#s8Comment').value = state.s8.comment||'';
-$('#s8Comment').addEventListener('input', e=> {state.s8.comment=e.target.value; save();});
-
-/* ------------------------ File Handling ------------------------ */
-function handleFile(file, cb){
-  if(!file) return cb(null);
-  const max=500*1024; // 500KB
-  const reader = new FileReader();
-  reader.onload = ()=> {
-    const data = reader.result;
-    const payload = (file.size<=max && typeof data==='string') ? data : null; // store DataURL if small
-    cb({name:file.name, size:file.size, type:file.type, data:payload, ts: Date.now()});
-  };
-  reader.onerror = ()=> cb({name:file.name,size:file.size,type:file.type,data:null,ts:Date.now()});
-  reader.readAsDataURL(file);
-}
-
-/* ------------------------ KPI & Rendering ------------------------ */
-function refreshAll(){
-  // KPI
-  const rpn=computeRpn(); $('#kpiRpn').innerText=rpn;
-  const lvl=currentLevel(); $('#kpiLevel').innerText=lvl;
-  const totalSteps=9; const doneSteps = ['s0','s1','s2','s3','s4','s5','s6','s7','s8'].filter(isStepDone).length;
-  const pct = Math.round((doneSteps/totalSteps)*100);
-  $('#kpiProgress').style.width = pct+'%'; $('#kpiProgressTxt').innerText=pct+'%';
-
-  // Status lights
-  setLight('#stContain', isStepDone('s3'));
-  setLight('#stRca', !!(state.s4.rc1 && state.s4.rc2));
-  setLight('#stPca', state.s5.pca.length>0);
-  setLight('#stClose', isStepDone('s8'));
-
-  // Overdue actions
-  const today=todayISO();
-  const overdue = state.s5.pca.filter(p=> p.due && p.status!=='Erledigt' && p.due<today).length;
-  $('#kpiOverdue').innerText = overdue;
-  $('#tagEarly').hidden = !state.gov.early;
-
-  // Maturity guard texts
-  renderGridHints();
-  suggestM1750();
-
-  // S0 urgency
-  renderS0Urgency();
-
-  // RCA boards
-  renderIsh();
-
-  // 5Whys
-  renderWhys();
-
-  // PCA rows + S6 effectiveness
-  renderPca();
-  renderEff();
-
-  // Maturity checklist
-  renderMaturityChecklist();
-
-  // ID Card
-  renderIdCard();
-
-  // Quality Gate + Next/Prev enablement
-  renderGate();
-
-  // Close list
-  renderCloseList();
-}
-function setLight(sel, ok){ const el=$(sel); el.classList.toggle('ok', !!ok); el.classList.toggle('bad', !ok); }
-function isStepDone(key){
-  switch(key){
-    case 's0': return !!state.s0.custDate && !!state.s0.planFile;
-    case 's1': return !!state.s1.leader && !!state.s1.sponsor && !!state.s1.owner && !!state.s1.ops;
-    case 's2': return !!state.s2.issue && !!state.s2.a5w2h;
-    case 's3': return !!state.s3.val && state.s3.curative==='Ja';
-    case 's4': return !!(state.s4.rc1 && state.s4.rc2);
-    case 's5': return state.s5.pca.length>0;
-    case 's6': return state.s6.eff.every(e=> e.implemented && e.effective);
-    case 's7': return (state.meta.level==='L1' || computeRpn()>=300) ? (!!state.s7.look && !!state.s7.fmea) : true;
-    case 's8': return Object.values(state.s8.checks).every(v=> !!v);
-    default: return false;
-  }
-}
-function renderGate(){
-  const order=['s0','s1','s2','s3','s4','s5','s6','s7','s8'];
-  const currentIndex = Math.max(0, order.indexOf(state.view.startsWith('s')? state.view : 's0'));
-  let block = order.find(k=> !isStepDone(k));
-  const gateTxt = block? `Nächster Quality-Gate: ${block.toUpperCase()} abschließen` : 'Alle Gates erfüllt ✔';
-  $('#gateTxt').innerText = gateTxt;
-
-  // Prev/Next buttons behavior
-  $('#btnPrev').onclick = ()=> { const i=Math.max(0, currentIndex-1); show(order[i]); };
-  $('#btnNext').onclick = ()=> {
-    // enforce wizard forward only if current is done (except dashboard/meta/governance)
-    const cur = order[currentIndex];
-    if(['dashboard','meta','governance','idcard','maturity'].includes(state.view)) { show('s0'); return; }
-    if(!isStepDone(cur)) { alert('Bitte Pflichtfelder für '+cur.toUpperCase()+' erfüllen, bevor es weitergeht.'); return; }
-    const i=Math.min(order.length-1, currentIndex+1); show(order[i]);
-  };
-}
-
-/* Hints from Maturity subset or CSV */
-function renderGridHints(){
-  [['gridS0','S0'],['gridS1','S1'],['gridS2','S2'],['gridS3','S3']].forEach(([id,step])=>{
-    const host = $('#'+id); if(!host) return;
-    const data = maturity[step];
-    host.innerHTML = data? (
-      `<b>${step} • Maturity Guidance</b><div class="grid">
-         <div><div class="tiny muted">Requirements</div><ul>${data.requirements.map(x=>`<li>${x}</li>`).join('')}</ul></div>
-         <div><div class="tiny muted">Benchmark</div><ul>${data.benchmark.map(x=>`<li>${x}</li>`).join('')}</ul></div>
-       </div>`
-    ) : '<span class="muted tiny">Keine Guidance verfügbar – bitte CSV importieren.</span>';
-  });
-}
-
-/* S0 urgency due (1 day) */
-function renderS0Urgency(){
-  const first = state.meta.dates.first;
-  const cust = state.s0.custDate || state.meta.dates.customer;
-  const today = todayISO();
-  if(!first){ $('#s0DueTxt').innerText='„First Event“ fehlt.'; return; }
-  const d = daysBetween(first, cust || today);
-  let txt='–';
-  if(!cust){ txt = `Noch keine Kundeninfo. ${d>1? 'Überfällig um '+(d-1)+' Tag(e).':'Frist läuft – '+(1-d)+' Tag(e) verbleiben.'}`; }
-  else { txt = `Kundeninfo nach ${d} Tag(en). ${d<=1? '✔ Frist eingehalten':'⚠ Frist überschritten'}`; }
-  $('#s0DueTxt').innerText = txt;
-}
-
-/* Ishikawa & 5Whys */
-function renderIsh(){
-  const cols=[['ishikawa-occ','occ'],['ishikawa-non','non'],['ishikawa-sys','sys']];
-  cols.forEach(([id,key])=>{
-    const host=$('#'+id); host.innerHTML='';
-    state.s4.ish[key].forEach((v,i)=>{
-      const row=el('div',{className:'row'},[
-        el('input',{value:v, oninput:(e)=>{state.s4.ish[key][i]=e.target.value; save();}}),
-        el('button',{className:'btn', innerText:'🗑', onclick:()=>{state.s4.ish[key].splice(i,1); save();}})
-      ]);
-      host.append(row);
-    });
-  });
-}
-function renderWhys(){
-  const host=$('#whys'); host.innerHTML='';
-  state.s4.whys.forEach((w,i)=>{
-    const row=el('div',{className:'row'},[
-      el('span',{className:'tiny muted', innerText:(i+1)+'. '}),
-      el('input',{value:w.q, oninput:(e)=>{state.s4.whys[i].q=e.target.value; save();}}),
-      el('button',{className:'btn', innerText:'▲', onclick:()=>{ if(i>0){ const t=state.s4.whys[i-1]; state.s4.whys[i-1]=w; state.s4.whys[i]=t; save(); }}}),
-      el('button',{className:'btn', innerText:'🗑', onclick:()=>{state.s4.whys.splice(i,1); save();}})
-    ]);
-    host.append(row);
-  });
-}
-
-/* PCA table */
-function renderPca(){
-  const body = $('#pcaRows'); body.innerHTML='';
-  state.s5.pca.forEach((p,i)=>{
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td><input value="${p.txt||''}" placeholder="Aktion …"></td>
-      <td><input value="${p.owner||''}" placeholder="Owner …"></td>
-      <td><input type="date" value="${p.due||''}"></td>
-      <td>
-        <select>
-          <option ${p.rc==='RC1'?'selected':''}>RC1</option>
-          <option ${p.rc==='RC2'?'selected':''}>RC2</option>
-          <option ${p.rc==='RC3'?'selected':''}>RC3</option>
-        </select>
-      </td>
-      <td><input value="${p.metric||''}" placeholder="z.B. ppm↓, Cpk↑ …"></td>
-      <td>
-        <select>
-          <option ${p.status==='Offen'?'selected':''}>Offen</option>
-          <option ${p.status==='In Arbeit'?'selected':''}>In Arbeit</option>
-          <option ${p.status==='Erledigt'?'selected':''}>Erledigt</option>
-        </select>
-      </td>
-      <td><button class="btn">🗑</button></td>
-    `;
-    // bindings
-    const [iTxt,iOwner,iDue,iRc,iMet,iStat,iDel] = tr.querySelectorAll('input,select,button');
-    iTxt.oninput = e=> {p.txt=e.target.value; syncEffRows(); save();};
-    iOwner.oninput = e=> {p.owner=e.target.value; save();};
-    iDue.onchange = e=> {p.due=e.target.value; save();};
-    iRc.onchange = e=> {p.rc=e.target.value; save();};
-    iMet.oninput = e=> {p.metric=e.target.value; save();};
-    iStat.onchange = e=> {p.status=e.target.value; save();};
-    iDel.onclick = ()=> { state.s5.pca.splice(i,1); syncEffRows(); save(); };
-    body.append(tr);
-  });
-}
-
-/* Effectiveness list */
-function renderEff(){
-  const host = $('#effRows'); host.innerHTML='';
-  if(!state.s6.eff.length) syncEffRows();
-  state.s6.eff.forEach((e,i)=>{
-    const row = el('div',{className:'row'},[
-      el('input',{type:'checkbox', checked:e.implemented, onchange:()=>toggleEff(i,'implemented')}),
-      el('span',{innerText: state.s5.pca[i]?.txt || '(Maßnahme)'}),
-      el('span',{className:'muted tiny', innerText:'•'}),
-      el('label',{className:'tiny'}, ['Wirksam? ']),
-      el('input',{type:'checkbox', checked:e.effective, onchange:()=>toggleEff(i,'effective')}),
-    ]);
-    host.append(row);
-  });
-}
-
-/* Maturity Checklist (lightweight, demo) */
-function renderMaturityChecklist(){
-  const items = [
-    ['S0','Customer ≤ 1 Tag informiert', !!state.s0.custDate && withinDays(state.meta.dates.first,state.s0.custDate,1)],
-    ['S1','MFT inkl. Ops & Sponsor gesetzt', !!state.s1.ops && !!state.s1.sponsor],
-    ['S2','5W2H & 1 Objekt/1 Defekt', !!state.s2.a5w2h && !!state.s2.issue],
-    ['S3','Wirksamkeit Containment nachgewiesen', !!state.s3.val],
-    ['S4','RC1 + RC2 getrennt definiert', !!state.s4.rc1 && !!state.s4.rc2],
-    ['S5','PCA plan verknüpft (RC1/2/3)', state.s5.pca.some(p=>['RC1','RC2','RC3'].includes(p.rc))],
-    ['S6','Effektivität jeder Maßnahme belegt', state.s6.eff.every(e=> e.effective)],
-    ['S7','FMEA/SOP aktualisiert (falls L1/Top Irritant)', state.meta.level==='L1' ? (!!state.s7.fmea): true],
-    ['S8','Abschluss-Checkliste komplett', Object.values(state.s8.checks).every(v=>v)]
-  ];
-  const host = $('#maturityList'); host.innerHTML='';
-  items.forEach(([step,label,ok])=>{
-    const row=el('div',{className:'row'},[
-      el('span',{className:'tag', innerText:step}),
-      el('span',{innerText:label}),
-      el('span',{className:'status '+(ok?'ok':'bad')},[el('i',{}), el('b',{innerText: ok?'OK':'Offen'})])
-    ]);
-    host.append(row);
-  });
-}
-function withinDays(a,b,days){ const d=daysBetween(a,b); return d!==null && d<=days; }
-
-/* ID Card */
-function renderIdCard(){
-  const c = $('#idCardContainer');
-  const rpn = computeRpn();
-  const lvl = currentLevel();
-  c.innerHTML = `
-    <div class="card print-only">
-      <h2>ID-Card</h2>
-    </div>
-    <div class="grid">
-      <div>
-        <label><b>Titel</b></label>
-        <div>${state.meta.title||'—'}</div>
-      </div>
-      <div class="grid">
-        <div><label><b>Level</b></label><div>${lvl}</div></div>
-        <div><label><b>ATA</b></label><div>${state.meta.ata||'—'}</div></div>
-      </div>
-      <div class="grid">
-        <div><label><b>S/O/D</b></label><div>${state.meta.s||0}/${state.meta.o||0}/${state.meta.d||0}</div></div>
-        <div><label><b>RPN</b></label><div>${rpn}</div></div>
-      </div>
-      <div><label><b>Problem Statement</b></label><div>${(state.s2.issue||'—').replace(/\n/g,'<br>')}</div></div>
-      <div class="grid">
-        <div><label><b>RC1 (Occurrence)</b></label><div>${state.s4.rc1||'—'}</div></div>
-        <div><label><b>RC2 (Non-Detection)</b></label><div>${state.s4.rc2||'—'}</div></div>
-        <div><label><b>RC3 (Systemic)</b></label><div>${state.s4.rc3||'—'}</div></div>
-      </div>
-      <div>
-        <label><b>PCA Top-3</b></label>
-        <ol>${state.s5.pca.slice(0,3).map(p=>`<li>${p.txt||'—'} <span class="muted tiny">(Owner: ${p.owner||'—'}, Fällig: ${prettyDate(p.due)})</span></li>`).join('')||'<li>—</li>'}</ol>
-      </div>
-      <div class="grid">
-        <div><label><b>First Event</b></label><div>${prettyDate(state.meta.dates.first)}</div></div>
-        <div><label><b>Kundeninfo</b></label><div>${prettyDate(state.s0.custDate||state.meta.dates.customer)}</div></div>
-      </div>
-    </div>
-  `;
-}
-
-/* M1750 GEN Keyword Heuristic (demo) */
-const GEN_MAP = [
-  {key:/\bfod\b|foreign\s*object/i, code:'GEN-001', title:'FOD', why:'Schlüsselwort „FOD“/„foreign object“ erkannt.'},
-  {key:/incorrect|wrong|vertauscht|verdreht|assembly|montage/i, code:'GEN-004', title:'Incorrect Assembly', why:'Schlüsselwörter „incorrect / Assembly / Montage“.'},
-  {key:/torque|anzug|drehmoment/i, code:'GEN-010', title:'Torque / Fastener', why:'Drehmoment/Anzug erwähnt.'},
-  {key:/corrosion|korrosion/i, code:'GEN-012', title:'Corrosion', why:'Korrosion erkannt.'},
-  {key:/leak|leakage|leck/i, code:'GEN-021', title:'Leakage', why:'Leckage-Hinweis.'},
-  {key:/label|marking|kennzeichnung/i, code:'GEN-031', title:'Marking/Labeling', why:'Kennzeichnung/Label.'}
-];
-function suggestM1750(){
-  const t = (state.s2.issue||'') + ' ' + (state.s2.supply||'');
-  const hits = GEN_MAP.filter(x=> x.key.test(t)).slice(0,3);
-  state.s2.m1750 = hits.map(h=> ({code:h.code,title:h.title,why:h.why}));
-  const host = $('#s2M1750');
-  host.innerHTML = hits.length? (
-    '<b>Vorschläge:</b> ' + hits.map(h=> `<span class="pill">${h.code} – ${h.title}</span>`).join(' ') +
-    `<div class="tiny muted">Begründung: ${hits.map(h=>h.why).join(' • ')}</div>`
-  ) : '<span class="muted tiny">Keine Treffer – Engineering Judgement erforderlich.</span>';
-}
-
-/* Import/Export */
-$('#btnExport').addEventListener('click', ()=>{
-  const blob = new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href=url; a.download=(state.meta.title||'sari')+'.json'; a.click();
-  URL.revokeObjectURL(url);
-});
-$('#btnImport').addEventListener('click', ()=> $('#importFile').click());
-$('#importFile').addEventListener('change', e=>{
-  const file = e.target.files[0]; if(!file) return;
-  const fr=new FileReader();
-  fr.onload = ()=> { Object.assign(state, JSON.parse(fr.result)); save(); alert('Import erfolgreich.'); };
-  fr.readAsText(file);
-});
-$('#btnNewSari').addEventListener('click', ()=>{
-  if(confirm('Neues SARI beginnen? Ungespeicherte Änderungen werden überschrieben.')){ 
-    const fresh=seedState(); fresh.meta.level = state.meta.level; // keep default level
-    localStorage.setItem('sari_v1', JSON.stringify(fresh)); location.reload();
-  }
-});
-
-/* CSV Grid Import (very simple parser) */
-$('#btnGridImport').addEventListener('click', ()=> $('#gridFile').click());
-$('#gridFile').addEventListener('change', e=>{
-  const file=e.target.files[0]; if(!file) return;
-  const fr=new FileReader();
-  fr.onload = ()=> {
-    // Expect: first column contains step names like "S0", "S1" blocks; we only extract "Requirements" and "Benchmark" strings heuristically.
-    const text = fr.result;
-    const m = {};
-    ['S0','S1','S2','S3','S4','S5','S6','S7','S8'].forEach(S=>{
-      const block = text.split('\n').filter(line=> line.includes(S)).join('\n');
-      if(block){
-        m[S]={requirements:[`Guidance für ${S} aus CSV geladen.`], benchmark:[`Benchmark-Hinweis für ${S} …`]};
-      }
-    });
-    Object.assign(maturity, m);
-    renderGridHints();
-    alert('Maturity Grid geladen (heuristisch). Für präzise Zuordnung im echten System strukturierte CSV/JSON verwenden.');
-  };
-  fr.readAsText(file);
-});
-
-/* ------------------------ INIT ------------------------ */
-refreshAll();
-
-/* Keyboard shortcuts */
-document.addEventListener('keydown', e=>{
-  if(e.ctrlKey && e.key.toLowerCase()==='s'){ e.preventDefault(); save(); alert('Gespeichert.'); }
-});
-</script>
-</body>
-</html>
-So nutzt du den Prototyp
-Datei als index.html speichern, doppelklicken (oder auf GitHub Pages hosten).
-
-Oben im Dashboard RPN/Level setzen, Stammdaten pflegen.
-
-Durch S0→S8 arbeiten; der Wizard lässt dich nur weiter, wenn Pflichtfelder erfüllt sind (Quality Gates).
-
-CSV fürs Maturity-Grid kannst du (vereinfacht) importieren; für „echte“ Nutzung würde man das Grid in JSON normalisieren.
-
-ID-Card generieren → „Drucken / PDF“.
-
-Mit Export JSON Snapshots sichern; mit Import wieder laden.
-
-Wenn du willst, passe ich dir als nächsten Schritt:
-
-die CSV-Zuordnung zum Maturity-Grid 1:1 an (inkl. Spalten „Requirements“ vs. „Benchmark“),
-
-eine druckoptimierte ID-Card nach FM2201652,
-
-und ein echtes Ishikawa-Canvas (Drag&Drop) plus 5-Why-Tree mit Parent/Child-Relationen.
-
-Du:
-ich kann die einzelnen seiten nicht anklicken. Mein hauptziel ist es ja die idee zu pitchen und dafür die eingaben in 9s schritte zeigen
-ChatGPT:
-
-Nachgedacht für 10s
-Alles klar — ich hab dir rechts eine klickbare React-SPA auf den Canvas gelegt:
-
-Links in der Sidebar kannst du jetzt S0–S8 anwählen; jede Seite hat passende Eingabefelder.
-
-Mit 🎤 Pitch Mode schaltest du in eine read-only Slide-Ansicht, perfekt fürs Vorführen (Weiter/Zurück oben rechts).
-
-Oben im Dashboard setzt du Titel, Level und S/O/D → RPN/KPIs werden live berechnet.
-
-Export/Import JSON ist dabei, um einen Fall schnell zu laden/teilen.
-
-Wenn du stattdessen eine einfache HTML-Datei ohne React bevorzugst (für GitHub Pages ohne Build), sag Bescheid — ich generiere dir sofort eine Single-File-Variante mit denselben klickbaren Reitern.
-
-Du:
-Sari Governance Pitch Spa (clickable 9s)
-Lass uns gemeinsam erstmal brainstormen wie alles grob aufgebaut seien soll und dann welche inhalte.
-
-Ich will einen Tab mit Dashboard, hier soll man verschiedene beispiel saris sehen wie einzelne kacheln und diese sind nach dringlichkeit sortiert. Man sieht bei jeder sari kachel eine kurzübersicht
-
-dann soll man auf eine Sari draufklicken können und gelangt dann in die Sari, hier will ich dass dann oben Sari name 'SE-25.XXXX' und darunter die timeline mit den einzelnen S stept und jeweiligen Due dates. Zwischen S5 und S6 soll 'Dry Run' sein welches hervorgehoben ist, sowie nach S6 'PP' auch hervorgehoben. Bis dry run 60 tage, bis PP 100 tage. 
-
-darunter soll man dann den kern sehen. Von links nach rechts alle S steps. Pro S steps die eingaben und deliverables.
-ChatGPT:
-
-Nachgedacht für 6s
-Sari Governance – Ia & Wireframe Plan
-
-SARI Governance – Informationsarchitektur & Wireframe-Plan
-Ziel: Pitch-fähige UI-Story. Erst Struktur (IA) und Inhalte festzurren, dann im bestehenden SPA-Code umsetzen.
-
-A. Top-Level-Navigation
-Dashboard
-
-Raster aus SARI-Kacheln (Cards), sortiert nach Dringlichkeit.
-
-Globale Filter/Chips: Level (L1/L2/L3), Programm/ATA, Status (Open, In Dry Run, In PP, Closed), Owner/SIM.
-
-KPI-Row oben: Open SARIs, Overdue Milestones, Ø Time-to-Dry-Run, Ø Time-to-PP, Top Irritants.
-
-SARI-Detail (bei Klick auf eine Kachel)
-
-Header mit SARI-ID (z. B. SE-25.XXXX), Level-Badge, RPN, Status-Chips.
-
-Timeline: S0—S8 mit Due Dates. Milestones: Dry Run (zwischen S5↔S6, highlighted), PP (nach S6, highlighted). Zieltermine: Dry Run ≤ 60 Tage, PP ≤ 100 Tage ab Day‑1.
-
-Kernbereich: Horizontal-Layout – alle S‑Steps nebeneinander (scrollbar), pro Step Inputs & Deliverables in kompakten Cards.
-
-B. Dashboard – Kacheln (Card-Spezifikation)
-SARI Card (kompakt, 1:1,5):
-
-Titel: SE-25.XXXX + Kurzbeschreibung (1 Objekt, 1 Defekt)
-
-Badges: Level (L1/L2/L3), Top Irritant (wenn RPN≥300), Early Closure Draft (falls markiert)
-
-Mini-KPIs: RPN (S/O/D), Fortschritt %, Overdue-Aktionen
-
-Milestone-Status:
-
-Dry Run Chip mit D‑Tage (z. B. DRY RUN in 14d / +5d overdue)
-
-PP Chip mit D‑Tage (z. B. PP in 42d / +10d overdue)
-
-Step-Progress Bar: S0→S8 Indikator (gefüllte Etappen)
-
-Klick auf Card → SARI-Detail
-
-Sortierlogik (Dringlichkeit)
-
-L1 vor L2 vor L3
-
-Dry Run: Tage bis Ziel (60) – Overdue ganz oben
-
-PP: Tage bis Ziel (100) – Overdue danach
-
-RPN absteigend
-
-Overdue PCA‑Actions Count absteigend
-
-Filter/Chips (Mehrfachauswahl): Level, Status (z. B. S≤3, In RCA, In PCA, In Dry Run, In PP, Closed), Owner (SIM), ATA, Plant/Programm.
-
-Leere Zustände: „Keine SARIs im Filter. Filter zurücksetzen“ + CTA „Neues SARI“ (nur Demo).
-
-C. SARI-Detail – Header & Timeline
-Header
-
-H1: SE-25.XXXX
-
-Chips: Level, RPN, Status (Open/In Dry Run/In PP/Closed), ggf. Early Closure (L2/L3)
-
-Meta: ATA, First Event (Day‑1), SIM, Sponsor
-
-Timeline (horizontale Rail)
-
-Steps: S0, S1, S2, S3, S4, S5, Dry Run, S6, PP, S7, S8
-
-Jeder Step/Milestone: Dot + Label + Due Date (wenn gesetzt) + State (done/active/pending/overdue)
-
-Regeln:
-
-Dry Run Ziel: Day‑1 + 60 Tage
-
-PP Ziel: Day‑1 + 100 Tage
-
-Overdue, wenn Heute > Ziel und nicht done.
-
-Klick auf Step-Label scrollt zum entsprechenden S‑Panel im Kernbereich.
-
-D. SARI-Detail – Kernbereich (horizontale S‑Panels)
-Layout: Horizontal scrollbare Lane (sticky Titel), Reihenfolge S0→S8.
-Jedes Panel (Card):
-
-Titel: Sx – Name
-
-Inputs (Kurzfassung)
-
-Deliverables (Anhänge/Links/Status)
-
-Ready/Not‑Ready Badge (gemäß Minimalkriterien)
-
-Inhalte je Step (kompakt, für Pitch)
-
-S0 Containment: Kundeninfo (Datum), Containment‑Plan (Ref), Line Stop (Ja/Nein), Bestandsprüfung (Ref)
-
-S1 Team Charter: Leader, Sponsor, Problem Owner, Ops, MFT‑Liste
-
-S2 Evidence Hub: Issue Description, Supply Chain, 5W2H, IS/IS NOT, (optional) M1750 Vorschlag (GEN)
-
-S3 Validate Containment: Validierungsbericht (Ref), Traceability/TOAC (Ref), Trigger‑Point, Curative Actions
-
-S4 RCA: RC1 (Occurrence), RC2 (Non‑Detection), RC3 (Systemic), 5‑Whys Summary
-
-S5 Corrective Actions: Maßnahmen‑Tabelle (Owner, Due, RC‑Link, Metrik, Status)
-
-Dry Run (Milestone): Checkliste „Pitch‑fähig“ (ID‑Card vorhanden, Slides, Demo‑Artefakte)
-
-S6 Implement & Effectiveness: Wirksamkeitsnachweis je Maßnahme (Implementiert/Wirksam)
-
-PP (Milestone): Ready for PP Check (PPM Review grün, Risiken dokumentiert)
-
-S7 Standardize & Prevent: Look‑Across, SOP/Prozess aktualisiert, FMEA aktualisiert
-
-S8 Close & Recognize: Abschluss‑Checkliste, Kundenkommunikation, Lessons Learned
-
-E. Datenmodell (Pitch‑Level)
-Sari {
-  id: string;            // "SE-25.XXXX"
-  level: "L1"|"L2"|"L3";
-  rpn: number;           // derived from s,o,d
-  day1: string;          // ISO-Date
-  sim: string; sponsor: string; ata?: string;
-  sod: { s:number; o:number; d:number };
-  steps: {
-    s0: {...}; s1: {...}; s2: {...}; s3: {...}; s4: {...}; s5: { pca: Pca[] }; s6: { eff: EffRow[] };
-    s7: {...}; s8: {...};
-  };
-  milestones: {
-    dryRun: { target: ISODate; done?: ISODate };
-    pp: { target: ISODate; done?: ISODate };
-  };
-  status: "Open"|"In Dry Run"|"In PP"|"Closed";
-}
-Berechnungen
-
-dryRun.target = day1 + 60d
-
-pp.target = day1 + 100d
-
-Urgency score (für Dashboard): w1*level + w2*dryRunDelta + w3*ppDelta + w4*rpn + w5*overduePCA (Gewichte feinjustierbar)
-
-F. Interaktionen
-Dashboard → Detail: Klick auf Card öffnet SARI‑Detail (Route #/sari/:id).
-
-Timeline Click: Scroll zu Panel, Highlight.
-
-Sticky Controls: „Pitch Mode“ (read‑only) / „Edit Mode“ (Eingaben möglich).
-
-Chips: Filter als URL‑Params (für Demo optional).
-
-G. Wireframe-Skizze (ASCII)
-[DASHBOARD]
-┌─────────────────────────────────────────────────────────────────────┐
-│ KPIs: Open | Overdue | ØDryRun | ØPP | Top Irritants               │
-├─────────────────────────────────────────────────────────────────────┤
-│ [Filter Chips....................................................] │
-├─────────────┬─────────────┬─────────────┬─────────────┬─────────────┤
-│ SARI Card   │ SARI Card   │ SARI Card   │ SARI Card   │ SARI Card   │
-│ SE-25.0123  │ ...         │ ...         │ ...         │ ...         │
-│ RPN 420     │             │             │             │             │
-│ DRY RUN +5d │ PP in 30d   │ ...         │ ...         │ ...         │
-└─────────────┴─────────────┴─────────────┴─────────────┴─────────────┘
-
-[SARI DETAIL]
-SE-25.0123   [Level L1] [RPN 420] [Open] [SIM: …]
-S0 • S1 • S2 • S3 • S4 • S5 • **Dry Run** • S6 • **PP** • S7 • S8
-(Each with Due: dd.mm.yyyy, overdue state)
-
-[ S0 ] [ S1 ] [ S2 ] [ S3 ] [ S4 ] [ S5 ] [ Dry Run ] [ S6 ] [ PP ] [ S7 ] [ S8 ]
-(Scroll horizontally; each box shows Inputs + Deliverables)
-H. Nächste Schritte (Umsetzung im bestehenden SPA)
-Routing ergänzen: #/sari/:id + State sarilist für Dashboard.
-
-Dashboard-Kacheln: Card-Komponente + Sortier-/Filterlogik (Urgency).
-
-Detail-Header & Timeline: Milestones zwischen/ nach Steps, Zieltermine 60/100d, Overdue‑Logik.
-
-Kern-Lane: Horizontale Panels S0–S8 + Dry Run + PP (Milestones als Panels mit Checklisten).
-
-Demo-Daten: 5–8 Beispiel‑SARIs (verschiedene Level, RPN, Stati), damit die Sortierung sichtbar wird.
-
-Pitch Mode: Read‑only Snapshot für alle Panels.
-
-Wenn du „Go“ gibst, implementiere ich die Punkte 1–4 direkt in der vorhandenen Canvas‑SPA (inkl. Beispiel‑SARIs & Sortierung).
-
-super — ich hab dir links auf dem Canvas eine klar strukturierte IA & Wireframe-Skizze angelegt. Kurz die Kernelemente aus dem Brainstorm:
-
-#1 Dashboard
-Kachel-Grid mit Beispiel-SARIs, nach Dringlichkeit sortiert (L1→L3, Dry-Run-Delta, PP-Delta, RPN, Overdues). Jede Kachel zeigt: ID SE-25.XXXX, Kurzbeschreibung, Level/Top-Irritant, RPN (S/O/D), Fortschritt, Dry-Run/PP-Chips mit verbleibenden Tagen/Overdue.
-
-#2 SARI-Detail
-Header mit SARI-ID, Level, RPN, Status. Darunter eine Timeline: S0 … S5 • Dry Run • S6 • PP • S7 • S8 mit Due-Dates.
-Milestones: Dry Run (60 Tage) zwischen S5/S6, PP (100 Tage) nach S6 – beide hervorgehoben.
-Darunter der Kernbereich: Horizontal scrollbare Lane mit allen S-Steps links→rechts, je Panel kompakte Inputs & Deliverables.
-
-#3 Regeln & Daten
-Zieltermine = Day-1 + 60/100 Tage; Overdue-Logik; Urgency-Sortierung; leichte Demo-Datenstruktur für Pitch.
-
-Wenn dir das so gefällt, bau ich es direkt in die bestehende React-SPA ein:
-
-Dashboard-Kacheln + Sortierung/Filter,
-
-Detail-Route #/sari/:id mit Header, Timeline (inkl. Dry Run/PP),
-
-Kern-Lane mit den S-Panels inkl. Checklisten.
-
-Sag einfach „Go“, oder nenn mir Änderungen (z. B. weitere Felder auf den Kacheln, andere Sortierreihenfolge, zusätzliches KPI auf dem Dashboard).
-
-Du:
-Sari Governance Pitch Spa (clickable 9s)
-go.
-ChatGPT:
-
-Nachgedacht für 8s
-Sari Governance Pitch Spa (clickable 9s)
-· typescript
 import React, { useMemo, useState, useEffect } from "react";
 
 /**
@@ -2293,31 +75,343 @@ function useRouter() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
   const go = (to) => (window.location.hash = to);
-Fertig! 🎯
+  return [route, go];
+}
 
-Dashboard: zeigt jetzt SARI-Kacheln, automatisch nach Dringlichkeit sortiert (Level → Dry-Run-Delta → PP-Delta → RPN → Overdues). Jede Kachel hat ID, Kurz-Text, Level/Top-Irritant-Badge, RPN & Fortschritt sowie Dry-Run/PP-Chips mit Resttagen/Overdue. Klick auf eine Kachel öffnet den Detail-View.
+// ---- UI Primitives ----
+function Card({ children, style }) {
+  return (
+    <div style={{ background: "#131a24", border: "1px solid #263142", borderRadius: 12, padding: 14, ...style }}>{children}</div>
+  );
+}
+function Label({ children }) {
+  return <label style={{ color: "#91a2b2", fontSize: 12, display: "block", marginBottom: 4 }}>{children}</label>;
+}
+function Row({ children, cols = 2, gap = 12, style }) {
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, minmax(0,1fr))`, gap, marginBottom: 12, ...style }}>{children}</div>
+  );
+}
+function ToolbarButton({ children, onClick, primary }) {
+  return (
+    <button onClick={onClick} style={{ padding: "8px 12px", borderRadius: 10, border: primary ? "none" : "1px solid #324055", background: primary ? "linear-gradient(135deg,#4ab1ff,#62e3b2)" : "#1a2230", color: primary ? "#07130c" : "#e8eef6", fontWeight: primary ? 700 : 500, cursor: "pointer" }}>{children}</button>
+  );
+}
+const td = { padding: 8, background: "#131a24", border: "1px solid #263142", borderRadius: 8 };
 
-SARI-Detail: oben Header mit SE-25.XXXX, Level, RPN, Status. Darunter eine Timeline:
-S0 • S1 • S2 • S3 • S4 • S5 • Dry Run • S6 • PP • S7 • S8
-– Dry Run (Ziel = Day-1 + 60 Tage) und PP (Day-1 + 100 Tage) sind hervorgehoben; Overdues werden farblich markiert.
+// ---- Derived helpers ----
+const computeRPN = (sod) => (Number(sod.s) || 0) * (Number(sod.o) || 0) * (Number(sod.d) || 0);
+const computeProgress = (sari) => {
+  const { steps } = sari;
+  const checks = [
+    !!(steps.s0.customerInfo && steps.s0.firstEvent),
+    !!(steps.s1.leader && steps.s1.sponsor && steps.s1.owner && steps.s1.ops),
+    !!(steps.s2.issue && steps.s2.a5w2h),
+    !!steps.s3.validation,
+    !!(steps.s4.rc1 && steps.s4.rc2),
+    steps.s5.pca.length > 0,
+    steps.s6.eff.every((e) => e.effective),
+    sari.level === "L1" || computeRPN(sari.sod) >= 300 ? !!(steps.s7.fmea || steps.s7.sop) : true,
+    Object.values(steps.s8.checks).every(Boolean),
+  ];
+  const done = checks.filter(Boolean).length;
+  return Math.round((done / checks.length) * 100);
+};
 
-Kernbereich: darunter eine horizontale Lane mit allen S-Steps von links nach rechts, jeweils kompakte Inputs & Deliverables (read-only für den Pitch). Milestones Dry Run und PP haben eigene Panels mit Zieltermin.
+// urgency sort per spec: level, dryRun delta, pp delta, rpn, overdue pcas
+const urgencyScore = (s) => {
+  const lvl = s.level === "L1" ? 3 : s.level === "L2" ? 2 : 1;
+  const dDry = deltaFromToday(s.milestones.dryRun?.target) ?? 9999; // negative = overdue
+  const dPP = deltaFromToday(s.milestones.pp?.target) ?? 9999;
+  const rpn = computeRPN(s.sod);
+  const overdue = (s.steps.s5.pca || []).filter((p) => p.due && p.status !== "Erledigt" && p.due < todayISO()).length;
+  // lower is more urgent; return tuple emulation
+  return [ -lvl, (dDry>=0? dDry: dDry*2), (dPP>=0? dPP: dPP*1.5), -rpn, -overdue ];
+};
+const compareTuple = (a,b)=>{ for(let i=0;i<Math.max(a.length,b.length);i++){ const d=(a[i]||0)-(b[i]||0); if(d!==0) return d; } return 0; };
 
-Demo-Daten: ein paar SARIs sind vorgeladen, damit Sortierung, KPIs und Timeline sofort sichtbar sind.
+// ---- Components ----
+function KPI({ label, value, sub }) {
+  return (
+    <Card>
+      <div style={{ color: "#93a4b6", fontSize: 12, textTransform: "uppercase", letterSpacing: ".06em" }}>{label}</div>
+      <div style={{ fontSize: 22, fontWeight: 800 }}>{value}</div>
+      {sub && <div style={{ fontSize: 12, color: "#93a4b6" }}>{sub}</div>}
+    </Card>
+  );
+}
 
-Wenn du willst, kann ich als Nächstes:
+function Dashboard({ list, onOpen }) {
+  const sorted = useMemo(() => [...list].sort((a,b)=> compareTuple(urgencyScore(a), urgencyScore(b))), [list]);
+  const totals = useMemo(()=>({
+    open: list.filter(s=> s.status!=="Closed").length,
+    overdueMs: list.filter(s=> (deltaFromToday(s.milestones.dryRun?.target)??1)<0 || (deltaFromToday(s.milestones.pp?.target)??1)<0).length,
+    avgDry: Math.round(list.reduce((acc,s)=>acc+(deltaFromToday(s.milestones.dryRun?.target)??0),0)/Math.max(1,list.length)),
+    avgPP: Math.round(list.reduce((acc,s)=>acc+(deltaFromToday(s.milestones.pp?.target)??0),0)/Math.max(1,list.length)),
+    topIrr: list.filter(s=> s.level==="L1" || computeRPN(s.sod)>=300).length,
+  }),[list]);
 
-Edit-Modus im Detail hinzufügen (live anpassbare Eingaben je Step),
+  return (
+    <>
+      <Row cols={5}>
+        <KPI label="Open SARIs" value={totals.open} />
+        <KPI label="Overdue Milestones" value={totals.overdueMs} />
+        <KPI label="Ø Days to Dry Run" value={totals.avgDry} />
+        <KPI label="Ø Days to PP" value={totals.avgPP} />
+        <KPI label="Top Irritants" value={totals.topIrr} />
+      </Row>
+      <Row cols={3} gap={16}>
+        {sorted.map((s)=> (
+          <SariTile key={s.id} sari={s} onOpen={()=> onOpen(s)} />
+        ))}
+      </Row>
+    </>
+  );
+}
 
-Filter/Chips auf dem Dashboard (Level, Programm, Status),
+function Chip({ children, tone="muted" }){
+  const palette = { muted: "#1a2332", warn: "#3a2a10", ok: "#0f2a22", info: "#1a2438" };
+  const color = { muted: "#9bb0c7", warn: "#f6d18b", ok: "#9fe6cb", info: "#a9c4ff" };
+  return <span style={{ fontSize: 12, padding: "3px 8px", borderRadius: 999, background: palette[tone], color: color[tone], border: "1px solid #2a3750" }}>{children}</span>;
+}
 
-Export/Import für die gesamte SARI-Liste,
+function SariTile({ sari, onOpen }){
+  const rpn = computeRPN(sari.sod);
+  const prog = computeProgress(sari);
+  const dDry = deltaFromToday(sari.milestones.dryRun?.target);
+  const dPP = deltaFromToday(sari.milestones.pp?.target);
+  const dryTxt = dDry==null? "—" : dDry<0? `DRY RUN ${Math.abs(dDry)}d overdue` : `DRY RUN in ${dDry}d`;
+  const ppTxt = dPP==null? "—" : dPP<0? `PP ${Math.abs(dPP)}d overdue` : `PP in ${dPP}d`;
+  const overdue = (sari.steps.s5.pca||[]).filter(p=> p.due && p.status!=="Erledigt" && p.due<todayISO()).length;
+  return (
+    <Card>
+      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:8 }}>
+        <div style={{ fontWeight:800 }}>{sari.id}</div>
+        <div style={{ display:"flex", gap:8, alignItems:"center" }}>
+          <Chip tone="info">{sari.level}</Chip>
+          { (sari.level==="L1" || rpn>=300) && <Chip tone="warn">Top Irritant</Chip> }
+        </div>
+      </div>
+      <div style={{ color:"#9ab0c6", fontSize:12 }}>{sari.meta?.title || sari.steps.s2.issue || "—"}</div>
+      <Row cols={3} style={{ marginTop:8 }}>
+        <div><Label>RPN</Label><div style={{ fontWeight:700 }}>{rpn}</div><div style={{color:"#9ab0c6", fontSize:12}}>S/O/D {sari.sod.s}/{sari.sod.o}/{sari.sod.d}</div></div>
+        <div><Label>Fortschritt</Label><div style={{ fontWeight:700 }}>{prog}%</div></div>
+        <div><Label>Overdue Aktionen</Label><div style={{ fontWeight:700 }}>{overdue}</div></div>
+      </Row>
+      <Row cols={2}>
+        <div><Chip tone={dDry<0?"warn":"info"}>{dryTxt}</Chip></div>
+        <div><Chip tone={dPP<0?"warn":"info"}>{ppTxt}</Chip></div>
+      </Row>
+      <div style={{ display:"flex", justifyContent:"flex-end" }}>
+        <ToolbarButton primary onClick={onOpen}>Öffnen</ToolbarButton>
+      </div>
+    </Card>
+  );
+}
 
-zusätzliche KPIs (z. B. „Time-to-Fix“), oder die ID-Card-Generierung als PDF.
+function Timeline({ sari, onJump }){
+  const nodes = [
+    { id:"s0", label:"S0" },{ id:"s1", label:"S1" },{ id:"s2", label:"S2" },{ id:"s3", label:"S3" },{ id:"s4", label:"S4" },{ id:"s5", label:"S5" },
+    { id:"dry", label:"Dry Run", milestone:true, target: sari.milestones.dryRun?.target },
+    { id:"s6", label:"S6" },
+    { id:"pp", label:"PP", milestone:true, target: sari.milestones.pp?.target },
+    { id:"s7", label:"S7" },{ id:"s8", label:"S8" },
+  ];
+  return (
+    <div style={{ display:"flex", gap:16, overflowX:"auto", padding:"6px 2px" }}>
+      {nodes.map(n=>{
+        const isMilestone = !!n.milestone;
+        const due = n.target;
+        const d = n.milestone ? deltaFromToday(due) : null;
+        const tone = isMilestone ? (d!=null && d<0 ? "#ffcc66" : "#a9c4ff") : "#9ab0c6";
+        return (
+          <div key={n.id} onClick={()=> onJump && onJump(n.id)} style={{ minWidth: 100, cursor:"pointer" }}>
+            <div style={{ width:12, height:12, borderRadius:999, background: tone, marginBottom:6 }} />
+            <div style={{ fontWeight: isMilestone?800:600 }}>{n.label}</div>
+            {isMilestone && <div style={{ fontSize:12, color:"#9ab0c6" }}>{due || "—"}</div>}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
 
+function StepPanel({ title, children }){
+  return (
+    <Card style={{ minWidth: 320 }}>
+      <div style={{ fontWeight: 700, marginBottom: 6 }}>{title}</div>
+      {children}
+    </Card>
+  );
+}
 
+function SariCoreLane({ sari }){
+  const ref = React.useRef(null);
+  const jump = (id)=>{
+    const el = ref.current?.querySelector(`[data-panel="${id}"]`);
+    el?.scrollIntoView({ behavior:"smooth", inline:"start", block:"nearest" });
+  };
+  return (
+    <>
+      <Timeline sari={sari} onJump={jump} />
+      <div ref={ref} style={{ display:"flex", gap:12, overflowX:"auto", paddingTop:8 }}>
+        <div data-panel="s0"><StepPanel title="S0 • Containment">
+          <Row>
+            <div><Label>Kundeninfo</Label><div>{sari.steps.s0.customerInfo || "—"}</div></div>
+            <div><Label>Line Stop</Label><div>{sari.steps.s0.lineStop}</div></div>
+          </Row>
+          <Label>Bestandsprüfung</Label><div style={td}>{sari.steps.s0.stockProof || "—"}</div>
+        </StepPanel></div>
 
+        <div data-panel="s1"><StepPanel title="S1 • Team Charter">
+          <Row cols={3}>
+            <div><Label>Leader</Label><div>{sari.steps.s1.leader || "—"}</div></div>
+            <div><Label>Sponsor</Label><div>{sari.steps.s1.sponsor || "—"}</div></div>
+            <div><Label>Owner</Label><div>{sari.steps.s1.owner || "—"}</div></div>
+          </Row>
+          <Row>
+            <div><Label>Ops</Label><div>{sari.steps.s1.ops || "—"}</div></div>
+            <div><Label>MFT</Label><div>{sari.steps.s1.members || "—"}</div></div>
+          </Row>
+        </StepPanel></div>
 
+        <div data-panel="s2"><StepPanel title="S2 • Evidence Hub">
+          <Label>Issue</Label><div style={td}>{sari.steps.s2.issue || "—"}</div>
+          <Row>
+            <div><Label>5W2H</Label><div style={td}>{sari.steps.s2.a5w2h || "—"}</div></div>
+            <div><Label>IS / IS NOT</Label><div style={td}>{sari.steps.s2.isNot || "—"}</div></div>
+          </Row>
+        </StepPanel></div>
 
-Keine ausgewähltKeine ausgewählt
-ChatGPT kann Fehler machen. Überprüfe wichtige Informationen. Siehe Cookie-Voreinstellungen.
+        <div data-panel="s3"><StepPanel title="S3 • Validate Containment">
+          <Row>
+            <div><Label>Validierung</Label><div>{sari.steps.s3.validation || "—"}</div></div>
+            <div><Label>Traceability</Label><div>{sari.steps.s3.trace || "—"}</div></div>
+          </Row>
+        </StepPanel></div>
+
+        <div data-panel="s4"><StepPanel title="S4 • RCA">
+          <Row cols={3}>
+            <div><Label>RC1</Label><div>{sari.steps.s4.rc1 || "—"}</div></div>
+            <div><Label>RC2</Label><div>{sari.steps.s4.rc2 || "—"}</div></div>
+            <div><Label>RC3</Label><div>{sari.steps.s4.rc3 || "—"}</div></div>
+          </Row>
+          {sari.steps.s4.whys?.length>0 && (<>
+            <Label>5‑Whys</Label>
+            <ol>{sari.steps.s4.whys.map((w,i)=>(<li key={i}>{w}</li>))}</ol>
+          </>)}
+        </StepPanel></div>
+
+        <div data-panel="s5"><StepPanel title="S5 • Corrective Actions">
+          {sari.steps.s5.pca.length===0? <div style={{ color: "#93a4b6" }}>Keine Maßnahmen erfasst.</div> : (
+            <table style={{ width:"100%", borderCollapse:"separate", borderSpacing:"0 8px" }}>
+              <thead><tr>{["Maßnahme","Owner","Fällig","RC","Metrik","Status"].map(h=> <th key={h} style={{ textAlign:"left", padding:8, color:"#93a4b6", fontSize:12 }}>{h}</th>)}</tr></thead>
+              <tbody>
+                {sari.steps.s5.pca.map((p,i)=> (
+                  <tr key={i}>
+                    <td style={td}>{p.txt}</td><td style={td}>{p.owner}</td><td style={td}>{p.due}</td>
+                    <td style={td}>{p.rc}</td><td style={td}>{p.metric}</td><td style={td}>{p.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </StepPanel></div>
+
+        <div data-panel="dry"><StepPanel title="Milestone • Dry Run (≤60d)">
+          <Label>Zieltermin</Label><div style={td}>{sari.milestones.dryRun?.target || "—"}</div>
+          <div style={{ fontSize:12, color:"#9ab0c6", marginTop:6 }}>Dry Run ist die interne Generalprobe zwischen S5 und S6.</div>
+        </StepPanel></div>
+
+        <div data-panel="s6"><StepPanel title="S6 • Implement & Effectiveness">
+          {sari.steps.s6.eff.length===0? <div style={{ color: "#93a4b6" }}>Noch keine Wirksamkeitsnachweise.</div> : (
+            <ul>{sari.steps.s6.eff.map((e,i)=> (<li key={i}>{e.txt || `Maßnahme ${i+1}`} – {e.effective? "wirksam":"offen"}</li>))}</ul>
+          )}
+        </StepPanel></div>
+
+        <div data-panel="pp"><StepPanel title="Milestone • PP (≤100d)">
+          <Label>Zieltermin</Label><div style={td}>{sari.milestones.pp?.target || "—"}</div>
+          <div style={{ fontSize:12, color:"#9ab0c6", marginTop:6 }}>Production Panel – formale Validierung nach S6.</div>
+        </StepPanel></div>
+
+        <div data-panel="s7"><StepPanel title="S7 • Standardize & Prevent">
+          <Label>Look‑Across</Label><div style={td}>{sari.steps.s7.lookAcross || "—"}</div>
+          <Label>SOP / FMEA</Label><div style={td}>{sari.steps.s7.sop || sari.steps.s7.fmea || "—"}</div>
+        </StepPanel></div>
+
+        <div data-panel="s8"><StepPanel title="S8 • Close & Recognize">
+          <Row>{Object.entries(sari.steps.s8.checks).map(([k,v])=> (<div key={k}><Label>{k}</Label><div>{v?"✔":"—"}</div></div>))}</Row>
+          <Label>Kommentar</Label><div style={td}>{sari.steps.s8.comment || "—"}</div>
+        </StepPanel></div>
+      </div>
+    </>
+  );
+}
+
+// ---- Shell Layout ----
+function Layout({ children }) {
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "260px 1fr", minHeight: "100vh" }}>
+      <aside style={{ background: "#0f1622", borderRight: "1px solid #223049", padding: 16, position: "sticky", top: 0, height: "100vh", overflow: "auto" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+          <div style={{ width: 26, height: 26, borderRadius: 6, background: "linear-gradient(135deg,#62e3b2,#4ab1ff)" }} />
+          <div>
+            <div style={{ fontWeight: 700 }}>SARI Governance</div>
+            <div style={{ fontSize: 12, color: "#9aacc0" }}>Pitch Prototype</div>
+          </div>
+        </div>
+        <div style={{ display:"grid", gap:6, marginTop: 8 }}>
+          <a href="#/" style={navLinkStyle}>🏠 Dashboard</a>
+        </div>
+        <div style={{ marginTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {/* Buttons can be wired if we add edit mode later */}
+        </div>
+      </aside>
+      <main style={{ padding: 18 }}>{children}</main>
+    </div>
+  );
+}
+const navLinkStyle = { color: "#e8eef6", textDecoration: "none", padding: "8px 12px", borderRadius: 10, border: "1px solid #2c3a4f", background: "#1a2332", display:"inline-block" };
+
+// ---- App ----
+export default function App(){
+  const [route, go] = useRouter();
+  const [list, setList] = useState(demoSARIs);
+
+  const openSari = (s) => go(`#/sari/${s.id}`);
+  const sari = route.page === "sari" ? list.find(x=> x.id === route.id) : null;
+
+  return (
+    <Layout>
+      {route.page === "dashboard" && (
+        <Dashboard list={list} onOpen={openSari} />
+      )}
+      {route.page === "sari" && sari && (
+        <>
+          <Card>
+            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+              <div>
+                <div style={{ fontSize:18, fontWeight:800 }}>{sari.id}</div>
+                <div style={{ color: "#9ab0c6", fontSize:12 }}>ATA {sari.meta?.ata || "—"} • SIM {sari.meta?.sim || "—"}</div>
+              </div>
+              <div style={{ display:"flex", gap:8, alignItems:"center" }}>
+                <Chip tone="info">{sari.level}</Chip>
+                <Chip tone="muted">RPN {computeRPN(sari.sod)}</Chip>
+                <Chip tone="muted">Status {sari.status}</Chip>
+              </div>
+            </div>
+          </Card>
+          <div style={{ height: 10 }} />
+          <Card>
+            <Timeline sari={sari} />
+          </Card>
+          <div style={{ height: 10 }} />
+          <SariCoreLane sari={sari} />
+        </>
+      )}
+      {route.page === "sari" && !sari && (
+        <Card>Unbekanntes SARI.</Card>
+      )}
+    </Layout>
+  );
+}
